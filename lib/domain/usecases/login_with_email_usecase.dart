@@ -4,11 +4,11 @@ import 'package:intelicity_auth_microapp_flutter/domain/entities/login_credentia
 import 'package:intelicity_auth_microapp_flutter/domain/errors/errors.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/repositories/auth_repository_interface.dart';
 
-abstract class LoginWithEmail {
+abstract class ILoginWithEmailUsecase {
   Future<Either<Failure, LoggedUserInfo>> call(LoginCredential credential);
 }
 
-class LoginWithEmailImpl implements LoginWithEmail {
+class LoginWithEmailImpl implements ILoginWithEmailUsecase {
   final IAuthRepository authRepository;
 
   LoginWithEmailImpl(this.authRepository);

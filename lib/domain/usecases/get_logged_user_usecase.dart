@@ -3,11 +3,11 @@ import 'package:intelicity_auth_microapp_flutter/domain/entities/logged_user_inf
 import 'package:intelicity_auth_microapp_flutter/domain/errors/errors.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/repositories/auth_repository_interface.dart';
 
-abstract class GetLoggedUser {
+abstract class IGetLoggedUserUsecase {
   Future<Either<Failure, LoggedUserInfo>> call();
 }
 
-class GetLoggedUserImpl implements GetLoggedUser {
+class GetLoggedUserImpl implements IGetLoggedUserUsecase {
   final IAuthRepository authRepository;
 
   GetLoggedUserImpl(this.authRepository);
