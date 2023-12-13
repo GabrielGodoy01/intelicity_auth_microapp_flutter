@@ -4,7 +4,7 @@ import 'package:logger/logger.dart';
 
 import 'amplifyconfiguration.dart';
 
-Future<void> configureAmplify() async {
+Future<void> configureAmplify(String amplifyconfig) async {
   try {
     await Amplify.addPlugin(AmplifyAuthCognito());
     await Amplify.configure(amplifyconfig);

@@ -7,4 +7,9 @@ abstract class IAuthRepository {
       {required String email, required String password});
   Future<Either<Failure, Unit>> logout();
   Future<Either<Failure, LoggedUserInfo>> getLoggedUser();
+  Future<Either<Failure, Unit>> resetPassword({required String email});
+  Future<Either<Failure, Unit>> confirmResetPassword(
+      {required String email,
+      required String code,
+      required String newPassword});
 }

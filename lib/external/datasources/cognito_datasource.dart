@@ -63,4 +63,18 @@ class CognitoDatasource implements IAuthDatasource {
       throw Exception();
     }
   }
+
+  @override
+  Future<void> resetPassword({required String email}) async {
+    await Amplify.Auth.resetPassword(username: email);
+  }
+
+  @override
+  Future<void> confirmResetPassword(
+      {required String email,
+      required String code,
+      required String newPassword}) async {
+    await Amplify.Auth.confirmResetPassword(
+        username: email, newPassword: newPassword, confirmationCode: code);
+  }
 }

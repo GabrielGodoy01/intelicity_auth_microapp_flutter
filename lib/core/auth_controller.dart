@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/entities/logged_user_info.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/get_logged_user_usecase.dart';
-import 'package:intelicity_auth_microapp_flutter/domain/usecases/logout.dart';
+import 'package:intelicity_auth_microapp_flutter/domain/usecases/logout_usecase.dart';
 import 'package:logger/logger.dart';
 import 'package:mobx/mobx.dart';
 

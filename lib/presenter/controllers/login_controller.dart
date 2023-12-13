@@ -3,7 +3,7 @@ import 'package:intelicity_auth_microapp_flutter/core/auth_controller.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/entities/login_credential.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/login_with_email_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/functions/global_snackbar.dart';
-import 'package:intelicity_auth_microapp_flutter/presenter/states/login_state.dart';
+import 'package:intelicity_auth_microapp_flutter/presenter/states/basic_state.dart';
 import 'package:logger/logger.dart';
 import 'package:mobx/mobx.dart';
 
@@ -17,15 +17,15 @@ abstract class LoginControllerBase with Store {
   final AuthController _authController;
 
   LoginControllerBase(this._loginWithEmail, this._authController) {
-    logger.d('authStore.isLogged: ${_authController.isLogged}');
+    logger.d('authController.isLogged: ${_authController.isLogged}');
     if (_authController.isLogged) Modular.to.navigate('/logged');
   }
 
   @observable
-  LoginState state = LoginInitialState();
+  BasicState state = BasicInitialState();
 
   @action
-  void setState(LoginState value) => state = value;
+  void setState(BasicState value) => state = value;
 
   @observable
   String email = '';
@@ -48,11 +48,11 @@ abstract class LoginControllerBase with Store {
     setState(result.fold((e) {
       logger.e(e.message);
       GlobalSnackBar.error(e.message);
-      return LoginErrorState(error: e);
+      return BasicErrorState(error: e);
     }, (user) {
       _authController.setUser(user);
       Modular.to.navigate('/logged');
-      return LoginInitialState();
+      return BasicInitialState();
     }));
   }
 }

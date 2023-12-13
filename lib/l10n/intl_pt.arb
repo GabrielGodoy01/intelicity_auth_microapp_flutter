@@ -1,1 +1,13 @@
-{}
+{
+    "email": "Email",
+    "password": "Senha",
+    "confirmPassword": "Confirme a senha",
+    "login": "Login",
+    "register": "Cadastrar",
+    "forgotPassword": "Esqueceu sua senha?",
+
+    "fieldRequired": "Campo é obrigatório",
+    "fieldEmailInvalid": "Email inválido",
+    "fieldPasswordInvalid": "Senha inválida",
+    "fieldConfirmPasswordInvalid": "As senhas não conferem"
+}

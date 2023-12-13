@@ -49,6 +49,106 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Email`
+  String get email {
+    return Intl.message(
+      'Email',
+      name: 'email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Senha`
+  String get password {
+    return Intl.message(
+      'Senha',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirme a senha`
+  String get confirmPassword {
+    return Intl.message(
+      'Confirme a senha',
+      name: 'confirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get login {
+    return Intl.message(
+      'Login',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cadastrar`
+  String get register {
+    return Intl.message(
+      'Cadastrar',
+      name: 'register',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Esqueceu sua senha?`
+  String get forgotPassword {
+    return Intl.message(
+      'Esqueceu sua senha?',
+      name: 'forgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Required field`
+  String get fieldRequired {
+    return Intl.message(
+      'Required field',
+      name: 'fieldRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid email`
+  String get fieldEmailInvalid {
+    return Intl.message(
+      'Invalid email',
+      name: 'fieldEmailInvalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid password`
+  String get fieldPasswordInvalid {
+    return Intl.message(
+      'Invalid password',
+      name: 'fieldPasswordInvalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passwords do not match`
+  String get fieldConfirmPasswordInvalid {
+    return Intl.message(
+      'Passwords do not match',
+      name: 'fieldConfirmPasswordInvalid',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

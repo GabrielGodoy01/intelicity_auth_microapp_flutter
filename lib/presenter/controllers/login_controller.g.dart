@@ -21,13 +21,13 @@ mixin _$LoginController on LoginControllerBase, Store {
       Atom(name: 'LoginControllerBase.state', context: context);
 
   @override
-  LoginState get state {
+  BasicState get state {
     _$stateAtom.reportRead();
     return super.state;
   }
 
   @override
-  set state(LoginState value) {
+  set state(BasicState value) {
     _$stateAtom.reportWrite(value, super.state, () {
       super.state = value;
     });
@@ -69,7 +69,7 @@ mixin _$LoginController on LoginControllerBase, Store {
       ActionController(name: 'LoginControllerBase', context: context);
 
   @override
-  void setState(LoginState value) {
+  void setState(BasicState value) {
     final _$actionInfo = _$LoginControllerBaseActionController.startAction(
         name: 'LoginControllerBase.setState');
     try {

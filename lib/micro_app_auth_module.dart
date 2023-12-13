@@ -7,12 +7,12 @@ import 'package:intelicity_auth_microapp_flutter/infra/datasource/auth_datasourc
 import 'package:intelicity_auth_microapp_flutter/infra/repositories/auth_repository_impl.dart';
 import 'package:logger/logger.dart';
 import 'amplify/amplify_config.dart';
-import 'domain/usecases/logout.dart';
+import 'domain/usecases/logout_usecase.dart';
 import 'external/datasources/cognito_datasource.dart';
 
 class MicroAppAuthModule extends Module {
-  MicroAppAuthModule() {
-    configureAmplify();
+  MicroAppAuthModule(String amplifyconfig) {
+    configureAmplify(amplifyconfig);
     Logger.level = Level.debug;
   }
 
