@@ -9,6 +9,9 @@ class TextFielCustom extends StatelessWidget {
   final String? Function(String?)? validation;
   final List<TextInputFormatter>? inputFormatters;
   final Function(String)? onChanged;
+  final bool isPasswordField;
+  final bool? showPassword;
+  final Function()? changePwdVisibility;
   const TextFielCustom({
     super.key,
     required this.hintText,
@@ -16,6 +19,9 @@ class TextFielCustom extends StatelessWidget {
     this.inputFormatters,
     this.onChanged,
     this.prefixIcon,
+    this.isPasswordField = false,
+    this.showPassword,
+    this.changePwdVisibility,
   });
 
   @override
@@ -26,13 +32,25 @@ class TextFielCustom extends StatelessWidget {
       validator: validation,
       onChanged: onChanged,
       cursorColor: AppColors.primaryPurple,
+      obscureText: showPassword != null ? !showPassword! : false,
       decoration: InputDecoration(
           fillColor: AppColors.white,
           contentPadding: const EdgeInsets.symmetric(horizontal: 12),
           hintText: hintText,
           suffixIconColor: AppColors.primaryPurple,
           filled: true,
+          semanticCounterText: '123',
           prefixIcon: prefixIcon == null ? null : Icon(prefixIcon),
+          prefixIconColor: AppColors.primaryPurple,
+          suffixIcon: isPasswordField
+              ? InkWell(
+                  onTap: () => changePwdVisibility!(),
+                  child: Icon(
+                    showPassword! ? Icons.visibility : Icons.visibility_off,
+                    size: 20,
+                  ),
+                )
+              : null,
           errorBorder: OutlineInputBorder(
               borderSide: BorderSide(color: AppColors.red, width: 2)),
           errorStyle: TextStyle(
@@ -42,6 +60,10 @@ class TextFielCustom extends StatelessWidget {
                     ? 14
                     : 16,
             height: 1,
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.gray, width: 2),
+            borderRadius: BorderRadius.circular(12),
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),

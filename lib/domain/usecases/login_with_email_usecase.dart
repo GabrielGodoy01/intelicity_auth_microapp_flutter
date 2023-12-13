@@ -15,12 +15,6 @@ class LoginWithEmailImpl implements ILoginWithEmailUsecase {
   @override
   Future<Either<Failure, LoggedUserInfo>> call(
       LoginCredential credential) async {
-    if (!credential.isValidEmail) {
-      return Left(ErrorLoginEmail('Invalid email'));
-    } else if (!credential.isValidPassword) {
-      return Left(ErrorLoginEmail('Invalid password'));
-    }
-
     return await authRepository.loginEmail(
       email: credential.email,
       password: credential.password,

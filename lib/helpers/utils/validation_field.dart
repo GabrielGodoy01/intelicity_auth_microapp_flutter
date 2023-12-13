@@ -2,8 +2,15 @@ import 'package:intelicity_auth_microapp_flutter/generated/l10n.dart';
 import 'package:string_validator/string_validator.dart' as validator;
 
 class ValidationFieldHelper {
+  static String? validateRequiredField(String? value) {
+    if (value == null || value.isEmpty) {
+      return S.current.fieldRequired;
+    }
+    return null;
+  }
+
   static String? validateEmail(String? email) {
-    if (email == null) {
+    if (email == null || email.isEmpty) {
       return S.current.fieldRequired;
     } else if (!validator.isEmail(email)) {
       return S.current.fieldEmailInvalid;
@@ -12,7 +19,7 @@ class ValidationFieldHelper {
   }
 
   static String? validatePassword(String? password) {
-    if (password == null) {
+    if (password == null || password.isEmpty) {
       return S.current.fieldRequired;
     } else if (password.isNotEmpty &&
         password.length > 7 &&
@@ -26,7 +33,7 @@ class ValidationFieldHelper {
 
   static String? validateConfirmPassword(
       String? password, String? confirmPassword) {
-    if (confirmPassword == null) {
+    if (confirmPassword == null || confirmPassword.isEmpty) {
       return S.current.fieldRequired;
     } else if (confirmPassword != password) {
       return S.current.fieldConfirmPasswordInvalid;

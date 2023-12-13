@@ -39,6 +39,12 @@ abstract class LoginControllerBase with Store {
   @action
   void setPassword(String value) => password = value;
 
+  @observable
+  bool passwordVisible = false;
+
+  @action
+  void changePasswordVisibility() => passwordVisible = !passwordVisible;
+
   @computed
   LoginCredential get credential =>
       LoginCredential.withEmailAndPassword(email: email, password: password);

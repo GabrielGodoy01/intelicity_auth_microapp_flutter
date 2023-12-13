@@ -6,6 +6,7 @@ import 'package:intelicity_auth_microapp_flutter/domain/repositories/auth_reposi
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/login_with_email_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/external/datasources/cognito_datasource.dart';
 import 'package:intelicity_auth_microapp_flutter/generated/l10n.dart';
+import 'package:intelicity_auth_microapp_flutter/helpers/functions/global_snackbar.dart';
 import 'package:intelicity_auth_microapp_flutter/infra/datasource/auth_datasource_interface.dart';
 import 'package:intelicity_auth_microapp_flutter/infra/repositories/auth_repository_impl.dart';
 import 'package:intelicity_auth_microapp_flutter/micro_app_auth_module.dart';
@@ -46,6 +47,7 @@ class _AppWidgetState extends State<AppWidget> {
   Widget build(BuildContext context) {
     Modular.setInitialRoute('/');
     return MaterialApp.router(
+      scaffoldMessengerKey: rootScaffoldMessengerKey,
       debugShowCheckedModeBanner: false,
       title: 'Dev Auth',
       themeMode: ThemeMode.system,
