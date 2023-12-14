@@ -1,8 +1,10 @@
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/entities/logged_user_info.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/errors/errors.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/repositories/auth_repository_interface.dart';
+import 'package:intelicity_auth_microapp_flutter/generated/l10n.dart';
 import 'package:intelicity_auth_microapp_flutter/infra/datasource/auth_datasource_interface.dart';
 import 'package:logger/logger.dart';
 
@@ -21,8 +23,7 @@ class AuthRepositoryImpl implements IAuthRepository {
           await datasource.loginEmail(email: email, password: password);
       return Right(user);
     } catch (e) {
-      logger.e(e);
-      return Left(ErrorLoginEmail('Error login with email'));
+      return left(_handleError(e));
     }
   }
 
@@ -43,9 +44,11 @@ class AuthRepositoryImpl implements IAuthRepository {
       if (user != null) {
         return Right(user);
       }
-      return Left(ErrorGetLoggedUser('Error get logged user'));
+      return Left(AuthError(
+        message: S.current.authErrorsSchema('other'),
+      ));
     } catch (e) {
-      return Left(ErrorGetLoggedUser('Error get logged user'));
+      return left(_handleError(e));
     }
   }
 
@@ -55,7 +58,7 @@ class AuthRepositoryImpl implements IAuthRepository {
       await datasource.resetPassword(email: email);
       return const Right(unit);
     } catch (e) {
-      return Left(ErrorResetPassword('Error reset password'));
+      return left(_handleError(e));
     }
   }
 
@@ -69,7 +72,46 @@ class AuthRepositoryImpl implements IAuthRepository {
           email: email, code: code, newPassword: newPassword);
       return const Right(unit);
     } catch (e) {
-      return Left(ErrorConfirmResetPassword('Error confirm reset password'));
+      return left(_handleError(e));
     }
+  }
+
+  AuthError _handleError(e) {
+    logger.e(e);
+    if (e is InvalidParameterException) {
+      return AuthError(message: S.current.authErrorsSchema('invalidParameter'));
+    } else if (e is LimitExceededException) {
+      return AuthError(message: S.current.authErrorsSchema('limitExceeded'));
+    } else if (e is TooManyFailedAttemptsException) {
+      return AuthError(
+          message: S.current.authErrorsSchema('tooManyFailedAttempts'));
+    } else if (e is UserNotFoundException) {
+      return AuthError(message: S.current.authErrorsSchema('userNotFound'));
+    } else if (e is InternalErrorException) {
+      return AuthError(message: S.current.authErrorsSchema('internalError'));
+    } else if (e is CodeMismatchException) {
+      return AuthError(message: S.current.authErrorsSchema('codeMismatch'));
+    } else if (e is SignedOutException) {
+      return AuthError(message: S.current.authErrorsSchema('signedOut'));
+    } else if (e is NotAuthorizedServiceException) {
+      return AuthError(message: S.current.authErrorsSchema('notAuthorized'));
+    } else if (e is UserNotConfirmedException) {
+      return AuthError(message: S.current.authErrorsSchema('userNotConfirmed'));
+    } else if (e is UsernameExistsException) {
+      return AuthError(message: S.current.authErrorsSchema('usernameExists'));
+    } else if (e is InvalidParameterException) {
+      return AuthError(message: S.current.authErrorsSchema('invalidParameter'));
+    } else if (e is CodeMismatchException) {
+      return AuthError(message: S.current.authErrorsSchema('codeMismatch'));
+    } else if (e is CodeDeliveryFailureException) {
+      return AuthError(
+          message: S.current.authErrorsSchema('codeDeliveryFailure'));
+    } else if (e is InvalidStateException) {
+      return AuthError(
+          message: S.current.authErrorsSchema('invalidStateException'));
+    }
+    return AuthError(
+      message: S.current.authErrorsSchema('other'),
+    );
   }
 }

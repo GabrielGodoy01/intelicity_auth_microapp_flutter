@@ -20,8 +20,28 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(schema) => "${Intl.select(schema, {
+            'invalidStateException': 'A user is already signed in',
+            'codeDeliveryFailure':
+                'Failed to send code to email, please try again.',
+            'codeMismatch': 'Code provided is wrong, please try again.',
+            'invalidParameter': 'Email probably already confirmed.',
+            'usernameExists': 'There is already an account with this email.',
+            'notAuthorized': 'Unconfirmed email, confirm it.',
+            'userNotConfirmed': 'Unconfirmed email, confirm it.',
+            'signedOut': 'Incorrect email or password.',
+            'limitExceeded': 'Too many attempts in a row, try again later.',
+            'tooManyFailedAttempts':
+                'Looks like you tried the code wrong too many times, get in touch.',
+            'userNotFound': 'We couldn\'t find this registered email.',
+            'internalError':
+                'We are experiencing internal issues, please try again later.',
+            'other': 'An error occurred while confirming email.',
+          })}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "authErrorsSchema": m0,
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirme a senha"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
