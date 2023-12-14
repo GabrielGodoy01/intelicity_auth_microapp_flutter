@@ -33,7 +33,7 @@ class AuthRepositoryImpl implements IAuthRepository {
       await datasource.logout();
       return const Right(unit);
     } catch (e) {
-      return Left(ErrorLogout('Error logout'));
+      return left(_handleError(e));
     }
   }
 
