@@ -16,11 +16,8 @@ class AppModule extends Module {
   List<Module> get imports => [MicroAppAuthModule(amplifyconfig)];
 
   @override
-  void binds(i) {}
-
-  @override
   void routes(r) {
-    r.module('/login', module: MicroAppLoginModule());
+    r.module('/', module: MicroAppLoginModule());
   }
 }
 
@@ -34,7 +31,7 @@ class AppWidget extends StatefulWidget {
 class _AppWidgetState extends State<AppWidget> {
   @override
   Widget build(BuildContext context) {
-    Modular.setInitialRoute('/login');
+    Modular.setInitialRoute('/');
     return MaterialApp.router(
       scaffoldMessengerKey: rootScaffoldMessengerKey,
       debugShowCheckedModeBanner: false,
