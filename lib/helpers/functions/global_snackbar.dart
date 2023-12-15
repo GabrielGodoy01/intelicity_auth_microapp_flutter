@@ -11,7 +11,7 @@ abstract class GlobalSnackBar {
       backgroundColor: AppColors.red,
       width: 600,
       behavior: SnackBarBehavior.floating,
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 5),
       content: Text(
         message,
         style: AppTextStyles.bodyText1.copyWith(color: AppColors.white),
@@ -24,6 +24,7 @@ abstract class GlobalSnackBar {
       backgroundColor: AppColors.white,
       width: 500,
       behavior: SnackBarBehavior.floating,
+      duration: const Duration(seconds: 5),
       content: Text(message,
           style: AppTextStyles.bodyText1.copyWith(color: AppColors.black)),
     ));

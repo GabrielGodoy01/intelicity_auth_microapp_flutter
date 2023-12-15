@@ -1,6 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/confirm_new_password.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/functions/global_snackbar.dart';
+import 'package:intelicity_auth_microapp_flutter/helpers/utils/validation_field.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/states/basic_state.dart';
 import 'package:logger/logger.dart';
 import 'package:mobx/mobx.dart';
@@ -34,7 +35,14 @@ abstract class ConfirmNewPasswordControllerBase with Store {
   bool confirmPasswordVisible = false;
 
   @action
-  void changeConfirmPasswordVisibility() => passwordVisible = !passwordVisible;
+  void changeConfirmPasswordVisibility() =>
+      confirmPasswordVisible = !confirmPasswordVisible;
+
+  @action
+  String? validateConfirmPassword(String? value) {
+    return ValidationFieldHelper.validateConfirmPassword(
+        newPassword, confirmPassword);
+  }
 
   @observable
   String code = '';

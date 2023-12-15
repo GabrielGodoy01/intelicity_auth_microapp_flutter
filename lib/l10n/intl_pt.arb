@@ -9,7 +9,7 @@
     "resetPasswordPageText": "Digite o e-mail que você usou para criar sua conta para que possamos enviar um código para redefinir sua senha",
     "send": "Enviar",
     "backToLogin": "Voltar para o login",
-    "verifyEmail": "Verifique o e-mail",
+    "verifyEmail": "Verifique seu e-mail",
     "newPasswordPageText": "Preencha o código recebido por e-mail e sua nova senha para redefini-la",
     "newPassword": "Nova senha",
     "confirmNewPassword": "Confirme a nova senha",

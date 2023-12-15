@@ -154,6 +154,19 @@ mixin _$ConfirmNewPasswordController
   }
 
   @override
+  String? validateConfirmPassword(String? value) {
+    final _$actionInfo =
+        _$ConfirmNewPasswordControllerBaseActionController.startAction(
+            name: 'ConfirmNewPasswordControllerBase.validateConfirmPassword');
+    try {
+      return super.validateConfirmPassword(value);
+    } finally {
+      _$ConfirmNewPasswordControllerBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setCode(String value) {
     final _$actionInfo = _$ConfirmNewPasswordControllerBaseActionController
         .startAction(name: 'ConfirmNewPasswordControllerBase.setCode');

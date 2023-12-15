@@ -72,6 +72,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "Digite o e-mail que você usou para criar sua conta para que possamos enviar um código para redefinir sua senha"),
         "send": MessageLookupByLibrary.simpleMessage("Enviar"),
         "verifyEmail":
-            MessageLookupByLibrary.simpleMessage("Verifique o e-mail")
+            MessageLookupByLibrary.simpleMessage("Verifique seu e-mail")
       };
 }

@@ -42,6 +42,7 @@ class NewPasswordPage extends StatelessWidget {
                   validation: ValidationFieldHelper.validateRequiredField,
                 );
               }),
+              const SizedBox(height: 16),
               Observer(builder: (_) {
                 return TextFielCustom(
                   hintText: S.of(context).newPassword,
@@ -59,7 +60,7 @@ class NewPasswordPage extends StatelessWidget {
                   hintText: S.of(context).confirmNewPassword,
                   onChanged: controller.setConfirmPassword,
                   prefixIcon: Icons.lock,
-                  validation: ValidationFieldHelper.validateRequiredField,
+                  validation: controller.validateConfirmPassword,
                   isPasswordField: true,
                   changePwdVisibility:
                       controller.changeConfirmPasswordVisibility,
