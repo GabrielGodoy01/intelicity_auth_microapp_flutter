@@ -110,6 +110,96 @@ class S {
     );
   }
 
+  /// `Access`
+  String get access {
+    return Intl.message(
+      'Access',
+      name: 'access',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send`
+  String get send {
+    return Intl.message(
+      'Send',
+      name: 'send',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the email you used to create your account so we can send you a code for reseting your password`
+  String get resetPasswordPageText {
+    return Intl.message(
+      'Enter the email you used to create your account so we can send you a code for reseting your password',
+      name: 'resetPasswordPageText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back to login`
+  String get backToLogin {
+    return Intl.message(
+      'Back to login',
+      name: 'backToLogin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verify email`
+  String get verifyEmail {
+    return Intl.message(
+      'Verify email',
+      name: 'verifyEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fill in the code received by email and your new password to reset it`
+  String get newPasswordPageText {
+    return Intl.message(
+      'Fill in the code received by email and your new password to reset it',
+      name: 'newPasswordPageText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New password`
+  String get newPassword {
+    return Intl.message(
+      'New password',
+      name: 'newPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm new password`
+  String get confirmNewPassword {
+    return Intl.message(
+      'Confirm new password',
+      name: 'confirmNewPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Code`
+  String get code {
+    return Intl.message(
+      'Code',
+      name: 'code',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Required field`
   String get fieldRequired {
     return Intl.message(

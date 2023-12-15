@@ -41,7 +41,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "access": MessageLookupByLibrary.simpleMessage("Access"),
         "authErrorsSchema": m0,
+        "backToLogin": MessageLookupByLibrary.simpleMessage("Back to login"),
+        "code": MessageLookupByLibrary.simpleMessage("Code"),
+        "confirmNewPassword":
+            MessageLookupByLibrary.simpleMessage("Confirm new password"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirme a senha"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
@@ -55,7 +60,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Esqueceu sua senha?"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
+        "newPasswordPageText": MessageLookupByLibrary.simpleMessage(
+            "Fill in the code received by email and your new password to reset it"),
         "password": MessageLookupByLibrary.simpleMessage("Senha"),
-        "register": MessageLookupByLibrary.simpleMessage("Cadastrar")
+        "register": MessageLookupByLibrary.simpleMessage("Cadastrar"),
+        "resetPasswordPageText": MessageLookupByLibrary.simpleMessage(
+            "Enter the email you used to create your account so we can send you a code for reseting your password"),
+        "send": MessageLookupByLibrary.simpleMessage("Send"),
+        "verifyEmail": MessageLookupByLibrary.simpleMessage("Verify email")
       };
 }

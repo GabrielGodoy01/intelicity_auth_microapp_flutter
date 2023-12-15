@@ -42,7 +42,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "access": MessageLookupByLibrary.simpleMessage("Acessar"),
         "authErrorsSchema": m0,
+        "backToLogin":
+            MessageLookupByLibrary.simpleMessage("Voltar para o login"),
+        "code": MessageLookupByLibrary.simpleMessage("Código"),
+        "confirmNewPassword":
+            MessageLookupByLibrary.simpleMessage("Confirme a nova senha"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirme a senha"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
@@ -57,7 +63,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Esqueceu sua senha?"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "newPassword": MessageLookupByLibrary.simpleMessage("Nova senha"),
+        "newPasswordPageText": MessageLookupByLibrary.simpleMessage(
+            "Preencha o código recebido por e-mail e sua nova senha para redefini-la"),
         "password": MessageLookupByLibrary.simpleMessage("Senha"),
-        "register": MessageLookupByLibrary.simpleMessage("Cadastrar")
+        "register": MessageLookupByLibrary.simpleMessage("Cadastrar"),
+        "resetPasswordPageText": MessageLookupByLibrary.simpleMessage(
+            "Digite o e-mail que você usou para criar sua conta para que possamos enviar um código para redefinir sua senha"),
+        "send": MessageLookupByLibrary.simpleMessage("Enviar"),
+        "verifyEmail":
+            MessageLookupByLibrary.simpleMessage("Verifique o e-mail")
       };
 }

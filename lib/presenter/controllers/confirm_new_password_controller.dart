@@ -25,17 +25,16 @@ abstract class ConfirmNewPasswordControllerBase with Store {
   void setState(BasicState value) => state = value;
 
   @observable
-  bool showTextPassword = true;
+  bool passwordVisible = false;
 
   @action
-  void setShowTextPassword(bool value) => showTextPassword = value;
+  void changePasswordVisibility() => passwordVisible = !passwordVisible;
 
   @observable
-  bool showTextConfirmPassword = true;
+  bool confirmPasswordVisible = false;
 
   @action
-  void setShowTextConfirmPassword(bool value) =>
-      showTextConfirmPassword = value;
+  void changeConfirmPasswordVisibility() => passwordVisible = !passwordVisible;
 
   @observable
   String code = '';

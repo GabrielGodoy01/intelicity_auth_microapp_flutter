@@ -1,6 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/core/auth_controller.dart';
-import 'package:intelicity_auth_microapp_flutter/domain/entities/login_credential.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/login_with_email_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/functions/global_snackbar.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/states/basic_state.dart';
@@ -45,12 +44,8 @@ abstract class LoginControllerBase with Store {
   @action
   void changePasswordVisibility() => passwordVisible = !passwordVisible;
 
-  @computed
-  LoginCredential get credential =>
-      LoginCredential.withEmailAndPassword(email: email, password: password);
-
   Future<void> loginEmail() async {
-    final result = await _loginWithEmail(credential);
+    final result = await _loginWithEmail(email, password);
     setState(result.fold((e) {
       logger.e(e.message);
       GlobalSnackBar.error(e.message);

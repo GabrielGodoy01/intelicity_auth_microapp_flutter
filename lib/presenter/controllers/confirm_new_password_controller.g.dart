@@ -26,38 +26,38 @@ mixin _$ConfirmNewPasswordController
     });
   }
 
-  late final _$showTextPasswordAtom = Atom(
-      name: 'ConfirmNewPasswordControllerBase.showTextPassword',
+  late final _$passwordVisibleAtom = Atom(
+      name: 'ConfirmNewPasswordControllerBase.passwordVisible',
       context: context);
 
   @override
-  bool get showTextPassword {
-    _$showTextPasswordAtom.reportRead();
-    return super.showTextPassword;
+  bool get passwordVisible {
+    _$passwordVisibleAtom.reportRead();
+    return super.passwordVisible;
   }
 
   @override
-  set showTextPassword(bool value) {
-    _$showTextPasswordAtom.reportWrite(value, super.showTextPassword, () {
-      super.showTextPassword = value;
+  set passwordVisible(bool value) {
+    _$passwordVisibleAtom.reportWrite(value, super.passwordVisible, () {
+      super.passwordVisible = value;
     });
   }
 
-  late final _$showTextConfirmPasswordAtom = Atom(
-      name: 'ConfirmNewPasswordControllerBase.showTextConfirmPassword',
+  late final _$confirmPasswordVisibleAtom = Atom(
+      name: 'ConfirmNewPasswordControllerBase.confirmPasswordVisible',
       context: context);
 
   @override
-  bool get showTextConfirmPassword {
-    _$showTextConfirmPasswordAtom.reportRead();
-    return super.showTextConfirmPassword;
+  bool get confirmPasswordVisible {
+    _$confirmPasswordVisibleAtom.reportRead();
+    return super.confirmPasswordVisible;
   }
 
   @override
-  set showTextConfirmPassword(bool value) {
-    _$showTextConfirmPasswordAtom
-        .reportWrite(value, super.showTextConfirmPassword, () {
-      super.showTextConfirmPassword = value;
+  set confirmPasswordVisible(bool value) {
+    _$confirmPasswordVisibleAtom
+        .reportWrite(value, super.confirmPasswordVisible, () {
+      super.confirmPasswordVisible = value;
     });
   }
 
@@ -127,12 +127,12 @@ mixin _$ConfirmNewPasswordController
   }
 
   @override
-  void setShowTextPassword(bool value) {
+  void changePasswordVisibility() {
     final _$actionInfo =
         _$ConfirmNewPasswordControllerBaseActionController.startAction(
-            name: 'ConfirmNewPasswordControllerBase.setShowTextPassword');
+            name: 'ConfirmNewPasswordControllerBase.changePasswordVisibility');
     try {
-      return super.setShowTextPassword(value);
+      return super.changePasswordVisibility();
     } finally {
       _$ConfirmNewPasswordControllerBaseActionController
           .endAction(_$actionInfo);
@@ -140,13 +140,13 @@ mixin _$ConfirmNewPasswordController
   }
 
   @override
-  void setShowTextConfirmPassword(bool value) {
+  void changeConfirmPasswordVisibility() {
     final _$actionInfo =
         _$ConfirmNewPasswordControllerBaseActionController.startAction(
             name:
-                'ConfirmNewPasswordControllerBase.setShowTextConfirmPassword');
+                'ConfirmNewPasswordControllerBase.changeConfirmPasswordVisibility');
     try {
-      return super.setShowTextConfirmPassword(value);
+      return super.changeConfirmPasswordVisibility();
     } finally {
       _$ConfirmNewPasswordControllerBaseActionController
           .endAction(_$actionInfo);
@@ -194,8 +194,8 @@ mixin _$ConfirmNewPasswordController
   String toString() {
     return '''
 state: ${state},
-showTextPassword: ${showTextPassword},
-showTextConfirmPassword: ${showTextConfirmPassword},
+passwordVisible: ${passwordVisible},
+confirmPasswordVisible: ${confirmPasswordVisible},
 code: ${code},
 newPassword: ${newPassword},
 confirmPassword: ${confirmPassword}
