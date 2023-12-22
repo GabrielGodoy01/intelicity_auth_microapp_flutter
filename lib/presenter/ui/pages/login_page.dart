@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/generated/l10n.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/utils/validation_field.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/controllers/login_controller.dart';
+import 'package:intelicity_auth_microapp_flutter/presenter/states/basic_state.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/ui/pages/landing_page.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/ui/widgets/button_custom.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/ui/widgets/text_field_custom.dart';
@@ -42,14 +43,17 @@ class LoginPage extends StatelessWidget {
                   showPassword: controller.passwordVisible);
             }),
             const SizedBox(height: 16),
-            ButtonCustom(
-                text: S.of(context).access,
-                icon: Icons.login,
-                onPressed: () async {
-                  if (formKey.currentState!.validate()) {
-                    await controller.loginEmail();
-                  }
-                }),
+            Observer(builder: (_) {
+              return ButtonCustom(
+                  text: S.of(context).access,
+                  isLoading: controller.state is BasicLoadingState,
+                  icon: Icons.login,
+                  onPressed: () async {
+                    if (formKey.currentState!.validate()) {
+                      await controller.loginEmail();
+                    }
+                  });
+            }),
             const SizedBox(height: 8),
             TextButton(
               onPressed: () {

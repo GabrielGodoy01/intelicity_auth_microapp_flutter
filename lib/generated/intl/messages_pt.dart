@@ -21,23 +21,22 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'pt';
 
   static String m0(schema) => "${Intl.select(schema, {
-            'invalidStateException': 'Um usuário já está conectado',
+            'invalidStateException': 'Usuário já está conectado',
             'codeDeliveryFailure':
-                'Falha ao enviar código para o e-mail, tente novamente.',
-            'codeMismatch': 'Código fornecido está errado, tente novamente.',
-            'invalidParameter': 'E-mail, provavelmente, já confirmado.',
-            'usernameExists': 'Já existe um cadastro com este e-mail.',
-            'notAuthorized': 'E-mail não confirmado, confirme-o.',
-            'userNotConfirmed': 'E-mail não confirmado, confirme-o.',
-            'signedOut': 'E-mail ou senha incorretos.',
+                'Falha ao enviar código para o e-mail, tente novamente',
+            'codeMismatch': 'Código fornecido está errado, tente novamente',
+            'invalidParameter': 'E-mail, provavelmente, já confirmado',
+            'usernameExists': 'Já existe um cadastro com este e-mail',
+            'notAuthorized': 'E-mail ou senha incorretos',
+            'userNotConfirmed': 'E-mail não confirmado, confirme-o',
+            'signedOut': 'E-mail ou senha incorretos',
             'limitExceeded':
-                'Muitas tentativas em sequência, tente novamente mais tarde.',
+                'Muitas tentativas em sequência, tente novamente mais tarde',
             'tooManyFailedAttempts':
-                'Parece que você tentou errou o código muitas vezes, entre em contato.',
-            'userNotFound': 'Não encontramos este e-mail cadastrado.',
-            'internalError':
-                'Estamos com problemas internos, tente mais tarde.',
-            'other': 'Ocorreu algum erro ao confirmar e-mail.',
+                'Parece que você tentou errou o código muitas vezes, entre em contato',
+            'userNotFound': 'Não encontramos este e-mail cadastrado',
+            'internalError': 'Estamos com problemas internos, tente mais tarde',
+            'other': 'Ocorreu algum erro ao confirmar e-mail',
           })}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);

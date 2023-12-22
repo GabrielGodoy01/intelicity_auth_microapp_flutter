@@ -29,6 +29,7 @@ abstract class ForgotPasswordControllerBase with Store {
   void setEmail(String value) => email = value;
 
   Future<void> resetPassword() async {
+    setState(BasicLoadingState());
     var result = await _resetPassword(email: email);
     setState(result.fold((e) {
       logger.e(e.message);

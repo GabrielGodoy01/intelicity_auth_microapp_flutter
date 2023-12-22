@@ -6,7 +6,7 @@ abstract class BasicState {
 
 class BasicInitialState extends BasicState {}
 
-class LoginLoadingState extends BasicState {}
+class BasicLoadingState extends BasicState {}
 
 class BasicErrorState extends BasicState {
   final Failure error;

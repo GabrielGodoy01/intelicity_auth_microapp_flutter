@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:intelicity_auth_microapp_flutter/amplify/amplifyconfiguration.dart';
 import 'package:intelicity_auth_microapp_flutter/generated/l10n.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/functions/global_snackbar.dart';
-import 'package:intelicity_auth_microapp_flutter/micro_app_auth_module.dart';
 import 'package:intelicity_auth_microapp_flutter/micro_app_login_module.dart';
 
 void main() {
@@ -12,8 +10,8 @@ void main() {
 }
 
 class AppModule extends Module {
-  @override
-  List<Module> get imports => [MicroAppAuthModule(amplifyconfig)];
+  // @override
+  // List<Module> get imports => [MicroAppAuthModule(amplifyconfig)];
 
   @override
   void routes(r) {
@@ -35,7 +33,7 @@ class _AppWidgetState extends State<AppWidget> {
     return MaterialApp.router(
       scaffoldMessengerKey: rootScaffoldMessengerKey,
       debugShowCheckedModeBanner: false,
-      title: 'Dev Auth',
+      title: 'Intelicity Auth',
       themeMode: ThemeMode.system,
       routeInformationParser: Modular.routeInformationParser,
       routerDelegate: Modular.routerDelegate,

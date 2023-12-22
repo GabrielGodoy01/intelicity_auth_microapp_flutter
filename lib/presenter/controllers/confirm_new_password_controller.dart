@@ -63,6 +63,7 @@ abstract class ConfirmNewPasswordControllerBase with Store {
   void setConfirmPassword(String value) => confirmPassword = value;
 
   Future<void> confirmNewPassword() async {
+    setState(BasicLoadingState());
     var result = await _confirmNewPassword(_email, code, newPassword);
     setState(result.fold((e) {
       logger.e(e.message);

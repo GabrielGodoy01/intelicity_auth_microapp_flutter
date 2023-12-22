@@ -45,6 +45,7 @@ abstract class LoginControllerBase with Store {
   void changePasswordVisibility() => passwordVisible = !passwordVisible;
 
   Future<void> loginEmail() async {
+    setState(BasicLoadingState());
     final result = await _loginWithEmail(email, password);
     setState(result.fold((e) {
       logger.e(e.message);

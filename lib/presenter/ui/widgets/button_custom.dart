@@ -4,10 +4,16 @@ import 'package:intelicity_auth_microapp_flutter/shared/themes/app_text_styles.d
 
 class ButtonCustom extends StatelessWidget {
   final Function() onPressed;
+  final bool isLoading;
   final String text;
   final IconData? icon;
-  const ButtonCustom(
-      {super.key, required this.onPressed, required this.text, this.icon});
+  const ButtonCustom({
+    super.key,
+    required this.onPressed,
+    required this.text,
+    this.icon,
+    this.isLoading = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,23 +24,26 @@ class ButtonCustom extends StatelessWidget {
         style:
             ElevatedButton.styleFrom(backgroundColor: AppColors.primaryPurple),
         onPressed: onPressed,
-        child: icon == null
-            ? Text(
-                text,
-                style: AppTextStyles.headline2.copyWith(color: AppColors.white),
-              )
-            : Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(icon),
-                  const SizedBox(width: 16),
-                  Text(
+        child: isLoading
+            ? CircularProgressIndicator(color: AppColors.white)
+            : icon == null
+                ? Text(
                     text,
                     style: AppTextStyles.headline2
                         .copyWith(color: AppColors.white),
+                  )
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(icon),
+                      const SizedBox(width: 16),
+                      Text(
+                        text,
+                        style: AppTextStyles.headline2
+                            .copyWith(color: AppColors.white),
+                      ),
+                    ],
                   ),
-                ],
-              ),
       ),
     );
   }
