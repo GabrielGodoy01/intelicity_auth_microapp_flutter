@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/core/auth_controller.dart';
+import 'package:intelicity_auth_microapp_flutter/domain/errors/errors.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/login_with_email_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/functions/global_snackbar.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/states/basic_state.dart';
@@ -50,6 +51,9 @@ abstract class LoginControllerBase with Store {
     setState(result.fold((e) {
       logger.e(e.message);
       GlobalSnackBar.error(e.message);
+      if (e is NewPasswordNecessaryError) {
+        Modular.to.navigate('/login-new-password');
+      }
       return BasicErrorState(error: e);
     }, (user) {
       _authController.setUser(user);

@@ -28,6 +28,17 @@ class AuthRepositoryImpl implements IAuthRepository {
   }
 
   @override
+  Future<Either<Failure, Unit>> confirmNewPassword(
+      {required String newPassword}) async {
+    try {
+      await datasource.confirmNewPassword(newPassword: newPassword);
+      return const Right(unit);
+    } catch (e) {
+      return left(_handleError(e));
+    }
+  }
+
+  @override
   Future<Either<Failure, Unit>> logout() async {
     try {
       await datasource.logout();
@@ -109,6 +120,8 @@ class AuthRepositoryImpl implements IAuthRepository {
     } else if (e is InvalidStateException) {
       return AuthError(
           message: S.current.authErrorsSchema('invalidStateException'));
+    } else if (e is NewPasswordNecessaryError) {
+      return NewPasswordNecessaryError();
     }
     return AuthError(
       message: S.current.authErrorsSchema('other'),

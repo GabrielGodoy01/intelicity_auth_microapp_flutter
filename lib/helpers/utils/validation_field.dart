@@ -24,7 +24,6 @@ class ValidationFieldHelper {
     } else if (password.isNotEmpty &&
         password.length > 7 &&
         password.contains(RegExp(r'[A-Z]')) &&
-        password.contains(RegExp(r'[a-z]')) &&
         password.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
       return S.current.fieldPasswordInvalid;
     }

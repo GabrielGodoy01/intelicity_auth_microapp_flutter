@@ -1,23 +1,21 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:intelicity_auth_microapp_flutter/domain/usecases/confirm_new_password.dart';
+import 'package:intelicity_auth_microapp_flutter/domain/usecases/confirm_new_password_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/functions/global_snackbar.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/utils/validation_field.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/states/basic_state.dart';
 import 'package:logger/logger.dart';
 import 'package:mobx/mobx.dart';
-part 'confirm_new_password_controller.g.dart';
 
-class ConfirmNewPasswordController = ConfirmNewPasswordControllerBase
-    with _$ConfirmNewPasswordController;
+part 'login_new_password_controller.g.dart';
 
-abstract class ConfirmNewPasswordControllerBase with Store {
+class LoginNewPasswordController = LoginNewPasswordControllerBase
+    with _$LoginNewPasswordController;
+
+abstract class LoginNewPasswordControllerBase with Store {
   final Logger logger = Modular.get();
   final IConfirmNewPasswordUsecase _confirmNewPassword;
-  late final String _email;
 
-  ConfirmNewPasswordControllerBase(this._confirmNewPassword) {
-    _email = Modular.args.data;
-  }
+  LoginNewPasswordControllerBase(this._confirmNewPassword);
 
   @observable
   BasicState state = BasicInitialState();
@@ -45,12 +43,6 @@ abstract class ConfirmNewPasswordControllerBase with Store {
   }
 
   @observable
-  String code = '';
-
-  @action
-  void setCode(String value) => code = value;
-
-  @observable
   String newPassword = '';
 
   @action
@@ -64,13 +56,13 @@ abstract class ConfirmNewPasswordControllerBase with Store {
 
   Future<void> confirmNewPassword() async {
     setState(BasicLoadingState());
-    var result = await _confirmNewPassword(_email, code, newPassword);
+    var result = await _confirmNewPassword(newPassword);
     setState(result.fold((e) {
       logger.e(e.message);
       GlobalSnackBar.error(e.message);
       return BasicErrorState(error: e);
     }, (user) {
-      Modular.to.navigate('/login/');
+      Modular.to.navigate('/login');
       return BasicInitialState();
     }));
   }

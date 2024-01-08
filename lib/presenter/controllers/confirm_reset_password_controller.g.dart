@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'confirm_new_password_controller.dart';
+part of 'confirm_reset_password_controller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,10 +8,10 @@ part of 'confirm_new_password_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$ConfirmNewPasswordController
-    on ConfirmNewPasswordControllerBase, Store {
+mixin _$ConfirmResetPasswordController
+    on ConfirmResetPasswordControllerBase, Store {
   late final _$stateAtom =
-      Atom(name: 'ConfirmNewPasswordControllerBase.state', context: context);
+      Atom(name: 'ConfirmResetPasswordControllerBase.state', context: context);
 
   @override
   BasicState get state {
@@ -27,7 +27,7 @@ mixin _$ConfirmNewPasswordController
   }
 
   late final _$passwordVisibleAtom = Atom(
-      name: 'ConfirmNewPasswordControllerBase.passwordVisible',
+      name: 'ConfirmResetPasswordControllerBase.passwordVisible',
       context: context);
 
   @override
@@ -44,7 +44,7 @@ mixin _$ConfirmNewPasswordController
   }
 
   late final _$confirmPasswordVisibleAtom = Atom(
-      name: 'ConfirmNewPasswordControllerBase.confirmPasswordVisible',
+      name: 'ConfirmResetPasswordControllerBase.confirmPasswordVisible',
       context: context);
 
   @override
@@ -62,7 +62,7 @@ mixin _$ConfirmNewPasswordController
   }
 
   late final _$codeAtom =
-      Atom(name: 'ConfirmNewPasswordControllerBase.code', context: context);
+      Atom(name: 'ConfirmResetPasswordControllerBase.code', context: context);
 
   @override
   String get code {
@@ -78,7 +78,7 @@ mixin _$ConfirmNewPasswordController
   }
 
   late final _$newPasswordAtom = Atom(
-      name: 'ConfirmNewPasswordControllerBase.newPassword', context: context);
+      name: 'ConfirmResetPasswordControllerBase.newPassword', context: context);
 
   @override
   String get newPassword {
@@ -94,7 +94,7 @@ mixin _$ConfirmNewPasswordController
   }
 
   late final _$confirmPasswordAtom = Atom(
-      name: 'ConfirmNewPasswordControllerBase.confirmPassword',
+      name: 'ConfirmResetPasswordControllerBase.confirmPassword',
       context: context);
 
   @override
@@ -110,18 +110,18 @@ mixin _$ConfirmNewPasswordController
     });
   }
 
-  late final _$ConfirmNewPasswordControllerBaseActionController =
+  late final _$ConfirmResetPasswordControllerBaseActionController =
       ActionController(
-          name: 'ConfirmNewPasswordControllerBase', context: context);
+          name: 'ConfirmResetPasswordControllerBase', context: context);
 
   @override
   void setState(BasicState value) {
-    final _$actionInfo = _$ConfirmNewPasswordControllerBaseActionController
-        .startAction(name: 'ConfirmNewPasswordControllerBase.setState');
+    final _$actionInfo = _$ConfirmResetPasswordControllerBaseActionController
+        .startAction(name: 'ConfirmResetPasswordControllerBase.setState');
     try {
       return super.setState(value);
     } finally {
-      _$ConfirmNewPasswordControllerBaseActionController
+      _$ConfirmResetPasswordControllerBaseActionController
           .endAction(_$actionInfo);
     }
   }
@@ -129,12 +129,13 @@ mixin _$ConfirmNewPasswordController
   @override
   void changePasswordVisibility() {
     final _$actionInfo =
-        _$ConfirmNewPasswordControllerBaseActionController.startAction(
-            name: 'ConfirmNewPasswordControllerBase.changePasswordVisibility');
+        _$ConfirmResetPasswordControllerBaseActionController.startAction(
+            name:
+                'ConfirmResetPasswordControllerBase.changePasswordVisibility');
     try {
       return super.changePasswordVisibility();
     } finally {
-      _$ConfirmNewPasswordControllerBaseActionController
+      _$ConfirmResetPasswordControllerBaseActionController
           .endAction(_$actionInfo);
     }
   }
@@ -142,13 +143,13 @@ mixin _$ConfirmNewPasswordController
   @override
   void changeConfirmPasswordVisibility() {
     final _$actionInfo =
-        _$ConfirmNewPasswordControllerBaseActionController.startAction(
+        _$ConfirmResetPasswordControllerBaseActionController.startAction(
             name:
-                'ConfirmNewPasswordControllerBase.changeConfirmPasswordVisibility');
+                'ConfirmResetPasswordControllerBase.changeConfirmPasswordVisibility');
     try {
       return super.changeConfirmPasswordVisibility();
     } finally {
-      _$ConfirmNewPasswordControllerBaseActionController
+      _$ConfirmResetPasswordControllerBaseActionController
           .endAction(_$actionInfo);
     }
   }
@@ -156,36 +157,36 @@ mixin _$ConfirmNewPasswordController
   @override
   String? validateConfirmPassword(String? value) {
     final _$actionInfo =
-        _$ConfirmNewPasswordControllerBaseActionController.startAction(
-            name: 'ConfirmNewPasswordControllerBase.validateConfirmPassword');
+        _$ConfirmResetPasswordControllerBaseActionController.startAction(
+            name: 'ConfirmResetPasswordControllerBase.validateConfirmPassword');
     try {
       return super.validateConfirmPassword(value);
     } finally {
-      _$ConfirmNewPasswordControllerBaseActionController
+      _$ConfirmResetPasswordControllerBaseActionController
           .endAction(_$actionInfo);
     }
   }
 
   @override
   void setCode(String value) {
-    final _$actionInfo = _$ConfirmNewPasswordControllerBaseActionController
-        .startAction(name: 'ConfirmNewPasswordControllerBase.setCode');
+    final _$actionInfo = _$ConfirmResetPasswordControllerBaseActionController
+        .startAction(name: 'ConfirmResetPasswordControllerBase.setCode');
     try {
       return super.setCode(value);
     } finally {
-      _$ConfirmNewPasswordControllerBaseActionController
+      _$ConfirmResetPasswordControllerBaseActionController
           .endAction(_$actionInfo);
     }
   }
 
   @override
   void setNewPassword(String value) {
-    final _$actionInfo = _$ConfirmNewPasswordControllerBaseActionController
-        .startAction(name: 'ConfirmNewPasswordControllerBase.setNewPassword');
+    final _$actionInfo = _$ConfirmResetPasswordControllerBaseActionController
+        .startAction(name: 'ConfirmResetPasswordControllerBase.setNewPassword');
     try {
       return super.setNewPassword(value);
     } finally {
-      _$ConfirmNewPasswordControllerBaseActionController
+      _$ConfirmResetPasswordControllerBaseActionController
           .endAction(_$actionInfo);
     }
   }
@@ -193,12 +194,12 @@ mixin _$ConfirmNewPasswordController
   @override
   void setConfirmPassword(String value) {
     final _$actionInfo =
-        _$ConfirmNewPasswordControllerBaseActionController.startAction(
-            name: 'ConfirmNewPasswordControllerBase.setConfirmPassword');
+        _$ConfirmResetPasswordControllerBaseActionController.startAction(
+            name: 'ConfirmResetPasswordControllerBase.setConfirmPassword');
     try {
       return super.setConfirmPassword(value);
     } finally {
-      _$ConfirmNewPasswordControllerBaseActionController
+      _$ConfirmResetPasswordControllerBaseActionController
           .endAction(_$actionInfo);
     }
   }

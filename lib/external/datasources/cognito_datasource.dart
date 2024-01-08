@@ -1,6 +1,7 @@
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:intelicity_auth_microapp_flutter/domain/errors/errors.dart';
 import 'package:intelicity_auth_microapp_flutter/infra/datasource/auth_datasource_interface.dart';
 import 'package:intelicity_auth_microapp_flutter/infra/dtos/user_dto.dart';
 import 'package:logger/logger.dart';
@@ -12,6 +13,7 @@ class CognitoDatasource implements IAuthDatasource {
   @override
   Future<UserDto> loginEmail(
       {required String email, required String password}) async {
+    await Amplify.Auth.signOut();
     final result = await Amplify.Auth.signIn(
       username: email,
       password: password,
@@ -19,6 +21,10 @@ class CognitoDatasource implements IAuthDatasource {
     logger.d('[CognitoDatasource] loginEmail: ${result.toJson()}}');
     final cognitoPlugin = Amplify.Auth.getPlugin(AmplifyAuthCognito.pluginKey);
     final session = await cognitoPlugin.fetchAuthSession();
+    if (result.nextStep.signInStep ==
+        AuthSignInStep.confirmSignInWithNewPassword) {
+      throw NewPasswordNecessaryError();
+    }
     return UserDto(
       email: email,
       sub: session.userSubResult.value,
@@ -76,5 +82,12 @@ class CognitoDatasource implements IAuthDatasource {
       required String newPassword}) async {
     await Amplify.Auth.confirmResetPassword(
         username: email, newPassword: newPassword, confirmationCode: code);
+  }
+
+  @override
+  Future<void> confirmNewPassword({required String newPassword}) async {
+    await Amplify.Auth.confirmSignIn(
+      confirmationValue: newPassword,
+    );
   }
 }

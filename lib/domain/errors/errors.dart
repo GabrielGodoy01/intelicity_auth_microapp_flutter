@@ -12,3 +12,7 @@ class AuthError extends Failure {
   @override
   final String message;
 }
+
+class NewPasswordNecessaryError extends AuthError {
+  NewPasswordNecessaryError() : super(message: 'Nova senha necessária');
+}
