@@ -38,9 +38,12 @@ abstract class AuthControllerBase with Store {
   Future<bool> checkLogin() async {
     final result = await _getLoggedUser();
     return result.fold<bool>((l) {
+      logger.d('authController.isLogged: $isLogged');
       return false;
     }, (r) {
       setUser(r);
+      logger.d('authController.isLogged: $isLogged');
+      Modular.to.navigate('/logged/', arguments: user!.role);
       return true;
     });
   }

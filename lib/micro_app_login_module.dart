@@ -22,7 +22,7 @@ class MicroAppLoginModule extends Module {
 
   @override
   void binds(i) {
-    i.addLazySingleton<LoginController>(LoginController.new);
+    i.add<LoginController>(LoginController.new);
     i.addLazySingleton<ILoginWithEmailUsecase>(LoginWithEmailImpl.new);
     i.addLazySingleton<ForgotPasswordController>(ForgotPasswordController.new);
     i.addLazySingleton<IResetPasswordUsecase>(ResetPasswordImpl.new);

@@ -63,10 +63,14 @@ class CognitoDatasource implements IAuthDatasource {
       if (!session.isSignedIn) {
         return null;
       }
+      final atribbutes = await Amplify.Auth.fetchUserAttributes();
       return UserDto(
         email: session.userPoolTokensResult.value.idToken.email!,
         sub: session.userSubResult.value,
-        role: RoleEnum.USER,
+        role: RoleEnum.stringToEnum(atribbutes
+            .firstWhere((element) =>
+                element.userAttributeKey.toString() == 'custom:general_role')
+            .value),
         accessToken: session.userPoolTokensResult.value.accessToken.raw,
         name: session.userPoolTokensResult.value.idToken.name!,
         idToken: session.userPoolTokensResult.value.idToken.raw,

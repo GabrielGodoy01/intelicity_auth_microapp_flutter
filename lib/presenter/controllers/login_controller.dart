@@ -17,8 +17,7 @@ abstract class LoginControllerBase with Store {
   final AuthController _authController;
 
   LoginControllerBase(this._loginWithEmail, this._authController) {
-    logger.d('authController.isLogged: ${_authController.isLogged}');
-    if (_authController.isLogged) Modular.to.navigate('/logged');
+    _authController.checkLogin();
   }
 
   @observable
