@@ -42,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "access": MessageLookupByLibrary.simpleMessage("Access"),
+        "adminPage": MessageLookupByLibrary.simpleMessage("Admin Page"),
         "authErrorsSchema": m0,
         "backToLogin": MessageLookupByLibrary.simpleMessage("Back to login"),
         "code": MessageLookupByLibrary.simpleMessage("Code"),
@@ -59,8 +60,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "fieldRequired": MessageLookupByLibrary.simpleMessage("Required field"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Esqueceu sua senha?"),
+        "goToHome": MessageLookupByLibrary.simpleMessage("Go to home"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "loginNewPasswordText": MessageLookupByLibrary.simpleMessage(
+            "Please, enter your new password"),
+        "loginSuccess": MessageLookupByLibrary.simpleMessage("Login success"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
+        "newPasswordNeeded":
+            MessageLookupByLibrary.simpleMessage("New password needed"),
         "newPasswordPageText": MessageLookupByLibrary.simpleMessage(
             "Fill in the code received by email and your new password to reset it"),
         "password": MessageLookupByLibrary.simpleMessage("Senha"),

@@ -14,6 +14,11 @@
     "newPassword": "Nova senha",
     "confirmNewPassword": "Confirme a nova senha",
     "code": "Código",
+    "newPasswordNeeded": "Nova senha necessária",
+    "loginNewPasswordText": "Por favor, informe sua nova senha",
+    "loginSuccess": "Login bem-sucedido",
+    "goToHome": "Ir para a página inicial",
+    "adminPage": "Página de administração",
 
     "fieldRequired": "Campo é obrigatório",
     "fieldEmailInvalid": "Email inválido",

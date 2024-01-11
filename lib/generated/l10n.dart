@@ -200,6 +200,56 @@ class S {
     );
   }
 
+  /// `New password needed`
+  String get newPasswordNeeded {
+    return Intl.message(
+      'New password needed',
+      name: 'newPasswordNeeded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please, enter your new password`
+  String get loginNewPasswordText {
+    return Intl.message(
+      'Please, enter your new password',
+      name: 'loginNewPasswordText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login success`
+  String get loginSuccess {
+    return Intl.message(
+      'Login success',
+      name: 'loginSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Go to home`
+  String get goToHome {
+    return Intl.message(
+      'Go to home',
+      name: 'goToHome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Admin Page`
+  String get adminPage {
+    return Intl.message(
+      'Admin Page',
+      name: 'adminPage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Required field`
   String get fieldRequired {
     return Intl.message(

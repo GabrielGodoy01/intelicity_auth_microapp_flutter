@@ -42,6 +42,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "access": MessageLookupByLibrary.simpleMessage("Acessar"),
+        "adminPage":
+            MessageLookupByLibrary.simpleMessage("Página de administração"),
         "authErrorsSchema": m0,
         "backToLogin":
             MessageLookupByLibrary.simpleMessage("Voltar para o login"),
@@ -61,8 +63,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Campo é obrigatório"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Esqueceu sua senha?"),
+        "goToHome":
+            MessageLookupByLibrary.simpleMessage("Ir para a página inicial"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "loginNewPasswordText": MessageLookupByLibrary.simpleMessage(
+            "Por favor, informe sua nova senha"),
+        "loginSuccess":
+            MessageLookupByLibrary.simpleMessage("Login bem-sucedido"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Nova senha"),
+        "newPasswordNeeded":
+            MessageLookupByLibrary.simpleMessage("Nova senha necessária"),
         "newPasswordPageText": MessageLookupByLibrary.simpleMessage(
             "Preencha o código recebido por e-mail e sua nova senha para redefini-la"),
         "password": MessageLookupByLibrary.simpleMessage("Senha"),

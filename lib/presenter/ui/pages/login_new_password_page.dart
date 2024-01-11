@@ -24,12 +24,12 @@ class LoginNewPasswordPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                S.of(context).verifyEmail,
+                S.of(context).newPasswordNeeded,
                 style: AppTextStyles.headline1,
               ),
               const SizedBox(height: 8),
               Text(
-                S.of(context).newPasswordPageText,
+                S.of(context).loginNewPasswordText,
                 style: AppTextStyles.bodyText1,
                 textAlign: TextAlign.center,
               ),

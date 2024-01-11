@@ -52,12 +52,12 @@ abstract class LoginControllerBase with Store {
       logger.e(e.message);
       GlobalSnackBar.error(e.message);
       if (e is NewPasswordNecessaryError) {
-        Modular.to.navigate('/login-new-password');
+        Modular.to.navigate('/login-new-password/');
       }
       return BasicErrorState(error: e);
     }, (user) {
       _authController.setUser(user);
-      Modular.to.navigate('/logged');
+      Modular.to.navigate('/logged/', arguments: user.role);
       return BasicInitialState();
     }));
   }

@@ -14,6 +14,11 @@
     "newPassword": "New password",
     "confirmNewPassword": "Confirm new password",
     "code": "Code",
+    "newPasswordNeeded": "New password needed",
+    "loginNewPasswordText": "Please, enter your new password",
+    "loginSuccess": "Login success",
+    "goToHome": "Go to home",
+    "adminPage": "Admin Page",
 
     "fieldRequired": "Required field",
     "fieldEmailInvalid": "Invalid email",

@@ -1,6 +1,7 @@
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/errors/errors.dart';
 import 'package:intelicity_auth_microapp_flutter/infra/datasource/auth_datasource_interface.dart';
 import 'package:intelicity_auth_microapp_flutter/infra/dtos/user_dto.dart';
@@ -25,9 +26,15 @@ class CognitoDatasource implements IAuthDatasource {
         AuthSignInStep.confirmSignInWithNewPassword) {
       throw NewPasswordNecessaryError();
     }
+    final atribbutes = await Amplify.Auth.fetchUserAttributes();
+
     return UserDto(
       email: email,
       sub: session.userSubResult.value,
+      role: RoleEnum.stringToEnum(atribbutes
+          .firstWhere((element) =>
+              element.userAttributeKey.toString() == 'custom:general_role')
+          .value),
       accessToken: session.userPoolTokensResult.value.accessToken.raw,
       name: session.userPoolTokensResult.value.idToken.name!,
       idToken: session.userPoolTokensResult.value.idToken.raw,
@@ -59,6 +66,7 @@ class CognitoDatasource implements IAuthDatasource {
       return UserDto(
         email: session.userPoolTokensResult.value.idToken.email!,
         sub: session.userSubResult.value,
+        role: RoleEnum.USER,
         accessToken: session.userPoolTokensResult.value.accessToken.raw,
         name: session.userPoolTokensResult.value.idToken.name!,
         idToken: session.userPoolTokensResult.value.idToken.raw,
