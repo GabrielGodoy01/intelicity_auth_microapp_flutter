@@ -34,8 +34,8 @@ class LandingPage extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Image.asset(
-                        'assets/images/intelicity_logo.png',
+                      Image.network(
+                        'https://intelicity-assets.s3.sa-east-1.amazonaws.com/intelicity_logo.png',
                         height: 200,
                       ),
                       child
