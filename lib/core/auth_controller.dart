@@ -43,7 +43,6 @@ abstract class AuthControllerBase with Store {
     }, (r) {
       setUser(r);
       logger.d('authController.isLogged: $isLogged');
-      Modular.to.navigate('/logged/', arguments: user!.role);
       return true;
     });
   }

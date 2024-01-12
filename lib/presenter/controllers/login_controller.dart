@@ -16,9 +16,7 @@ abstract class LoginControllerBase with Store {
   final Logger logger = Modular.get();
   final AuthController _authController;
 
-  LoginControllerBase(this._loginWithEmail, this._authController) {
-    _authController.checkLogin();
-  }
+  LoginControllerBase(this._loginWithEmail, this._authController);
 
   @observable
   BasicState state = BasicInitialState();
