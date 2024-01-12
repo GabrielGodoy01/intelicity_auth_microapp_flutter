@@ -5,6 +5,8 @@ import 'package:intelicity_auth_microapp_flutter/domain/usecases/confirm_new_pas
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/confirm_reset_password.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/login_with_email_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/reset_password_usecase.dart';
+import 'package:intelicity_auth_microapp_flutter/helpers/guards/auth_guard.dart';
+import 'package:intelicity_auth_microapp_flutter/helpers/guards/login_guard.dart';
 import 'package:intelicity_auth_microapp_flutter/micro_app_auth_module.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/controllers/confirm_reset_password_controller.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/controllers/forgot_password_controller.dart';
@@ -38,15 +40,19 @@ class MicroAppLoginModule extends Module {
 
   @override
   void routes(r) {
-    r.child(Modular.initialRoute, child: (context) => const LoginPage());
+    r.child(Modular.initialRoute,
+        child: (context) => const LoginPage(), guards: [LoginGuard()]);
     r.child('/forgot-password/',
-        child: (context) => const ForgotPasswordPage());
-    r.child('/new-password/', child: (context) => const NewPasswordPage());
+        child: (context) => const ForgotPasswordPage(), guards: [LoginGuard()]);
+    r.child('/new-password/',
+        child: (context) => const NewPasswordPage(), guards: [LoginGuard()]);
     r.child('/login-new-password/',
-        child: (context) => const LoginNewPasswordPage());
+        child: (context) => const LoginNewPasswordPage(),
+        guards: [LoginGuard()]);
     r.child('/logged/',
         child: (context) => SuccessLoginPage(
               role: r.args.data as RoleEnum,
-            ));
+            ),
+        guards: [AuthGuard()]);
   }
 }
