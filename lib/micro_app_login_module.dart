@@ -51,7 +51,8 @@ class MicroAppLoginModule extends Module {
         guards: [LoginGuard()]);
     r.child('/logged/',
         child: (context) => SuccessLoginPage(
-              role: r.args.data as RoleEnum,
+              role: r.args.data[0] as RoleEnum,
+              onPressed: r.args.data[1] as Function(),
             ),
         guards: [AuthGuard()]);
   }

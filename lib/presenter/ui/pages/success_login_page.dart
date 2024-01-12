@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
 import 'package:intelicity_auth_microapp_flutter/generated/l10n.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/ui/pages/landing_page.dart';
@@ -8,7 +7,9 @@ import 'package:intelicity_auth_microapp_flutter/shared/themes/app_text_styles.d
 
 class SuccessLoginPage extends StatelessWidget {
   final RoleEnum role;
-  const SuccessLoginPage({super.key, required this.role});
+  final Function() onPressed;
+  const SuccessLoginPage(
+      {super.key, required this.role, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +22,7 @@ class SuccessLoginPage extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         ButtonCustom(
-          onPressed: () {
-            Modular.to.navigate('/');
-          },
+          onPressed: onPressed,
           text: S.of(context).goToHome,
         ),
         const SizedBox(height: 8),
