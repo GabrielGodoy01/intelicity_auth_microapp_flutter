@@ -56,7 +56,7 @@ abstract class LoginControllerBase with Store {
       return BasicErrorState(error: e);
     }, (user) {
       _authController.setUser(user);
-      Modular.to.navigate('/login/logged/', arguments: user.role);
+      Modular.to.navigate('/logged/', arguments: user.role);
       return BasicInitialState();
     }));
   }
