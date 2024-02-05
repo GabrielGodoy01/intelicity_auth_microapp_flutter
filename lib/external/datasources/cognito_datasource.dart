@@ -39,6 +39,7 @@ class CognitoDatasource implements IAuthDatasource {
       name: session.userPoolTokensResult.value.idToken.name!,
       idToken: session.userPoolTokensResult.value.idToken.raw,
       refreshToken: session.userPoolTokensResult.value.refreshToken,
+      groups: session.userPoolTokensResult.value.idToken.groups,
     );
   }
 
@@ -75,6 +76,7 @@ class CognitoDatasource implements IAuthDatasource {
         name: session.userPoolTokensResult.value.idToken.name!,
         idToken: session.userPoolTokensResult.value.idToken.raw,
         refreshToken: session.userPoolTokensResult.value.refreshToken,
+        groups: session.userPoolTokensResult.value.idToken.groups,
       );
     } on AuthException catch (e) {
       logger.d('Error retrieving auth session: ${e.message}');

@@ -9,5 +9,6 @@ class UserDto extends LoggedUserInfo {
     required super.refreshToken,
     required super.idToken,
     required super.role,
+    super.groups = const [],
   });
 }

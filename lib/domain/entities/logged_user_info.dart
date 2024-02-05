@@ -5,6 +5,7 @@ class LoggedUserInfo {
   final String name;
   final String sub;
   final RoleEnum role;
+  final List<String> groups;
   final String accessToken;
   final String refreshToken;
   final String idToken;
@@ -17,5 +18,6 @@ class LoggedUserInfo {
     required this.refreshToken,
     required this.idToken,
     required this.role,
+    this.groups = const [],
   });
 }
