@@ -72,6 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Fill in the code received by email and your new password to reset it"),
         "password": MessageLookupByLibrary.simpleMessage("Senha"),
         "register": MessageLookupByLibrary.simpleMessage("Cadastrar"),
+        "registerUser": MessageLookupByLibrary.simpleMessage("Register User"),
         "resetPasswordPageText": MessageLookupByLibrary.simpleMessage(
             "Enter the email you used to create your account so we can send you a code for reseting your password"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),

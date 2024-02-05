@@ -19,6 +19,7 @@
     "loginSuccess": "Login bem-sucedido",
     "goToHome": "Ir para a página inicial",
     "adminPage": "Página de administração",
+    "registerUser": "Registrar Usuário",
 
     "fieldRequired": "Campo é obrigatório",
     "fieldEmailInvalid": "Email inválido",

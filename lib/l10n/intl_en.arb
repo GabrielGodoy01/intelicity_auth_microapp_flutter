@@ -19,6 +19,7 @@
     "loginSuccess": "Login success",
     "goToHome": "Go to home",
     "adminPage": "Admin Page",
+    "registerUser": "Register User",
 
     "fieldRequired": "Required field",
     "fieldEmailInvalid": "Invalid email",

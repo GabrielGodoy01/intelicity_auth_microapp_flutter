@@ -25,13 +25,18 @@ class SuccessLoginPage extends StatelessWidget {
           onPressed: onPressed,
           text: S.of(context).goToHome,
         ),
-        const SizedBox(height: 8),
-        role != RoleEnum.USER
-            ? ButtonCustom(
-                onPressed: () {},
-                text: S.of(context).adminPage,
-              )
-            : const SizedBox.shrink()
+        if (role != RoleEnum.USER) ...[
+          const SizedBox(height: 8),
+          ButtonCustom(
+            onPressed: () {},
+            text: S.of(context).adminPage,
+          ),
+          const SizedBox(height: 8),
+          ButtonCustom(
+            onPressed: () {},
+            text: S.of(context).registerUser,
+          ),
+        ],
       ],
     ));
   }

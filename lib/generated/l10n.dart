@@ -250,6 +250,16 @@ class S {
     );
   }
 
+  /// `Register User`
+  String get registerUser {
+    return Intl.message(
+      'Register User',
+      name: 'registerUser',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Required field`
   String get fieldRequired {
     return Intl.message(
