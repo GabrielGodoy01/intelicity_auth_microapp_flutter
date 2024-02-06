@@ -20,6 +20,8 @@
     "goToHome": "Ir para a página inicial",
     "adminPage": "Página de administração",
     "registerUser": "Registrar Usuário",
+    "createUserSuccess": "Usuário criado com sucesso",
+    "name": "Nome",
 
     "fieldRequired": "Campo é obrigatório",
     "fieldEmailInvalid": "Email inválido",

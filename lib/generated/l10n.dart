@@ -260,6 +260,26 @@ class S {
     );
   }
 
+  /// `User created successfully`
+  String get createUserSuccess {
+    return Intl.message(
+      'User created successfully',
+      name: 'createUserSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Required field`
   String get fieldRequired {
     return Intl.message(

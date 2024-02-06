@@ -59,6 +59,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirme a senha"),
         "contactError": MessageLookupByLibrary.simpleMessage(
             "Error sending message, please try again later."),
+        "createUserSuccess":
+            MessageLookupByLibrary.simpleMessage("User created successfully"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emptyListErrorMessage": MessageLookupByLibrary.simpleMessage(
             "List is empty, no items found for this request"),
@@ -77,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginNewPasswordText": MessageLookupByLibrary.simpleMessage(
             "Please, enter your new password"),
         "loginSuccess": MessageLookupByLibrary.simpleMessage("Login success"),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
         "newPasswordNeeded":
             MessageLookupByLibrary.simpleMessage("New password needed"),

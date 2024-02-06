@@ -115,7 +115,7 @@ mixin _$CreateUserController on CreateUserControllerBase, Store {
   }
 
   @override
-  void setRole(RoleEnum value) {
+  void setRole(RoleEnum? value) {
     final _$actionInfo = _$CreateUserControllerBaseActionController.startAction(
         name: 'CreateUserControllerBase.setRole');
     try {

@@ -20,6 +20,8 @@
     "goToHome": "Go to home",
     "adminPage": "Admin Page",
     "registerUser": "Register User",
+    "createUserSuccess": "User created successfully",
+    "name": "Name",
 
     "fieldRequired": "Required field",
     "fieldEmailInvalid": "Invalid email",

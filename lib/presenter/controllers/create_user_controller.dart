@@ -1,6 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/admin_create_user_usecase.dart';
+import 'package:intelicity_auth_microapp_flutter/generated/l10n.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/functions/global_snackbar.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/states/basic_state.dart';
 import 'package:logger/logger.dart';
@@ -33,7 +34,7 @@ abstract class CreateUserControllerBase with Store {
   RoleEnum? role;
 
   @action
-  void setRole(RoleEnum value) => role = value;
+  void setRole(RoleEnum? value) => role = value;
 
   @observable
   List<String> groups = [];
@@ -68,7 +69,7 @@ abstract class CreateUserControllerBase with Store {
       return BasicErrorState(error: e);
     }, (_) {
       clearAll();
-      GlobalSnackBar.success('Usuário criado com sucesso!');
+      GlobalSnackBar.success(S.current.createUserSuccess);
       return BasicInitialState();
     }));
   }

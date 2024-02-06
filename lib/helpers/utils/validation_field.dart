@@ -1,3 +1,4 @@
+import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
 import 'package:intelicity_auth_microapp_flutter/generated/l10n.dart';
 import 'package:string_validator/string_validator.dart' as validator;
 
@@ -36,6 +37,13 @@ class ValidationFieldHelper {
       return S.current.fieldRequired;
     } else if (confirmPassword != password) {
       return S.current.fieldConfirmPasswordInvalid;
+    }
+    return null;
+  }
+
+  static String? validateRole(RoleEnum? role) {
+    if (role == null) {
+      return S.current.fieldRequired;
     }
     return null;
   }
