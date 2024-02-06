@@ -16,11 +16,11 @@ import 'package:intelicity_auth_microapp_flutter/shared/helpers/enums/http_statu
 import 'package:intelicity_auth_microapp_flutter/shared/helpers/functions/get_http_status_function.dart';
 import 'package:logger/logger.dart';
 
-class AuthRepositoryImpl implements IAuthRepository {
+class AuthRepositoryCognito implements IAuthRepository {
   final IAuthDatasource datasource;
   final Logger logger = Modular.get();
 
-  AuthRepositoryImpl(this.datasource);
+  AuthRepositoryCognito(this.datasource);
 
   @override
   Future<Either<Failure, LoggedUserInfo>> loginEmail(

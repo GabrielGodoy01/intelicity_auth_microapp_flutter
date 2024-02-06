@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/amplify/amplifyconfiguration.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
@@ -17,6 +18,10 @@ import 'package:intelicity_auth_microapp_flutter/presenter/ui/pages/login_new_pa
 import 'package:intelicity_auth_microapp_flutter/presenter/ui/pages/login_page.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/ui/pages/new_password_page.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/ui/pages/success_login_page.dart';
+import 'package:intelicity_auth_microapp_flutter/shared/helpers/services/dio/auth_interceptor.dart';
+import 'package:intelicity_auth_microapp_flutter/shared/helpers/services/dio/dio_http_request.dart';
+import 'package:intelicity_auth_microapp_flutter/shared/helpers/services/dio/options/base_options.dart';
+import 'package:intelicity_auth_microapp_flutter/shared/helpers/services/http/http_request_interface.dart';
 
 class MicroAppLoginModule extends Module {
   @override
@@ -24,6 +29,9 @@ class MicroAppLoginModule extends Module {
 
   @override
   void binds(i) {
+    i.addLazySingleton(
+        (i) => Dio(baseOptions)..interceptors.add(AuthInterceptor()));
+    i.addLazySingleton<IHttpRequest>((i) => DioHttpRequest(dio: i<Dio>()));
     i.add<LoginController>(LoginController.new);
     i.addLazySingleton<ILoginWithEmailUsecase>(LoginWithEmailImpl.new);
     i.addLazySingleton<ForgotPasswordController>(ForgotPasswordController.new);
