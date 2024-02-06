@@ -27,7 +27,7 @@ class MicroAppAuthModule extends Module {
     i.addLazySingleton<IHttpRequest>((i) => DioHttpRequest(dio: i<Dio>()));
     i.addLazySingleton(AuthController.new);
     i.addLazySingleton(Logger.new);
-    i.add<IAuthDatasource>(CognitoDatasource.new);
+    i.add<IAuthDatasource>((i) => CognitoDatasource(i()));
     i.addLazySingleton<IAuthRepository>(AuthRepositoryCognito.new);
     i.addLazySingleton<IGetLoggedUserUsecase>(GetLoggedUserImpl.new);
     i.addLazySingleton<ILogoutUsecase>(LogoutUsecaseImpl.new);
