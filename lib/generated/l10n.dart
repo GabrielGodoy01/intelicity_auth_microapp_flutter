@@ -326,6 +326,56 @@ class S {
       args: [schema],
     );
   }
+
+  /// `Field {entityErrorMessage} is not valid`
+  String entityErrorMessage(Object placeholders, Object entityErrorMessage) {
+    return Intl.message(
+      'Field $entityErrorMessage is not valid',
+      name: 'entityErrorMessage',
+      desc: '',
+      args: [placeholders, entityErrorMessage],
+    );
+  }
+
+  /// `List is empty, no items found for this request`
+  String get emptyListErrorMessage {
+    return Intl.message(
+      'List is empty, no items found for this request',
+      name: 'emptyListErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error sending message, please try again later.`
+  String get contactError {
+    return Intl.message(
+      'Error sending message, please try again later.',
+      name: 'contactError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{message}`
+  String requestErrorMessage(Object placeholders, Object message) {
+    return Intl.message(
+      '$message',
+      name: 'requestErrorMessage',
+      desc: '',
+      args: [placeholders, message],
+    );
+  }
+
+  /// `No items found for {message}`
+  String noItemsFoundErrorMessage(Object placeholders, Object message) {
+    return Intl.message(
+      'No items found for $message',
+      name: 'noItemsFoundErrorMessage',
+      desc: '',
+      args: [placeholders, message],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,6 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/core/auth_controller.dart';
-import 'package:intelicity_auth_microapp_flutter/domain/errors/errors.dart';
+import 'package:intelicity_auth_microapp_flutter/domain/errors/auth_errors.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/login_with_email_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/functions/global_snackbar.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/states/basic_state.dart';

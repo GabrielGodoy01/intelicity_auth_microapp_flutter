@@ -1,14 +1,27 @@
-import 'package:intelicity_auth_microapp_flutter/domain/entities/logged_user_info.dart';
+import 'package:intelicity_auth_microapp_flutter/domain/entities/user_info.dart';
+import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
 
-class UserDto extends LoggedUserInfo {
+class UserDto extends UserInfo {
   UserDto({
     required super.email,
     required super.sub,
-    required super.accessToken,
     required super.name,
-    required super.refreshToken,
-    required super.idToken,
     required super.role,
-    super.groups = const [],
+    required super.groups,
   });
+
+  factory UserDto.fromMap(Map<String, dynamic> json) {
+    return UserDto(
+      email: json['email'],
+      sub: json['sub'],
+      name: json['name'],
+      role:
+          RoleEnum.values.firstWhere((element) => element.name == json['role']),
+      groups: List<String>.from(json['groups']),
+    );
+  }
+
+  static List<UserDto> fromMaps(List array) {
+    return array.map((e) => UserDto.fromMap(e)).toList();
+  }
 }

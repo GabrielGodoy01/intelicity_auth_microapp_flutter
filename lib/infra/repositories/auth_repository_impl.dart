@@ -1,11 +1,19 @@
+import 'dart:io';
+
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/entities/logged_user_info.dart';
+import 'package:intelicity_auth_microapp_flutter/domain/entities/user_info.dart';
+import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
+import 'package:intelicity_auth_microapp_flutter/domain/errors/auth_errors.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/errors/errors.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/repositories/auth_repository_interface.dart';
 import 'package:intelicity_auth_microapp_flutter/generated/l10n.dart';
 import 'package:intelicity_auth_microapp_flutter/infra/datasource/auth_datasource_interface.dart';
+import 'package:intelicity_auth_microapp_flutter/shared/helpers/enums/http_status_code_enum.dart';
+import 'package:intelicity_auth_microapp_flutter/shared/helpers/functions/get_http_status_function.dart';
 import 'package:logger/logger.dart';
 
 class AuthRepositoryImpl implements IAuthRepository {
@@ -23,7 +31,7 @@ class AuthRepositoryImpl implements IAuthRepository {
           await datasource.loginEmail(email: email, password: password);
       return Right(user);
     } catch (e) {
-      return left(_handleError(e));
+      return left(_handleAmplifyError(e));
     }
   }
 
@@ -34,7 +42,7 @@ class AuthRepositoryImpl implements IAuthRepository {
       await datasource.confirmNewPassword(newPassword: newPassword);
       return const Right(unit);
     } catch (e) {
-      return left(_handleError(e));
+      return left(_handleAmplifyError(e));
     }
   }
 
@@ -44,7 +52,7 @@ class AuthRepositoryImpl implements IAuthRepository {
       await datasource.logout();
       return const Right(unit);
     } catch (e) {
-      return left(_handleError(e));
+      return left(_handleAmplifyError(e));
     }
   }
 
@@ -59,7 +67,7 @@ class AuthRepositoryImpl implements IAuthRepository {
         message: S.current.authErrorsSchema('other'),
       ));
     } catch (e) {
-      return left(_handleError(e));
+      return left(_handleAmplifyError(e));
     }
   }
 
@@ -69,7 +77,7 @@ class AuthRepositoryImpl implements IAuthRepository {
       await datasource.resetPassword(email: email);
       return const Right(unit);
     } catch (e) {
-      return left(_handleError(e));
+      return left(_handleAmplifyError(e));
     }
   }
 
@@ -83,11 +91,11 @@ class AuthRepositoryImpl implements IAuthRepository {
           email: email, code: code, newPassword: newPassword);
       return const Right(unit);
     } catch (e) {
-      return left(_handleError(e));
+      return left(_handleAmplifyError(e));
     }
   }
 
-  AuthError _handleError(e) {
+  AuthError _handleAmplifyError(e) {
     logger.e(e);
     if (e is InvalidParameterException) {
       return AuthError(message: S.current.authErrorsSchema('invalidParameter'));
@@ -126,5 +134,35 @@ class AuthRepositoryImpl implements IAuthRepository {
     return AuthError(
       message: S.current.authErrorsSchema('other'),
     );
+  }
+
+  @override
+  Future<Either<Failure, Unit>> adminCreateUser(
+      {required String email,
+      required String name,
+      required RoleEnum role,
+      required List<String> groups}) async {
+    try {
+      await datasource.adminCreateUser(
+          email: email, name: name, role: role, groups: groups);
+      return const Right(unit);
+    } on DioException catch (e) {
+      HttpStatusCodeEnum errorType = getHttpStatusFunction(
+          e.response?.statusCode ?? HttpStatus.badRequest);
+      return Left(ErrorRequest(message: errorType.errorMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<UserInfo>>> listUsersInGroup(
+      {required String group}) async {
+    try {
+      var users = await datasource.getListUsersInGroup(group: group);
+      return Right(users);
+    } on DioException catch (e) {
+      HttpStatusCodeEnum errorType = getHttpStatusFunction(
+          e.response?.statusCode ?? HttpStatus.badRequest);
+      return Left(ErrorRequest(message: errorType.errorMessage));
+    }
   }
 }

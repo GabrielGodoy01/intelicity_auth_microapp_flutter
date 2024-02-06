@@ -2,17 +2,20 @@ import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
-import 'package:intelicity_auth_microapp_flutter/domain/errors/errors.dart';
+import 'package:intelicity_auth_microapp_flutter/domain/errors/auth_errors.dart';
 import 'package:intelicity_auth_microapp_flutter/infra/datasource/auth_datasource_interface.dart';
+import 'package:intelicity_auth_microapp_flutter/infra/dtos/logged_user_dto.dart';
 import 'package:intelicity_auth_microapp_flutter/infra/dtos/user_dto.dart';
+import 'package:intelicity_auth_microapp_flutter/shared/helpers/services/http/http_request_interface.dart';
 import 'package:logger/logger.dart';
 
 class CognitoDatasource implements IAuthDatasource {
   final Logger logger = Modular.get();
+  final IHttpRequest _httpService;
 
-  CognitoDatasource();
+  CognitoDatasource(this._httpService);
   @override
-  Future<UserDto> loginEmail(
+  Future<LoggedUserDto> loginEmail(
       {required String email, required String password}) async {
     await Amplify.Auth.signOut();
     final result = await Amplify.Auth.signIn(
@@ -28,7 +31,7 @@ class CognitoDatasource implements IAuthDatasource {
     }
     final atribbutes = await Amplify.Auth.fetchUserAttributes();
 
-    return UserDto(
+    return LoggedUserDto(
       email: email,
       sub: session.userSubResult.value,
       role: RoleEnum.stringToEnum(atribbutes
@@ -55,7 +58,7 @@ class CognitoDatasource implements IAuthDatasource {
   }
 
   @override
-  Future<UserDto?> getLoggedUser() async {
+  Future<LoggedUserDto?> getLoggedUser() async {
     try {
       final cognitoPlugin =
           Amplify.Auth.getPlugin(AmplifyAuthCognito.pluginKey);
@@ -65,7 +68,7 @@ class CognitoDatasource implements IAuthDatasource {
         return null;
       }
       final atribbutes = await Amplify.Auth.fetchUserAttributes();
-      return UserDto(
+      return LoggedUserDto(
         email: session.userPoolTokensResult.value.idToken.email!,
         sub: session.userSubResult.value,
         role: RoleEnum.stringToEnum(atribbutes
@@ -103,5 +106,33 @@ class CognitoDatasource implements IAuthDatasource {
     await Amplify.Auth.confirmSignIn(
       confirmationValue: newPassword,
     );
+  }
+
+  @override
+  Future<void> adminCreateUser(
+      {required String email,
+      required String name,
+      required RoleEnum role,
+      required List<String> groups}) async {
+    var data = {
+      "email": email,
+      "name": name,
+      "role": role.name,
+      "groups": groups
+    };
+    var response = await _httpService.post('/admin-create-user', data: data);
+    if (response.statusCode == 200) {
+      return;
+    }
+    throw Exception();
+  }
+
+  @override
+  Future<List<UserDto>> getListUsersInGroup({required String group}) async {
+    var response = await _httpService.get('/get-users-in-group?group=$group');
+    if (response.statusCode == 200) {
+      return UserDto.fromMaps(response.data["users"]);
+    }
+    throw Exception();
   }
 }

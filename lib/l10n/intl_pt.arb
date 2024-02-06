@@ -25,5 +25,36 @@
     "fieldEmailInvalid": "Email inválido",
     "fieldPasswordInvalid": "Senha inválida",
     "fieldConfirmPasswordInvalid": "As senhas não conferem",
-    "authErrorsSchema": "{schema, select, invalidStateException{Usuário já está conectado} codeDeliveryFailure{Falha ao enviar código para o e-mail, tente novamente} codeMismatch{Código fornecido está errado, tente novamente} invalidParameter{Algum campo preenchido de forma errada} usernameExists{Já existe um cadastro com este e-mail} notAuthorized{E-mail ou senha incorretos} userNotConfirmed{E-mail não confirmado, confirme-o} signedOut{E-mail ou senha incorretos} limitExceeded{Muitas tentativas em sequência, tente novamente mais tarde} invalidParameter{E-mail, provavelmente, já confirmado} tooManyFailedAttempts{Parece que você tentou errou o código muitas vezes, entre em contato} userNotFound{Não encontramos este e-mail cadastrado} internalError{Estamos com problemas internos, tente mais tarde} codeMismatch{Código fornecido está errado, tente novamente} other{Ocorreu algum erro ao confirmar e-mail}}"
+
+    "authErrorsSchema": "{schema, select, invalidStateException{Usuário já está conectado} codeDeliveryFailure{Falha ao enviar código para o e-mail, tente novamente} codeMismatch{Código fornecido está errado, tente novamente} invalidParameter{Algum campo preenchido de forma errada} usernameExists{Já existe um cadastro com este e-mail} notAuthorized{E-mail ou senha incorretos} userNotConfirmed{E-mail não confirmado, confirme-o} signedOut{E-mail ou senha incorretos} limitExceeded{Muitas tentativas em sequência, tente novamente mais tarde} invalidParameter{E-mail, provavelmente, já confirmado} tooManyFailedAttempts{Parece que você tentou errou o código muitas vezes, entre em contato} userNotFound{Não encontramos este e-mail cadastrado} internalError{Estamos com problemas internos, tente mais tarde} codeMismatch{Código fornecido está errado, tente novamente} other{Ocorreu algum erro ao confirmar e-mail}}",
+    "entityErrorMessage": "Campo {entityErrorMessage} não é válido",
+    "@entityErrorMessage" : {
+        "placeholders": {
+            "placeholders": {
+                "restaurantName": {}
+            }
+        }
+    },
+
+    "emptyListErrorMessage": "Lista vazia, itens não encontrados para essa requisição",
+
+    "contactError": "Erro ao enviar mensagem, tente novamente mais tarde.",
+
+    "requestErrorMessage": "{message}",
+    "@requestErrorMessage" : {
+        "placeholders": {
+            "placeholders": {
+                "restaurantName": {}
+            }
+        }
+    },
+
+    "noItemsFoundErrorMessage": "Itens não encontrados para: {message}",
+    "@noItemsFoundErrorMessage" : {
+        "placeholders": {
+            "placeholders": {
+                "restaurantName": {}
+            }
+        }
+    }
 }

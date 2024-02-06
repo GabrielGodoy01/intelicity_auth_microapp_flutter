@@ -39,6 +39,14 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': 'Ocorreu algum erro ao confirmar e-mail',
           })}";
 
+  static String m1(placeholders, entityErrorMessage) =>
+      "Campo ${entityErrorMessage} não é válido";
+
+  static String m2(placeholders, message) =>
+      "Itens não encontrados para: ${message}";
+
+  static String m3(placeholders, message) => "${message}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "access": MessageLookupByLibrary.simpleMessage("Acessar"),
@@ -52,7 +60,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirme a nova senha"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirme a senha"),
+        "contactError": MessageLookupByLibrary.simpleMessage(
+            "Erro ao enviar mensagem, tente novamente mais tarde."),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "emptyListErrorMessage": MessageLookupByLibrary.simpleMessage(
+            "Lista vazia, itens não encontrados para essa requisição"),
+        "entityErrorMessage": m1,
         "fieldConfirmPasswordInvalid":
             MessageLookupByLibrary.simpleMessage("As senhas não conferem"),
         "fieldEmailInvalid":
@@ -75,10 +88,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nova senha necessária"),
         "newPasswordPageText": MessageLookupByLibrary.simpleMessage(
             "Preencha o código recebido por e-mail e sua nova senha para redefini-la"),
+        "noItemsFoundErrorMessage": m2,
         "password": MessageLookupByLibrary.simpleMessage("Senha"),
         "register": MessageLookupByLibrary.simpleMessage("Cadastrar"),
         "registerUser":
             MessageLookupByLibrary.simpleMessage("Registrar Usuário"),
+        "requestErrorMessage": m3,
         "resetPasswordPageText": MessageLookupByLibrary.simpleMessage(
             "Digite o e-mail que você usou para criar sua conta para que possamos enviar um código para redefinir sua senha"),
         "send": MessageLookupByLibrary.simpleMessage("Enviar"),

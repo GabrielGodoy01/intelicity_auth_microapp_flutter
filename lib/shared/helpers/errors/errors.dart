@@ -1,7 +1,8 @@
 import 'dart:developer';
-import 'package:intelicity_auth_microapp_flutter/generated/l10n.dart';
 
-abstract class Failure implements Exception {
+import '../../../generated/l10n.dart';
+
+class Failure implements Exception {
   final String message;
 
   Failure({required this.message}) {

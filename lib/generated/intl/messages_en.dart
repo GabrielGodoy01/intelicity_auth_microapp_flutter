@@ -39,6 +39,13 @@ class MessageLookup extends MessageLookupByLibrary {
             'other': 'An error occurred while confirming email',
           })}";
 
+  static String m1(placeholders, entityErrorMessage) =>
+      "Field ${entityErrorMessage} is not valid";
+
+  static String m2(placeholders, message) => "No items found for ${message}";
+
+  static String m3(placeholders, message) => "${message}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "access": MessageLookupByLibrary.simpleMessage("Access"),
@@ -50,7 +57,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirme a senha"),
+        "contactError": MessageLookupByLibrary.simpleMessage(
+            "Error sending message, please try again later."),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "emptyListErrorMessage": MessageLookupByLibrary.simpleMessage(
+            "List is empty, no items found for this request"),
+        "entityErrorMessage": m1,
         "fieldConfirmPasswordInvalid":
             MessageLookupByLibrary.simpleMessage("Passwords do not match"),
         "fieldEmailInvalid":
@@ -70,9 +82,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("New password needed"),
         "newPasswordPageText": MessageLookupByLibrary.simpleMessage(
             "Fill in the code received by email and your new password to reset it"),
+        "noItemsFoundErrorMessage": m2,
         "password": MessageLookupByLibrary.simpleMessage("Senha"),
         "register": MessageLookupByLibrary.simpleMessage("Cadastrar"),
         "registerUser": MessageLookupByLibrary.simpleMessage("Register User"),
+        "requestErrorMessage": m3,
         "resetPasswordPageText": MessageLookupByLibrary.simpleMessage(
             "Enter the email you used to create your account so we can send you a code for reseting your password"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
