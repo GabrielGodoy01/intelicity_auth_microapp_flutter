@@ -21,7 +21,7 @@ class MicroAppAuthModule extends Module {
 
   @override
   void exportedBinds(i) {
-    // i.addLazySingleton((i) => Dio(baseOptions));
+    i.addLazySingleton((i) => Dio(baseOptions));
     // i.addLazySingleton<IHttpRequest>((i) => DioHttpRequest(dio: i<Dio>()));
     i.addLazySingleton(AuthController.new);
     i.addLazySingleton(Logger.new);
