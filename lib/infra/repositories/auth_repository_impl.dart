@@ -143,8 +143,8 @@ class AuthRepositoryCognito implements IAuthRepository {
       required RoleEnum role,
       required List<String> groups}) async {
     try {
-      await datasource.adminCreateUser(
-          email: email, name: name, role: role, groups: groups);
+      // await datasource.adminCreateUser(
+      //     email: email, name: name, role: role, groups: groups);
       return const Right(unit);
     } on DioException catch (e) {
       HttpStatusCodeEnum errorType = getHttpStatusFunction(
@@ -157,8 +157,8 @@ class AuthRepositoryCognito implements IAuthRepository {
   Future<Either<Failure, List<UserInfo>>> listUsersInGroup(
       {required String group}) async {
     try {
-      var users = await datasource.getListUsersInGroup(group: group);
-      return Right(users);
+      // var users = await datasource.getListUsersInGroup(group: group);
+      return Right([]);
     } on DioException catch (e) {
       HttpStatusCodeEnum errorType = getHttpStatusFunction(
           e.response?.statusCode ?? HttpStatus.badRequest);

@@ -13,12 +13,12 @@ abstract class IAuthDatasource {
       {required String email,
       required String code,
       required String newPassword});
-  Future<void> adminCreateUser({
-    required String email,
-    required String name,
-    required RoleEnum role,
-    required List<String> groups,
-  });
+  // Future<void> adminCreateUser({
+  //   required String email,
+  //   required String name,
+  //   required RoleEnum role,
+  //   required List<String> groups,
+  // });
 
-  Future<List<UserDto>> getListUsersInGroup({required String group});
+  // Future<List<UserDto>> getListUsersInGroup({required String group});
 }
