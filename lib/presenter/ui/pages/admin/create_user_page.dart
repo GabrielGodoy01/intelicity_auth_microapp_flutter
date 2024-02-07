@@ -87,10 +87,13 @@ class CreateUserPage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 16),
-              Text(
-                'Permissão de Sistemas:',
-                style: AppTextStyles.bodyText1,
-                textAlign: TextAlign.start,
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Permissão de Sistemas:',
+                  style: AppTextStyles.bodyText1,
+                  textAlign: TextAlign.start,
+                ),
               ),
               const SizedBox(height: 8),
               Observer(builder: (_) {
