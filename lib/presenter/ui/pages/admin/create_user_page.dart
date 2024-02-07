@@ -61,20 +61,22 @@ class CreateUserPage extends StatelessWidget {
               const SizedBox(height: 16),
               Row(
                 children: [
-                  Observer(builder: (_) {
-                    return DropDownFieldWidget<RoleEnum>(
-                      hintText: S.of(context).role,
-                      prefixIcon: Icons.work,
-                      onChanged: controller.setRole,
-                      validation: ValidationFieldHelper.validateRole,
-                      items: items.map((RoleEnum value) {
-                        return DropdownMenuItem<RoleEnum>(
-                          value: value,
-                          child: Text(value.typeName),
-                        );
-                      }).toList(),
-                    );
-                  }),
+                  Expanded(
+                    child: Observer(builder: (_) {
+                      return DropDownFieldWidget<RoleEnum>(
+                        hintText: S.of(context).role,
+                        prefixIcon: Icons.work,
+                        onChanged: controller.setRole,
+                        validation: ValidationFieldHelper.validateRole,
+                        items: items.map((RoleEnum value) {
+                          return DropdownMenuItem<RoleEnum>(
+                            value: value,
+                            child: Text(value.typeName),
+                          );
+                        }).toList(),
+                      );
+                    }),
+                  ),
                   Tooltip(
                     message:
                         'Administrador: possui acesso total a gestão de usuários do sistema.\n\nColaborador: possui acesso apenas de autenticação de usuário.',
@@ -85,6 +87,29 @@ class CreateUserPage extends StatelessWidget {
                   )
                 ],
               ),
+              const SizedBox(height: 16),
+              Text(
+                'Permissão de Sistemas:',
+                style: AppTextStyles.bodyText1,
+              ),
+              const SizedBox(height: 8),
+              // Observer(builder: (_) {
+              //   return ListView.builder(
+              //     shrinkWrap: true,
+              //     itemCount: authController.user!.groups.length,
+              //     itemBuilder: (context, index) {
+              //       final group = authController.user!.groups[index];
+              //       return CheckboxListTile(
+              //         value: controller.groups.contains(group),
+              //         onChanged: (value) {
+              //           return value!
+              //               ? controller.addGroup(group)
+              //               : controller.removeGroup(group);
+              //         },
+              //       );
+              //     },
+              //   );
+              // }),
               // prefixIcon: Icons.diversity_3,
               const SizedBox(height: 16),
               Observer(builder: (_) {
