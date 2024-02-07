@@ -10,7 +10,7 @@ import 'package:intelicity_auth_microapp_flutter/shared/helpers/services/http/ht
 import 'package:logger/logger.dart';
 
 class CognitoDatasource implements IAuthDatasource {
-  final Logger logger = Modular.get();
+  final Logger logger = Modular.get<Logger>();
   // final IHttpRequest _httpService;
 
   // CognitoDatasource(this._httpService);
