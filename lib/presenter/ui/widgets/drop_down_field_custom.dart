@@ -33,6 +33,7 @@ class DropDownFieldWidget<T> extends StatelessWidget {
         validator: validation,
         decoration: InputDecoration(
             prefixIcon: prefixIcon == null ? null : Icon(prefixIcon),
+            prefixIconColor: AppColors.primaryPurple,
             fillColor: AppColors.white,
             contentPadding: const EdgeInsets.symmetric(horizontal: 12),
             hintText: hintText,
