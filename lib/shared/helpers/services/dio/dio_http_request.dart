@@ -1,13 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:intelicity_auth_microapp_flutter/shared/helpers/services/dio/options/base_options.dart';
 
 import '../http/http_request_interface.dart';
 
 class DioHttpRequest implements IHttpRequest {
-  final Dio _dio;
-
-  DioHttpRequest({
-    required Dio dio,
-  }) : _dio = dio;
+  final Dio _dio = Dio(baseOptions);
 
   @override
   Future<Response> get(String url,

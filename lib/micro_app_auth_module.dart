@@ -21,8 +21,8 @@ class MicroAppAuthModule extends Module {
 
   @override
   void exportedBinds(i) {
-    i.addLazySingleton((i) => Dio(baseOptions));
-    i.addLazySingleton<IHttpRequest>((i) => DioHttpRequest(dio: i()));
+    // i.addLazySingleton(Dio.new);
+    i.addLazySingleton<IHttpRequest>(DioHttpRequest.new);
     i.addLazySingleton(AuthController.new);
     i.addLazySingleton(Logger.new);
     i.addLazySingleton<IAuthDatasource>(CognitoDatasource.new);
