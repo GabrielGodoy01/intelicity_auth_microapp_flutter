@@ -10,7 +10,7 @@ import 'package:intelicity_auth_microapp_flutter/shared/helpers/services/http/ht
 import 'package:logger/logger.dart';
 
 class CognitoDatasource implements IAuthDatasource {
-  final Logger logger = Modular.get<Logger>();
+  // final Logger logger = Modular.get<Logger>();
   // final IHttpRequest _httpService;
 
   // CognitoDatasource(this._httpService);
@@ -22,7 +22,7 @@ class CognitoDatasource implements IAuthDatasource {
       username: email,
       password: password,
     );
-    logger.d('[CognitoDatasource] loginEmail: ${result.toJson()}}');
+    // logger.d('[CognitoDatasource] loginEmail: ${result.toJson()}}');
     final cognitoPlugin = Amplify.Auth.getPlugin(AmplifyAuthCognito.pluginKey);
     final session = await cognitoPlugin.fetchAuthSession();
     if (result.nextStep.signInStep ==
@@ -50,9 +50,9 @@ class CognitoDatasource implements IAuthDatasource {
   Future<void> logout() async {
     final result = await Amplify.Auth.signOut();
     if (result is CognitoCompleteSignOut) {
-      logger.d('Sign out completed successfully');
+      // logger.d('Sign out completed successfully');
     } else if (result is CognitoFailedSignOut) {
-      logger.d('Error signing user out: ${result.exception.message}');
+      // logger.d('Error signing user out: ${result.exception.message}');
       throw Exception();
     }
   }
@@ -63,7 +63,7 @@ class CognitoDatasource implements IAuthDatasource {
       final cognitoPlugin =
           Amplify.Auth.getPlugin(AmplifyAuthCognito.pluginKey);
       final session = await cognitoPlugin.fetchAuthSession();
-      logger.d('User is signed in: ${session.isSignedIn}');
+      // logger.d('User is signed in: ${session.isSignedIn}');
       if (!session.isSignedIn) {
         return null;
       }
@@ -82,7 +82,7 @@ class CognitoDatasource implements IAuthDatasource {
         groups: session.userPoolTokensResult.value.idToken.groups,
       );
     } on AuthException catch (e) {
-      logger.d('Error retrieving auth session: ${e.message}');
+      // logger.d('Error retrieving auth session: ${e.message}');
       throw Exception();
     }
   }
