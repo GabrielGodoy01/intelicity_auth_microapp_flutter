@@ -41,23 +41,19 @@ class CreateUserPage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
-              Observer(builder: (_) {
-                return TextFielCustom(
-                  hintText: S.of(context).name,
-                  onChanged: controller.setName,
-                  prefixIcon: Icons.person,
-                  validation: ValidationFieldHelper.validateRequiredField,
-                );
-              }),
+              TextFielCustom(
+                hintText: S.of(context).name,
+                onChanged: controller.setName,
+                prefixIcon: Icons.person,
+                validation: ValidationFieldHelper.validateRequiredField,
+              ),
               const SizedBox(height: 16),
-              Observer(builder: (_) {
-                return TextFielCustom(
-                  hintText: S.of(context).email,
-                  onChanged: controller.setEmail,
-                  prefixIcon: Icons.email,
-                  validation: ValidationFieldHelper.validateRequiredField,
-                );
-              }),
+              TextFielCustom(
+                hintText: S.of(context).email,
+                onChanged: controller.setEmail,
+                prefixIcon: Icons.email,
+                validation: ValidationFieldHelper.validateRequiredField,
+              ),
               const SizedBox(height: 16),
               Row(
                 children: [
@@ -109,9 +105,10 @@ class CreateUserPage extends StatelessWidget {
                       controlAffinity: ListTileControlAffinity.leading,
                       tristate: true,
                       onChanged: (value) {
-                        return value!
+                        value!
                             ? controller.addGroup(group)
                             : controller.removeGroup(group);
+                        print(controller.groups.length);
                       },
                     );
                   },
