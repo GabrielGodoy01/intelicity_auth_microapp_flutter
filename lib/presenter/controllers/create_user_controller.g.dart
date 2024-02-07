@@ -159,6 +159,17 @@ mixin _$CreateUserController on CreateUserControllerBase, Store {
   }
 
   @override
+  bool isInGroup(String group) {
+    final _$actionInfo = _$CreateUserControllerBaseActionController.startAction(
+        name: 'CreateUserControllerBase.isInGroup');
+    try {
+      return super.isInGroup(group);
+    } finally {
+      _$CreateUserControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setState(BasicState value) {
     final _$actionInfo = _$CreateUserControllerBaseActionController.startAction(
         name: 'CreateUserControllerBase.setState');

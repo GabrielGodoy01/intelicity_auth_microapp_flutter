@@ -96,15 +96,15 @@ class CreateUserPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8),
-              Observer(builder: (_) {
-                return ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: authController.user!.groups.length,
-                  itemBuilder: (context, index) {
-                    final group = authController.user!.groups[index];
+              ListView.builder(
+                shrinkWrap: true,
+                itemCount: authController.user!.groups.length,
+                itemBuilder: (context, index) {
+                  final group = authController.user!.groups[index];
+                  return Observer(builder: (_) {
                     return CheckboxListTile(
                       title: Text(group),
-                      value: controller.groups.contains(group),
+                      value: controller.isInGroup(group),
                       controlAffinity: ListTileControlAffinity.leading,
                       tristate: true,
                       onChanged: (value) {
@@ -113,9 +113,9 @@ class CreateUserPage extends StatelessWidget {
                             : controller.removeGroup(group);
                       },
                     );
-                  },
-                );
-              }),
+                  });
+                },
+              ),
               // prefixIcon: Icons.diversity_3,
               const SizedBox(height: 16),
               Observer(builder: (_) {

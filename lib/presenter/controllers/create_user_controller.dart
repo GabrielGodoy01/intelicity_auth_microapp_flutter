@@ -59,6 +59,11 @@ abstract class CreateUserControllerBase with Store {
     groups = [];
   }
 
+  @action
+  bool isInGroup(String group) {
+    return groups.contains(group);
+  }
+
   @observable
   BasicState state = BasicInitialState();
 
