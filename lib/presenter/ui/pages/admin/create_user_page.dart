@@ -77,9 +77,12 @@ class CreateUserPage extends StatelessWidget {
                       );
                     }),
                   ),
+                  const SizedBox(
+                    width: 8,
+                  ),
                   Tooltip(
                     message:
-                        'Administrador: possui acesso total a gestão de usuários do sistema.\n\nColaborador: possui acesso apenas de autenticação de usuário.',
+                        'Administrador: possui acesso total a gestão de usuários do sistema.\nColaborador: possui acesso apenas de autenticação de usuário.',
                     child: Icon(
                       Icons.help,
                       color: AppColors.primaryPurple,
@@ -93,23 +96,23 @@ class CreateUserPage extends StatelessWidget {
                 style: AppTextStyles.bodyText1,
               ),
               const SizedBox(height: 8),
-              // Observer(builder: (_) {
-              //   return ListView.builder(
-              //     shrinkWrap: true,
-              //     itemCount: authController.user!.groups.length,
-              //     itemBuilder: (context, index) {
-              //       final group = authController.user!.groups[index];
-              //       return CheckboxListTile(
-              //         value: controller.groups.contains(group),
-              //         onChanged: (value) {
-              //           return value!
-              //               ? controller.addGroup(group)
-              //               : controller.removeGroup(group);
-              //         },
-              //       );
-              //     },
-              //   );
-              // }),
+              Observer(builder: (_) {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: authController.user!.groups.length,
+                  itemBuilder: (context, index) {
+                    final group = authController.user!.groups[index];
+                    return CheckboxListTile(
+                      value: controller.groups.contains(group),
+                      onChanged: (value) {
+                        return value!
+                            ? controller.addGroup(group)
+                            : controller.removeGroup(group);
+                      },
+                    );
+                  },
+                );
+              }),
               // prefixIcon: Icons.diversity_3,
               const SizedBox(height: 16),
               Observer(builder: (_) {
