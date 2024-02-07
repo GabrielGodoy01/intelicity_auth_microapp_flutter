@@ -1,19 +1,14 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:intelicity_auth_microapp_flutter/admin_module.dart';
 import 'package:intelicity_auth_microapp_flutter/amplify/amplifyconfiguration.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
-import 'package:intelicity_auth_microapp_flutter/domain/usecases/admin_create_user_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/confirm_new_password_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/confirm_reset_password.dart';
-import 'package:intelicity_auth_microapp_flutter/domain/usecases/list_users_in_group_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/login_with_email_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/reset_password_usecase.dart';
-import 'package:intelicity_auth_microapp_flutter/helpers/guards/admin_guard.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/guards/auth_guard.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/guards/login_guard.dart';
 import 'package:intelicity_auth_microapp_flutter/micro_app_auth_module.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/controllers/confirm_reset_password_controller.dart';
-import 'package:intelicity_auth_microapp_flutter/presenter/controllers/create_user_controller.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/controllers/forgot_password_controller.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/controllers/login_controller.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/controllers/login_new_password_controller.dart';
@@ -41,11 +36,6 @@ class MicroAppLoginModule extends Module {
         ConfirmResetPasswordUsecaseImpl.new);
     i.addLazySingleton<IConfirmNewPasswordUsecase>(
         ConfirmNewPasswordUsecaseImpl.new);
-    i.addLazySingleton<IAdminCreateUserUsecase>(AdminCreateUserUsecaseImpl.new);
-    i.addLazySingleton<CreateUserController>(CreateUserController.new);
-
-    i.addLazySingleton<IListUsersInGroupUsecase>(
-        ListUsersInGroupUsecaseImpl.new);
   }
 
   @override
@@ -65,6 +55,5 @@ class MicroAppLoginModule extends Module {
               onPressed: r.args.data[1] as Function(),
             ),
         guards: [AuthGuard()]);
-    r.module('/admin/', module: AdminModule(), guards: [AdminGuard()]);
   }
 }
