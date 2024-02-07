@@ -94,6 +94,7 @@ class CreateUserPage extends StatelessWidget {
               Text(
                 'Permissão de Sistemas:',
                 style: AppTextStyles.bodyText1,
+                textAlign: TextAlign.start,
               ),
               const SizedBox(height: 8),
               Observer(builder: (_) {
@@ -103,7 +104,10 @@ class CreateUserPage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final group = authController.user!.groups[index];
                     return CheckboxListTile(
+                      title: Text(group),
                       value: controller.groups.contains(group),
+                      controlAffinity: ListTileControlAffinity.leading,
+                      tristate: true,
                       onChanged: (value) {
                         return value!
                             ? controller.addGroup(group)
