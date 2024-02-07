@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
 import 'package:intelicity_auth_microapp_flutter/generated/l10n.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/ui/pages/landing_page.dart';
@@ -26,8 +27,11 @@ class SuccessLoginPage extends StatelessWidget {
           text: S.of(context).goToHome,
         ),
         if (role != RoleEnum.USER) ...[
+          const SizedBox(height: 8),
           ButtonCustom(
-            onPressed: () {},
+            onPressed: () {
+              Modular.to.navigate('/admin/');
+            },
             text: S.of(context).adminPage,
           ),
         ],
