@@ -30,7 +30,7 @@ class SuccessLoginPage extends StatelessWidget {
           const SizedBox(height: 8),
           ButtonCustom(
             onPressed: () {
-              Modular.to.navigate('/admin/');
+              Modular.to.navigate('/admin');
             },
             text: S.of(context).adminPage,
           ),
