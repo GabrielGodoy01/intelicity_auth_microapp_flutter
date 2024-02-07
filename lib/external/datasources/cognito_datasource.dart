@@ -11,9 +11,9 @@ import 'package:logger/logger.dart';
 
 class CognitoDatasource implements IAuthDatasource {
   final Logger logger = Modular.get<Logger>();
-  // final IHttpRequest _httpService;
+  final IHttpRequest _httpService;
 
-  // CognitoDatasource(this._httpService);
+  CognitoDatasource(this._httpService);
   @override
   Future<LoggedUserDto> loginEmail(
       {required String email, required String password}) async {
