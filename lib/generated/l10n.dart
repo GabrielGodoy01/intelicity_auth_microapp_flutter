@@ -320,6 +320,21 @@ class S {
     );
   }
 
+  /// `{schema, select, INTELICITY{Intelicity} ADMIN{Administrator} other{Collaborator}}`
+  String roleSchema(Object schema) {
+    return Intl.select(
+      schema,
+      {
+        'INTELICITY': 'Intelicity',
+        'ADMIN': 'Administrator',
+        'other': 'Collaborator',
+      },
+      name: 'roleSchema',
+      desc: '',
+      args: [schema],
+    );
+  }
+
   /// `Required field`
   String get fieldRequired {
     return Intl.message(

@@ -11,6 +11,7 @@ import 'package:intelicity_auth_microapp_flutter/presenter/ui/pages/landing_page
 import 'package:intelicity_auth_microapp_flutter/presenter/ui/widgets/button_custom.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/ui/widgets/drop_down_field_custom.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/ui/widgets/text_field_custom.dart';
+import 'package:intelicity_auth_microapp_flutter/shared/themes/app_colors.dart';
 import 'package:intelicity_auth_microapp_flutter/shared/themes/app_text_styles.dart';
 
 class CreateUserPage extends StatelessWidget {
@@ -58,20 +59,32 @@ class CreateUserPage extends StatelessWidget {
                 );
               }),
               const SizedBox(height: 16),
-              Observer(builder: (_) {
-                return DropDownFieldWidget<RoleEnum>(
-                  hintText: S.of(context).role,
-                  prefixIcon: Icons.work,
-                  onChanged: controller.setRole,
-                  validation: ValidationFieldHelper.validateRole,
-                  items: items.map((RoleEnum value) {
-                    return DropdownMenuItem<RoleEnum>(
-                      value: value,
-                      child: Text(value.name),
+              Row(
+                children: [
+                  Observer(builder: (_) {
+                    return DropDownFieldWidget<RoleEnum>(
+                      hintText: S.of(context).role,
+                      prefixIcon: Icons.work,
+                      onChanged: controller.setRole,
+                      validation: ValidationFieldHelper.validateRole,
+                      items: items.map((RoleEnum value) {
+                        return DropdownMenuItem<RoleEnum>(
+                          value: value,
+                          child: Text(value.typeName),
+                        );
+                      }).toList(),
                     );
-                  }).toList(),
-                );
-              }),
+                  }),
+                  Tooltip(
+                    message:
+                        'Administrador: possui acesso total a gestão de usuários do sistema.\n\nColaborador: possui acesso apenas de autenticação de usuário.',
+                    child: Icon(
+                      Icons.help,
+                      color: AppColors.primaryPurple,
+                    ),
+                  )
+                ],
+              ),
               // prefixIcon: Icons.diversity_3,
               const SizedBox(height: 16),
               Observer(builder: (_) {

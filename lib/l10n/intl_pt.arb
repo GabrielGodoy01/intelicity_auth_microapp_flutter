@@ -26,6 +26,7 @@
     "createUserText": "Preencha as informações do usuário a ser criado:",
     "role": "Função",
     "moreFeaturesSoon": "Mais recursos em breve...",
+    "roleSchema": "{schema, select, INTELICITY{Intelicity} ADMIN{Administrador} other{Colaborador}}",
 
     "fieldRequired": "Campo é obrigatório",
     "fieldEmailInvalid": "Email inválido",

@@ -26,6 +26,7 @@
     "createUserText": "Fill in the information of the user to be created:",
     "role": "Role",
     "moreFeaturesSoon": "More features coming soon...",
+    "roleSchema": "{schema, select, INTELICITY{Intelicity} ADMIN{Administrator} other{Collaborator}}",
 
     "fieldRequired": "Required field",
     "fieldEmailInvalid": "Invalid email",

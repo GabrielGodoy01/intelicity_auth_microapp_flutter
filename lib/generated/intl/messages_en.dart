@@ -46,6 +46,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m3(placeholders, message) => "${message}";
 
+  static String m4(schema) => "${Intl.select(schema, {
+            'INTELICITY': 'Intelicity',
+            'ADMIN': 'Administrator',
+            'other': 'Collaborator',
+          })}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "access": MessageLookupByLibrary.simpleMessage("Access"),
@@ -99,6 +105,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "resetPasswordPageText": MessageLookupByLibrary.simpleMessage(
             "Enter the email you used to create your account so we can send you a code for reseting your password"),
         "role": MessageLookupByLibrary.simpleMessage("Role"),
+        "roleSchema": m4,
         "send": MessageLookupByLibrary.simpleMessage("Send"),
         "verifyEmail": MessageLookupByLibrary.simpleMessage("Verify email")
       };
