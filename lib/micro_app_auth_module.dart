@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/core/auth_controller.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/repositories/auth_repository_interface.dart';
@@ -7,7 +6,6 @@ import 'package:intelicity_auth_microapp_flutter/domain/usecases/logout_usecase.
 import 'package:intelicity_auth_microapp_flutter/infra/datasource/auth_datasource_interface.dart';
 import 'package:intelicity_auth_microapp_flutter/infra/repositories/auth_repository_impl.dart';
 import 'package:intelicity_auth_microapp_flutter/shared/helpers/services/dio/dio_http_request.dart';
-import 'package:intelicity_auth_microapp_flutter/shared/helpers/services/dio/options/base_options.dart';
 import 'package:intelicity_auth_microapp_flutter/shared/helpers/services/http/http_request_interface.dart';
 import 'package:logger/logger.dart';
 import 'amplify/amplify_config.dart';
@@ -21,7 +19,6 @@ class MicroAppAuthModule extends Module {
 
   @override
   void exportedBinds(i) {
-    // i.addLazySingleton(Dio.new);
     i.addLazySingleton<IHttpRequest>(DioHttpRequest.new);
     i.addLazySingleton(AuthController.new);
     i.addLazySingleton(Logger.new);

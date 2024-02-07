@@ -108,31 +108,31 @@ class CognitoDatasource implements IAuthDatasource {
     );
   }
 
-  // @override
-  // Future<void> adminCreateUser(
-  //     {required String email,
-  //     required String name,
-  //     required RoleEnum role,
-  //     required List<String> groups}) async {
-  //   var data = {
-  //     "email": email,
-  //     "name": name,
-  //     "role": role.name,
-  //     "groups": groups
-  //   };
-  //   var response = await _httpService.post('/admin-create-user', data: data);
-  //   if (response.statusCode == 200) {
-  //     return;
-  //   }
-  //   throw Exception();
-  // }
+  @override
+  Future<void> adminCreateUser(
+      {required String email,
+      required String name,
+      required RoleEnum role,
+      required List<String> groups}) async {
+    var data = {
+      "email": email,
+      "name": name,
+      "role": role.name,
+      "groups": groups
+    };
+    var response = await _httpService.post('/admin-create-user', data: data);
+    if (response.statusCode == 200) {
+      return;
+    }
+    throw Exception();
+  }
 
-  // @override
-  // Future<List<UserDto>> getListUsersInGroup({required String group}) async {
-  //   var response = await _httpService.get('/get-users-in-group?group=$group');
-  //   if (response.statusCode == 200) {
-  //     return UserDto.fromMaps(response.data["users"]);
-  //   }
-  //   throw Exception();
-  // }
+  @override
+  Future<List<UserDto>> getListUsersInGroup({required String group}) async {
+    var response = await _httpService.get('/get-users-in-group?group=$group');
+    if (response.statusCode == 200) {
+      return UserDto.fromMaps(response.data["users"]);
+    }
+    throw Exception();
+  }
 }
