@@ -40,10 +40,16 @@ abstract class CreateUserControllerBase with Store {
   List<String> groups = [];
 
   @action
-  void addGroup(String value) => groups.add(value);
+  void addGroup(String value) {
+    groups.add(value);
+    print(groups.length);
+  }
 
   @action
-  void removeGroup(String value) => groups.remove(value);
+  void removeGroup(String value) {
+    groups.remove(value);
+    print(groups.length);
+  }
 
   @action
   void clearAll() {

@@ -108,7 +108,6 @@ class CreateUserPage extends StatelessWidget {
                         value!
                             ? controller.addGroup(group)
                             : controller.removeGroup(group);
-                        print(controller.groups.length);
                       },
                     );
                   },
