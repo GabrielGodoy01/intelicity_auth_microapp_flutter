@@ -41,14 +41,14 @@ abstract class CreateUserControllerBase with Store {
 
   @action
   void addGroup(String value) {
-    groups = List.from(groups)..add(value);
-    print(groups.length);
+    List<String> newGroup = List.from(groups)..add(value);
+    groups = newGroup;
   }
 
   @action
   void removeGroup(String value) {
-    groups = List.from(groups)..remove(value);
-    print(groups.length);
+    List<String> newGroup = List.from(groups)..remove(value);
+    groups = newGroup;
   }
 
   @action
