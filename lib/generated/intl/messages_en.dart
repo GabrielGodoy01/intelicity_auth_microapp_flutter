@@ -49,7 +49,6 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "access": MessageLookupByLibrary.simpleMessage("Access"),
-        "adminPage": MessageLookupByLibrary.simpleMessage("Admin Page"),
         "authErrorsSchema": m0,
         "backToLogin": MessageLookupByLibrary.simpleMessage("Back to login"),
         "code": MessageLookupByLibrary.simpleMessage("Code"),
@@ -59,8 +58,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirme a senha"),
         "contactError": MessageLookupByLibrary.simpleMessage(
             "Error sending message, please try again later."),
+        "createUser": MessageLookupByLibrary.simpleMessage("Create User"),
         "createUserSuccess":
             MessageLookupByLibrary.simpleMessage("User created successfully"),
+        "createUserText": MessageLookupByLibrary.simpleMessage(
+            "Fill in the information of the user to be created:"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emptyListErrorMessage": MessageLookupByLibrary.simpleMessage(
             "List is empty, no items found for this request"),
@@ -79,6 +81,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginNewPasswordText": MessageLookupByLibrary.simpleMessage(
             "Please, enter your new password"),
         "loginSuccess": MessageLookupByLibrary.simpleMessage("Login success"),
+        "managementPage":
+            MessageLookupByLibrary.simpleMessage("User Management Page"),
+        "moreFeaturesSoon": MessageLookupByLibrary.simpleMessage(
+            "More features coming soon..."),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
         "newPasswordNeeded":
@@ -92,6 +98,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "requestErrorMessage": m3,
         "resetPasswordPageText": MessageLookupByLibrary.simpleMessage(
             "Enter the email you used to create your account so we can send you a code for reseting your password"),
+        "role": MessageLookupByLibrary.simpleMessage("Role"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
         "verifyEmail": MessageLookupByLibrary.simpleMessage("Verify email")
       };

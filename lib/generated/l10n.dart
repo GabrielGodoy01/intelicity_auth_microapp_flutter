@@ -240,11 +240,11 @@ class S {
     );
   }
 
-  /// `Admin Page`
-  String get adminPage {
+  /// `User Management Page`
+  String get managementPage {
     return Intl.message(
-      'Admin Page',
-      name: 'adminPage',
+      'User Management Page',
+      name: 'managementPage',
       desc: '',
       args: [],
     );
@@ -275,6 +275,46 @@ class S {
     return Intl.message(
       'Name',
       name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create User`
+  String get createUser {
+    return Intl.message(
+      'Create User',
+      name: 'createUser',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fill in the information of the user to be created:`
+  String get createUserText {
+    return Intl.message(
+      'Fill in the information of the user to be created:',
+      name: 'createUserText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Role`
+  String get role {
+    return Intl.message(
+      'Role',
+      name: 'role',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More features coming soon...`
+  String get moreFeaturesSoon {
+    return Intl.message(
+      'More features coming soon...',
+      name: 'moreFeaturesSoon',
       desc: '',
       args: [],
     );

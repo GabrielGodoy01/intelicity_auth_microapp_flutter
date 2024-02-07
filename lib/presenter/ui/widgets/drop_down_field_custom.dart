@@ -6,6 +6,7 @@ class DropDownFieldWidget<T> extends StatelessWidget {
   final String hintText;
   final void Function(T? value)? onChanged;
   final String? Function(T?)? validation;
+  final IconData? prefixIcon;
   final List<DropdownMenuItem<T>> items;
   final T? value;
   const DropDownFieldWidget({
@@ -13,6 +14,7 @@ class DropDownFieldWidget<T> extends StatelessWidget {
     required this.hintText,
     this.value,
     this.onChanged,
+    this.prefixIcon,
     required this.items,
     this.validation,
   }) : super(key: key);
@@ -30,6 +32,7 @@ class DropDownFieldWidget<T> extends StatelessWidget {
         items: items,
         validator: validation,
         decoration: InputDecoration(
+            prefixIcon: prefixIcon == null ? null : Icon(prefixIcon),
             fillColor: AppColors.white,
             contentPadding: const EdgeInsets.symmetric(horizontal: 12),
             hintText: hintText,

@@ -50,8 +50,6 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "access": MessageLookupByLibrary.simpleMessage("Acessar"),
-        "adminPage":
-            MessageLookupByLibrary.simpleMessage("Página de administração"),
         "authErrorsSchema": m0,
         "backToLogin":
             MessageLookupByLibrary.simpleMessage("Voltar para o login"),
@@ -62,8 +60,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirme a senha"),
         "contactError": MessageLookupByLibrary.simpleMessage(
             "Erro ao enviar mensagem, tente novamente mais tarde."),
+        "createUser": MessageLookupByLibrary.simpleMessage("Criar Usuário"),
         "createUserSuccess":
             MessageLookupByLibrary.simpleMessage("Usuário criado com sucesso"),
+        "createUserText": MessageLookupByLibrary.simpleMessage(
+            "Preencha as informações do usuário a ser criado:"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emptyListErrorMessage": MessageLookupByLibrary.simpleMessage(
             "Lista vazia, itens não encontrados para essa requisição"),
@@ -85,6 +86,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Por favor, informe sua nova senha"),
         "loginSuccess":
             MessageLookupByLibrary.simpleMessage("Login bem-sucedido"),
+        "managementPage":
+            MessageLookupByLibrary.simpleMessage("Gestão de usuários"),
+        "moreFeaturesSoon":
+            MessageLookupByLibrary.simpleMessage("Mais recursos em breve..."),
         "name": MessageLookupByLibrary.simpleMessage("Nome"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Nova senha"),
         "newPasswordNeeded":
@@ -99,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "requestErrorMessage": m3,
         "resetPasswordPageText": MessageLookupByLibrary.simpleMessage(
             "Digite o e-mail que você usou para criar sua conta para que possamos enviar um código para redefinir sua senha"),
+        "role": MessageLookupByLibrary.simpleMessage("Função"),
         "send": MessageLookupByLibrary.simpleMessage("Enviar"),
         "verifyEmail":
             MessageLookupByLibrary.simpleMessage("Verifique seu e-mail")

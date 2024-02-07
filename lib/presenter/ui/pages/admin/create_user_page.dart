@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:intelicity_auth_microapp_flutter/core/auth_controller.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
 import 'package:intelicity_auth_microapp_flutter/generated/l10n.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/utils/validation_field.dart';
@@ -18,19 +19,23 @@ class CreateUserPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final CreateUserController controller = Modular.get();
+    final AuthController authController = Modular.get();
     final formKey = GlobalKey<FormState>();
+    List<RoleEnum> items = authController.user!.role == RoleEnum.ADMIN
+        ? [RoleEnum.ADMIN, RoleEnum.USER]
+        : RoleEnum.values.toList();
     return LandingPage(
       child: Form(
           key: formKey,
           child: Column(
             children: [
               Text(
-                S.of(context).verifyEmail,
+                S.of(context).createUser,
                 style: AppTextStyles.headline1,
               ),
               const SizedBox(height: 8),
               Text(
-                S.of(context).newPasswordPageText,
+                S.of(context).createUserText,
                 style: AppTextStyles.bodyText1,
                 textAlign: TextAlign.center,
               ),
@@ -55,10 +60,11 @@ class CreateUserPage extends StatelessWidget {
               const SizedBox(height: 16),
               Observer(builder: (_) {
                 return DropDownFieldWidget<RoleEnum>(
-                  hintText: S.of(context).email,
+                  hintText: S.of(context).role,
+                  prefixIcon: Icons.work,
                   onChanged: controller.setRole,
                   validation: ValidationFieldHelper.validateRole,
-                  items: RoleEnum.values.toList().map((RoleEnum value) {
+                  items: items.map((RoleEnum value) {
                     return DropdownMenuItem<RoleEnum>(
                       value: value,
                       child: Text(value.name),
@@ -66,6 +72,7 @@ class CreateUserPage extends StatelessWidget {
                   }).toList(),
                 );
               }),
+              // prefixIcon: Icons.diversity_3,
               const SizedBox(height: 16),
               Observer(builder: (_) {
                 return ButtonCustom(

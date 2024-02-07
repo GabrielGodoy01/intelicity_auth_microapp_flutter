@@ -32,7 +32,7 @@ class SuccessLoginPage extends StatelessWidget {
             onPressed: () {
               Modular.to.navigate('/admin/');
             },
-            text: S.of(context).adminPage,
+            text: S.of(context).managementPage,
           ),
         ],
       ],
