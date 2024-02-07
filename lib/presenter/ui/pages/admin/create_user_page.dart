@@ -106,7 +106,6 @@ class CreateUserPage extends StatelessWidget {
                       title: Text(group),
                       value: controller.isInGroup(group),
                       controlAffinity: ListTileControlAffinity.leading,
-                      tristate: true,
                       onChanged: (value) {
                         value!
                             ? controller.addGroup(group)
