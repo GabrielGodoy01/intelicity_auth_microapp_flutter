@@ -43,12 +43,20 @@ abstract class CreateUserControllerBase with Store {
   void addGroup(String value) {
     List<String> newGroup = List.from(groups)..add(value);
     groups = newGroup;
+    for (var element in groups) {
+      print("add:" + element);
+    }
+    print('after add: $groups');
   }
 
   @action
   void removeGroup(String value) {
     List<String> newGroup = List.from(groups)..remove(value);
     groups = newGroup;
+    for (var element in groups) {
+      print("remove:" + element);
+    }
+    print('after remove: $groups');
   }
 
   @action
@@ -62,9 +70,8 @@ abstract class CreateUserControllerBase with Store {
   @action
   bool isInGroup(String group) {
     for (var element in groups) {
-      print(element);
+      print("is in group:" + element);
     }
-    print(group);
     return groups.contains(group);
   }
 
