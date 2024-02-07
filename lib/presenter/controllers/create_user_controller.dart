@@ -61,6 +61,10 @@ abstract class CreateUserControllerBase with Store {
 
   @action
   bool isInGroup(String group) {
+    for (var element in groups) {
+      print(element);
+    }
+    print(group);
     return groups.contains(group);
   }
 
