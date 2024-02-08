@@ -52,8 +52,8 @@ abstract class CreateUserControllerBase with Store {
   }
 
   @action
-  void setGroups(String value, bool isSelected) {
-    if (isSelected) {
+  void setGroups(String value) {
+    if (!groups.contains(value)) {
       addGroup(value);
     } else {
       removeGroup(value);

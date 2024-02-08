@@ -106,8 +106,11 @@ class CreateUserPage extends StatelessWidget {
                       title: Text(group),
                       value: controller.isInGroup(group),
                       controlAffinity: ListTileControlAffinity.leading,
+                      activeColor: Colors.blue,
+                      fillColor: MaterialStateProperty.all(Colors.green),
+                      checkColor: Colors.black,
                       onChanged: (value) {
-                        controller.setGroups(group, value!);
+                        controller.setGroups(group);
                       },
                     );
                   });
