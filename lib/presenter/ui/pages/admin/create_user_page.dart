@@ -104,13 +104,10 @@ class CreateUserPage extends StatelessWidget {
                   return Observer(builder: (_) {
                     return CheckboxListTile(
                       title: Text(group),
-                      value: controller.isInGroup(group),
+                      value: controller.groups[index]['isSelected'],
                       controlAffinity: ListTileControlAffinity.leading,
-                      activeColor: Colors.blue,
-                      fillColor: MaterialStateProperty.all(Colors.green),
-                      checkColor: Colors.black,
                       onChanged: (value) {
-                        controller.setGroups(group);
+                        controller.setGroup(index);
                       },
                     );
                   });

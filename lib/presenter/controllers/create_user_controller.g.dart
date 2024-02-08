@@ -9,6 +9,14 @@ part of 'create_user_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$CreateUserController on CreateUserControllerBase, Store {
+  Computed<List<String>>? _$selectedGroupsComputed;
+
+  @override
+  List<String> get selectedGroups => (_$selectedGroupsComputed ??=
+          Computed<List<String>>(() => super.selectedGroups,
+              name: 'CreateUserControllerBase.selectedGroups'))
+      .value;
+
   late final _$emailAtom =
       Atom(name: 'CreateUserControllerBase.email', context: context);
 
@@ -61,13 +69,13 @@ mixin _$CreateUserController on CreateUserControllerBase, Store {
       Atom(name: 'CreateUserControllerBase.groups', context: context);
 
   @override
-  List<String> get groups {
+  List<Map<String, dynamic>> get groups {
     _$groupsAtom.reportRead();
     return super.groups;
   }
 
   @override
-  set groups(List<String> value) {
+  set groups(List<Map<String, dynamic>> value) {
     _$groupsAtom.reportWrite(value, super.groups, () {
       super.groups = value;
     });
@@ -126,22 +134,22 @@ mixin _$CreateUserController on CreateUserControllerBase, Store {
   }
 
   @override
-  void addGroup(String value) {
+  void initGroups() {
     final _$actionInfo = _$CreateUserControllerBaseActionController.startAction(
-        name: 'CreateUserControllerBase.addGroup');
+        name: 'CreateUserControllerBase.initGroups');
     try {
-      return super.addGroup(value);
+      return super.initGroups();
     } finally {
       _$CreateUserControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void removeGroup(String value) {
+  void setGroup(int index) {
     final _$actionInfo = _$CreateUserControllerBaseActionController.startAction(
-        name: 'CreateUserControllerBase.removeGroup');
+        name: 'CreateUserControllerBase.setGroup');
     try {
-      return super.removeGroup(value);
+      return super.setGroup(index);
     } finally {
       _$CreateUserControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -153,17 +161,6 @@ mixin _$CreateUserController on CreateUserControllerBase, Store {
         name: 'CreateUserControllerBase.clearAll');
     try {
       return super.clearAll();
-    } finally {
-      _$CreateUserControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  bool isInGroup(String group) {
-    final _$actionInfo = _$CreateUserControllerBaseActionController.startAction(
-        name: 'CreateUserControllerBase.isInGroup');
-    try {
-      return super.isInGroup(group);
     } finally {
       _$CreateUserControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -187,7 +184,8 @@ email: ${email},
 name: ${name},
 role: ${role},
 groups: ${groups},
-state: ${state}
+state: ${state},
+selectedGroups: ${selectedGroups}
     ''';
   }
 }
