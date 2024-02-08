@@ -41,12 +41,11 @@ abstract class CreateUserControllerBase with Store {
   void setRole(RoleEnum? value) => role = value;
 
   @observable
-  List<Map<String, dynamic>> groups = [];
+  ObservableList<Map<String, dynamic>> groups =
+      <Map<String, dynamic>>[].asObservable();
 
   @action
   void initGroups() {
-    groups = <Map<String, dynamic>>[];
-
     for (var group in authController.user!.groups) {
       groups.add({
         "group": group,
