@@ -57,7 +57,7 @@ class LoginPage extends StatelessWidget {
             const SizedBox(height: 8),
             TextButton(
               onPressed: () {
-                Modular.to.navigate('/forgot-password');
+                Modular.to.navigate('./forgot-password');
               },
               child: Text(
                 S.of(context).forgotPassword,

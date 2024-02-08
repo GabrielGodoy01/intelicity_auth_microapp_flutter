@@ -36,7 +36,7 @@ abstract class ForgotPasswordControllerBase with Store {
       GlobalSnackBar.error(e.message);
       return BasicErrorState(error: e);
     }, (user) {
-      Modular.to.pushNamed('./new-password/', arguments: email);
+      Modular.to.pushNamed('./new-password', arguments: email);
       return BasicInitialState();
     }));
   }
