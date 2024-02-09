@@ -104,7 +104,7 @@ class CreateUserPage extends StatelessWidget {
                   return Observer(builder: (_) {
                     return CheckboxListTile(
                       title: Text(group),
-                      value: controller.groups[index]['isSelected'],
+                      value: controller.teste,
                       controlAffinity: ListTileControlAffinity.leading,
                       onChanged: (value) {
                         controller.setTeste(value!);
