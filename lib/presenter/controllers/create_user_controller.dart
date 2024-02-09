@@ -44,6 +44,12 @@ abstract class CreateUserControllerBase with Store {
   ObservableList<Map<String, dynamic>> groups =
       <Map<String, dynamic>>[].asObservable();
 
+  @observable
+  bool teste = false;
+
+  @action
+  void setTeste(bool value) => teste = value;
+
   @action
   void initGroups() {
     for (var group in authController.user!.groups) {

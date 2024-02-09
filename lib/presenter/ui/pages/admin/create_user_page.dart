@@ -107,7 +107,7 @@ class CreateUserPage extends StatelessWidget {
                       value: controller.groups[index]['isSelected'],
                       controlAffinity: ListTileControlAffinity.leading,
                       onChanged: (value) {
-                        controller.setGroup(index);
+                        controller.setTeste(value!);
                       },
                     );
                   });

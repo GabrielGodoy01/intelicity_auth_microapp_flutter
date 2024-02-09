@@ -81,6 +81,22 @@ mixin _$CreateUserController on CreateUserControllerBase, Store {
     });
   }
 
+  late final _$testeAtom =
+      Atom(name: 'CreateUserControllerBase.teste', context: context);
+
+  @override
+  bool get teste {
+    _$testeAtom.reportRead();
+    return super.teste;
+  }
+
+  @override
+  set teste(bool value) {
+    _$testeAtom.reportWrite(value, super.teste, () {
+      super.teste = value;
+    });
+  }
+
   late final _$stateAtom =
       Atom(name: 'CreateUserControllerBase.state', context: context);
 
@@ -128,6 +144,17 @@ mixin _$CreateUserController on CreateUserControllerBase, Store {
         name: 'CreateUserControllerBase.setRole');
     try {
       return super.setRole(value);
+    } finally {
+      _$CreateUserControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setTeste(bool value) {
+    final _$actionInfo = _$CreateUserControllerBaseActionController.startAction(
+        name: 'CreateUserControllerBase.setTeste');
+    try {
+      return super.setTeste(value);
     } finally {
       _$CreateUserControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -184,6 +211,7 @@ email: ${email},
 name: ${name},
 role: ${role},
 groups: ${groups},
+teste: ${teste},
 state: ${state},
 selectedGroups: ${selectedGroups}
     ''';
