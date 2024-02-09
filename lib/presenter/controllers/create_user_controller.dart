@@ -59,6 +59,7 @@ abstract class CreateUserControllerBase with Store {
     var newGroup = groups;
     newGroup[index]['isSelected'] = !newGroup[index]['isSelected'];
     groups = newGroup;
+    groups = groups;
     print(groups);
   }
 
