@@ -41,23 +41,18 @@ abstract class CreateUserControllerBase with Store {
   void setRole(RoleEnum? value) => role = value;
 
   @observable
-  ObservableList<Map<String, dynamic>> groups =
-      <Map<String, dynamic>>[].asObservable();
-
-  @observable
-  bool teste = false;
-
-  @action
-  void setTeste(bool value) => teste = value;
+  var groups = ObservableList<Map<String, dynamic>>().asObservable();
 
   @action
   void initGroups() {
+    var newGroup = groups;
     for (var group in authController.user!.groups) {
-      groups.add({
+      newGroup.add({
         "group": group,
         "isSelected": false,
       });
     }
+    groups = newGroup;
   }
 
   @action
@@ -65,7 +60,6 @@ abstract class CreateUserControllerBase with Store {
     var newGroup = groups;
     newGroup[index]['isSelected'] = !newGroup[index]['isSelected'];
     groups = newGroup;
-    groups = groups;
     print(groups);
   }
 
