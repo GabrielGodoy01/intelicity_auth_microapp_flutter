@@ -4,6 +4,7 @@ import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/admin_create_user_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/generated/l10n.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/functions/global_snackbar.dart';
+import 'package:intelicity_auth_microapp_flutter/infra/models/group_model.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/states/basic_state.dart';
 import 'package:logger/logger.dart';
 import 'package:mobx/mobx.dart';
@@ -41,33 +42,25 @@ abstract class CreateUserControllerBase with Store {
   void setRole(RoleEnum? value) => role = value;
 
   @observable
-  var groups = ObservableList<Map<String, dynamic>>().asObservable();
+  ObservableList<GroupModel> groups = <GroupModel>[].asObservable();
 
   @action
   void initGroups() {
-    var newGroup = groups;
-    for (var group in authController.user!.groups) {
-      newGroup.add({
-        "group": group,
-        "isSelected": false,
-      });
+    for (String item in authController.user!.groups) {
+      groups.add(GroupModel(groupName: item, isSelected: false));
     }
-    groups = newGroup;
   }
 
   @action
   void setGroup(int index) {
-    var newGroup = groups;
-    newGroup[index]['isSelected'] = !newGroup[index]['isSelected'];
-    groups = newGroup;
+    groups[index].isSelected = !groups[index].isSelected;
     print(groups);
   }
 
   @computed
-  List<String> get selectedGroups => groups
-      .where((element) => element['isSelected'] == true)
-      .map((e) => e['group'])
-      .toList() as List<String>;
+  List<String> get selectedGroups =>
+      groups.where((element) => element.isSelected).map((e) => e).toList()
+          as List<String>;
 
   @action
   void clearAll() {

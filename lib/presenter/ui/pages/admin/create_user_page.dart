@@ -99,12 +99,12 @@ class CreateUserPage extends StatelessWidget {
               Observer(builder: (_) {
                 return ListView.builder(
                   shrinkWrap: true,
-                  itemCount: authController.user!.groups.length,
+                  itemCount: controller.groups.length,
                   itemBuilder: (context, index) {
-                    final group = authController.user!.groups[index];
+                    var group = controller.groups[index];
                     return CheckboxListTile(
-                      title: Text(group),
-                      value: controller.groups[index]['isSelected'],
+                      title: Text(group.groupName),
+                      value: group.isSelected,
                       controlAffinity: ListTileControlAffinity.leading,
                       onChanged: (value) {
                         controller.setGroup(index);

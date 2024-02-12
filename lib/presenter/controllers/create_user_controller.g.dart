@@ -69,13 +69,13 @@ mixin _$CreateUserController on CreateUserControllerBase, Store {
       Atom(name: 'CreateUserControllerBase.groups', context: context);
 
   @override
-  ObservableList<Map<String, dynamic>> get groups {
+  ObservableList<GroupModel> get groups {
     _$groupsAtom.reportRead();
     return super.groups;
   }
 
   @override
-  set groups(ObservableList<Map<String, dynamic>> value) {
+  set groups(ObservableList<GroupModel> value) {
     _$groupsAtom.reportWrite(value, super.groups, () {
       super.groups = value;
     });
