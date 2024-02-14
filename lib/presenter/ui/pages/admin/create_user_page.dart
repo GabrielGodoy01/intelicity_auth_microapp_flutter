@@ -26,10 +26,6 @@ class _CreateUserPageState extends State<CreateUserPage> {
   final AuthController authController = Modular.get();
   var groups = <GroupModel>[];
 
-  final _emailController = TextEditingController();
-  final _nameController = TextEditingController();
-  RoleEnum? role;
-
   @override
   void initState() {
     for (String item in authController.user!.groups) {
@@ -45,6 +41,9 @@ class _CreateUserPageState extends State<CreateUserPage> {
     List<RoleEnum> items = authController.user!.role == RoleEnum.ADMIN
         ? [RoleEnum.ADMIN, RoleEnum.USER]
         : RoleEnum.values.toList();
+    final emailController = TextEditingController();
+    final nameController = TextEditingController();
+    RoleEnum? role;
 
     return LandingPage(
       child: Form(
@@ -64,18 +63,14 @@ class _CreateUserPageState extends State<CreateUserPage> {
               const SizedBox(height: 16),
               TextFielCustom(
                 hintText: S.of(context).name,
-                onChanged: (value) {
-                  _nameController.text = value;
-                },
+                controller: nameController,
                 prefixIcon: Icons.person,
                 validation: ValidationFieldHelper.validateRequiredField,
               ),
               const SizedBox(height: 16),
               TextFielCustom(
                 hintText: S.of(context).email,
-                onChanged: (value) {
-                  _emailController.text = value;
-                },
+                controller: emailController,
                 prefixIcon: Icons.email,
                 validation: ValidationFieldHelper.validateRequiredField,
               ),
@@ -148,8 +143,8 @@ class _CreateUserPageState extends State<CreateUserPage> {
                 onPressed: () async {
                   if (formKey.currentState!.validate()) {
                     await controller.createUser(
-                        _emailController.text,
-                        _nameController.text,
+                        emailController.text,
+                        nameController.text,
                         role!,
                         groups
                             .where((element) => element.isSelected)
@@ -157,8 +152,8 @@ class _CreateUserPageState extends State<CreateUserPage> {
                             .toList());
                   }
                   setState(() {
-                    _emailController.text = '';
-                    _nameController.text = '';
+                    emailController.text = '';
+                    nameController.text = '';
                     role = null;
                     groups = <GroupModel>[];
                     for (String item in authController.user!.groups) {

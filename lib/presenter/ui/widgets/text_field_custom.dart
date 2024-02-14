@@ -11,6 +11,7 @@ class TextFielCustom extends StatelessWidget {
   final Function(String)? onChanged;
   final bool isPasswordField;
   final bool? showPassword;
+  final TextEditingController? controller;
   final Function()? changePwdVisibility;
   const TextFielCustom({
     super.key,
@@ -22,6 +23,7 @@ class TextFielCustom extends StatelessWidget {
     this.isPasswordField = false,
     this.showPassword,
     this.changePwdVisibility,
+    this.controller,
   });
 
   @override
@@ -31,6 +33,7 @@ class TextFielCustom extends StatelessWidget {
       textAlign: TextAlign.start,
       validator: validation,
       onChanged: onChanged,
+      controller: controller,
       cursorColor: AppColors.primaryPurple,
       obscureText: showPassword != null ? !showPassword! : false,
       decoration: InputDecoration(
