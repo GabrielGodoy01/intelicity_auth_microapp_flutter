@@ -5,6 +5,7 @@ import 'package:intelicity_auth_microapp_flutter/core/auth_controller.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
 import 'package:intelicity_auth_microapp_flutter/generated/l10n.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/utils/validation_field.dart';
+import 'package:intelicity_auth_microapp_flutter/infra/models/group_model.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/controllers/create_user_controller.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/states/basic_state.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/ui/pages/landing_page.dart';
@@ -14,17 +15,33 @@ import 'package:intelicity_auth_microapp_flutter/presenter/ui/widgets/text_field
 import 'package:intelicity_auth_microapp_flutter/shared/themes/app_colors.dart';
 import 'package:intelicity_auth_microapp_flutter/shared/themes/app_text_styles.dart';
 
-class CreateUserPage extends StatelessWidget {
+class CreateUserPage extends StatefulWidget {
   const CreateUserPage({super.key});
+
+  @override
+  State<CreateUserPage> createState() => _CreateUserPageState();
+}
+
+class _CreateUserPageState extends State<CreateUserPage> {
+  final AuthController authController = Modular.get();
+  var groups = [];
+
+  @override
+  void initState() {
+    for (String item in authController.user!.groups) {
+      groups.add(GroupModel(groupName: item, isSelected: false));
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final CreateUserController controller = Modular.get();
-    final AuthController authController = Modular.get();
     final formKey = GlobalKey<FormState>();
     List<RoleEnum> items = authController.user!.role == RoleEnum.ADMIN
         ? [RoleEnum.ADMIN, RoleEnum.USER]
         : RoleEnum.values.toList();
+
     return LandingPage(
       child: Form(
           key: formKey,
@@ -101,23 +118,16 @@ class CreateUserPage extends StatelessWidget {
                   shrinkWrap: true,
                   itemCount: controller.groups.length,
                   itemBuilder: (context, index) {
-                    var group = controller.groups[index];
-                    return Observer(builder: (_) {
-                      return Row(
-                        children: [
-                          Observer(builder: (_) {
-                            return Checkbox(
-                                value:
-                                    controller.selectedGroups.contains(group),
-                                onChanged: (value) {
-                                  value!
-                                      ? controller.addToSelectedGroup(group)
-                                      : controller.removeSelectedGroup(group);
-                                });
-                          })
-                        ],
-                      );
-                    });
+                    return CheckboxListTile(
+                      title: Text(groups[index].groupName),
+                      value: groups[index].isSelected,
+                      controlAffinity: ListTileControlAffinity.leading,
+                      onChanged: (value) {
+                        setState(() {
+                          groups[index].isSelected = value!;
+                        });
+                      },
+                    );
                   },
                 );
               }),

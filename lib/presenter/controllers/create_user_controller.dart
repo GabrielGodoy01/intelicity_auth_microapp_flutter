@@ -42,31 +42,25 @@ abstract class CreateUserControllerBase with Store {
   void setRole(RoleEnum? value) => role = value;
 
   @observable
-  ObservableList<String> groups = <String>[].asObservable();
-
-  @observable
-  var selectedGroups = <String>[];
+  List<GroupModel> groups = <GroupModel>[];
 
   @action
   void initGroups() {
     for (String item in authController.user!.groups) {
-      groups.add(item);
+      groups.add(GroupModel(groupName: item, isSelected: false));
     }
   }
 
   @action
-  void addToSelectedGroup(String value) {
-    var list = selectedGroups;
-    list.add(value);
-    selectedGroups = list;
+  void setGroup(int index) {
+    groups[index].isSelected = !groups[index].isSelected;
+    print(groups[0].isSelected);
   }
 
-  @action
-  void removeSelectedGroup(String value) {
-    var list = selectedGroups;
-    list.remove(value);
-    selectedGroups = list;
-  }
+  @computed
+  List<String> get selectedGroups =>
+      groups.where((element) => element.isSelected).map((e) => e).toList()
+          as List<String>;
 
   @action
   void clearAll() {
