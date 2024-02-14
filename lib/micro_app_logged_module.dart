@@ -7,7 +7,7 @@ import 'package:intelicity_auth_microapp_flutter/micro_app_admin_module.dart';
 import 'package:intelicity_auth_microapp_flutter/micro_app_auth_module.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/ui/pages/success_login_page.dart';
 
-class MicroAppLoginModule extends Module {
+class MicroAppLoggedModule extends Module {
   @override
   List<Module> get imports => [MicroAppAuthModule(amplifyconfig)];
 
