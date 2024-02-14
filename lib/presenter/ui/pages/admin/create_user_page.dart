@@ -26,6 +26,10 @@ class _CreateUserPageState extends State<CreateUserPage> {
   final AuthController authController = Modular.get();
   var groups = <GroupModel>[];
 
+  final _emailController = TextEditingController();
+  final _nameController = TextEditingController();
+  var role;
+
   @override
   void initState() {
     for (String item in authController.user!.groups) {
@@ -60,14 +64,18 @@ class _CreateUserPageState extends State<CreateUserPage> {
               const SizedBox(height: 16),
               TextFielCustom(
                 hintText: S.of(context).name,
-                onChanged: controller.setName,
+                onChanged: (value) {
+                  _nameController.text = value;
+                },
                 prefixIcon: Icons.person,
                 validation: ValidationFieldHelper.validateRequiredField,
               ),
               const SizedBox(height: 16),
               TextFielCustom(
                 hintText: S.of(context).email,
-                onChanged: controller.setEmail,
+                onChanged: (value) {
+                  _emailController.text = value;
+                },
                 prefixIcon: Icons.email,
                 validation: ValidationFieldHelper.validateRequiredField,
               ),
@@ -79,7 +87,9 @@ class _CreateUserPageState extends State<CreateUserPage> {
                       return DropDownFieldWidget<RoleEnum>(
                         hintText: S.of(context).role,
                         prefixIcon: Icons.work,
-                        onChanged: controller.setRole,
+                        onChanged: (value) {
+                          role = value;
+                        },
                         validation: ValidationFieldHelper.validateRole,
                         items: items.map((RoleEnum value) {
                           return DropdownMenuItem<RoleEnum>(
@@ -137,10 +147,14 @@ class _CreateUserPageState extends State<CreateUserPage> {
                 isLoading: controller.state is BasicLoadingState,
                 onPressed: () async {
                   if (formKey.currentState!.validate()) {
-                    await controller.createUser(groups
-                        .where((element) => element.isSelected)
-                        .map((e) => e.groupName)
-                        .toList());
+                    await controller.createUser(
+                        _emailController.text,
+                        _nameController.text,
+                        role,
+                        groups
+                            .where((element) => element.isSelected)
+                            .map((e) => e.groupName)
+                            .toList());
                   }
                 },
               ),

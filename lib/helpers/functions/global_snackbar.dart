@@ -21,12 +21,14 @@ abstract class GlobalSnackBar {
 
   static void success(String message) {
     rootScaffoldMessengerKey.currentState!.showSnackBar(SnackBar(
-      backgroundColor: AppColors.white,
-      width: 500,
+      backgroundColor: AppColors.green,
+      width: 600,
       behavior: SnackBarBehavior.floating,
       duration: const Duration(seconds: 5),
-      content: Text(message,
-          style: AppTextStyles.bodyText1.copyWith(color: AppColors.black)),
+      content: Text(
+        message,
+        style: AppTextStyles.bodyText1.copyWith(color: AppColors.white),
+      ),
     ));
   }
 }

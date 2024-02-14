@@ -21,40 +21,16 @@ abstract class CreateUserControllerBase with Store {
   CreateUserControllerBase(this._adminCreateUser);
 
   @observable
-  String email = '';
-
-  @action
-  void setEmail(String value) => email = value;
-
-  @observable
-  String name = '';
-
-  @action
-  void setName(String value) => name = value;
-
-  @observable
-  RoleEnum? role;
-
-  @action
-  void setRole(RoleEnum? value) => role = value;
-
-  @action
-  void clearAll() {
-    email = '';
-    name = '';
-    role = null;
-  }
-
-  @observable
   BasicState state = BasicInitialState();
 
   @action
   void setState(BasicState value) => state = value;
 
-  Future<void> createUser(List<String> selectedGroups) async {
+  Future<void> createUser(String email, String name, RoleEnum role,
+      List<String> selectedGroups) async {
     setState(BasicLoadingState());
     final result = await _adminCreateUser(
-        email: email, name: name, role: role!, groups: selectedGroups);
+        email: email, name: name, role: role, groups: selectedGroups);
     setState(result.fold((e) {
       logger.e(e.message);
       GlobalSnackBar.error(e.message);
