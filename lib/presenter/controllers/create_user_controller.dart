@@ -53,8 +53,9 @@ abstract class CreateUserControllerBase with Store {
 
   @action
   void setGroup(int index) {
-    groups[index].isSelected = !groups[index].isSelected;
-    print(groups[0].isSelected);
+    var newGroups = groups;
+    newGroups[index].isSelected = !newGroups[index].isSelected;
+    groups = newGroups;
   }
 
   @computed
