@@ -103,11 +103,13 @@ class CreateUserPage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     var group = controller.groups[index];
                     return CheckboxListTile(
-                      title: Text(group.groupName),
-                      value: group.isSelected,
+                      title: Text(group),
+                      value: controller.selectedGroups.contains(group),
                       controlAffinity: ListTileControlAffinity.leading,
                       onChanged: (value) {
-                        controller.setGroup(index);
+                        value!
+                            ? controller.addToSelectedGroup(group)
+                            : controller.removeSelectedGroup(group);
                       },
                     );
                   },

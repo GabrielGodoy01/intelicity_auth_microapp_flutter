@@ -9,14 +9,6 @@ part of 'create_user_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$CreateUserController on CreateUserControllerBase, Store {
-  Computed<List<String>>? _$selectedGroupsComputed;
-
-  @override
-  List<String> get selectedGroups => (_$selectedGroupsComputed ??=
-          Computed<List<String>>(() => super.selectedGroups,
-              name: 'CreateUserControllerBase.selectedGroups'))
-      .value;
-
   late final _$emailAtom =
       Atom(name: 'CreateUserControllerBase.email', context: context);
 
@@ -69,15 +61,31 @@ mixin _$CreateUserController on CreateUserControllerBase, Store {
       Atom(name: 'CreateUserControllerBase.groups', context: context);
 
   @override
-  ObservableList<GroupModel> get groups {
+  ObservableList<String> get groups {
     _$groupsAtom.reportRead();
     return super.groups;
   }
 
   @override
-  set groups(ObservableList<GroupModel> value) {
+  set groups(ObservableList<String> value) {
     _$groupsAtom.reportWrite(value, super.groups, () {
       super.groups = value;
+    });
+  }
+
+  late final _$selectedGroupsAtom =
+      Atom(name: 'CreateUserControllerBase.selectedGroups', context: context);
+
+  @override
+  List<String> get selectedGroups {
+    _$selectedGroupsAtom.reportRead();
+    return super.selectedGroups;
+  }
+
+  @override
+  set selectedGroups(List<String> value) {
+    _$selectedGroupsAtom.reportWrite(value, super.selectedGroups, () {
+      super.selectedGroups = value;
     });
   }
 
@@ -145,11 +153,22 @@ mixin _$CreateUserController on CreateUserControllerBase, Store {
   }
 
   @override
-  void setGroup(int index) {
+  void addToSelectedGroup(String value) {
     final _$actionInfo = _$CreateUserControllerBaseActionController.startAction(
-        name: 'CreateUserControllerBase.setGroup');
+        name: 'CreateUserControllerBase.addToSelectedGroup');
     try {
-      return super.setGroup(index);
+      return super.addToSelectedGroup(value);
+    } finally {
+      _$CreateUserControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void removeSelectedGroup(String value) {
+    final _$actionInfo = _$CreateUserControllerBaseActionController.startAction(
+        name: 'CreateUserControllerBase.removeSelectedGroup');
+    try {
+      return super.removeSelectedGroup(value);
     } finally {
       _$CreateUserControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -184,8 +203,8 @@ email: ${email},
 name: ${name},
 role: ${role},
 groups: ${groups},
-state: ${state},
-selectedGroups: ${selectedGroups}
+selectedGroups: ${selectedGroups},
+state: ${state}
     ''';
   }
 }
