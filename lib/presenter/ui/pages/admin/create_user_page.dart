@@ -28,7 +28,7 @@ class _CreateUserPageState extends State<CreateUserPage> {
 
   final _emailController = TextEditingController();
   final _nameController = TextEditingController();
-  var role;
+  RoleEnum? role;
 
   @override
   void initState() {
@@ -150,12 +150,22 @@ class _CreateUserPageState extends State<CreateUserPage> {
                     await controller.createUser(
                         _emailController.text,
                         _nameController.text,
-                        role,
+                        role!,
                         groups
                             .where((element) => element.isSelected)
                             .map((e) => e.groupName)
                             .toList());
                   }
+                  setState(() {
+                    _emailController.text = '';
+                    _nameController.text = '';
+                    role = null;
+                    groups = <GroupModel>[];
+                    for (String item in authController.user!.groups) {
+                      groups
+                          .add(GroupModel(groupName: item, isSelected: false));
+                    }
+                  });
                 },
               ),
             ],

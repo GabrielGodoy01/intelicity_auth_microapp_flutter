@@ -36,7 +36,6 @@ abstract class CreateUserControllerBase with Store {
       GlobalSnackBar.error(e.message);
       return BasicErrorState(error: e);
     }, (_) {
-      clearAll();
       GlobalSnackBar.success(S.current.createUserSuccess);
       return BasicInitialState();
     }));
