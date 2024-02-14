@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/core/auth_controller.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
@@ -79,22 +78,20 @@ class _CreateUserPageState extends State<CreateUserPage> {
               Row(
                 children: [
                   Expanded(
-                    child: Observer(builder: (_) {
-                      return DropDownFieldWidget<RoleEnum>(
-                        hintText: S.of(context).role,
-                        prefixIcon: Icons.work,
-                        onChanged: (value) {
-                          role = value;
-                        },
-                        validation: ValidationFieldHelper.validateRole,
-                        items: items.map((RoleEnum value) {
-                          return DropdownMenuItem<RoleEnum>(
-                            value: value,
-                            child: Text(value.typeName),
-                          );
-                        }).toList(),
-                      );
-                    }),
+                    child: DropDownFieldWidget<RoleEnum>(
+                      hintText: S.of(context).role,
+                      prefixIcon: Icons.work,
+                      onChanged: (value) {
+                        role = value;
+                      },
+                      validation: ValidationFieldHelper.validateRole,
+                      items: items.map((RoleEnum value) {
+                        return DropdownMenuItem<RoleEnum>(
+                          value: value,
+                          child: Text(value.typeName),
+                        );
+                      }).toList(),
+                    ),
                   ),
                   const SizedBox(
                     width: 8,
@@ -151,6 +148,19 @@ class _CreateUserPageState extends State<CreateUserPage> {
                             .where((element) => element.isSelected)
                             .map((e) => e.groupName)
                             .toList());
+                  }
+                  if (controller.state is BasicInitialState) {
+                    setState(() {
+                      formKey.currentState!.reset();
+                      emailController.clear();
+                      nameController.clear();
+                      role = null;
+                      groups = [];
+                      for (String item in authController.user!.groups) {
+                        groups.add(
+                            GroupModel(groupName: item, isSelected: false));
+                      }
+                    });
                   }
                 },
               ),

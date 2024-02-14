@@ -121,7 +121,7 @@ class CognitoDatasource implements IAuthDatasource {
       "groups": groups
     };
     var response = await _httpService.post('/create-user', data: data);
-    if (response.statusCode == 200) {
+    if (response.statusCode == 201) {
       return;
     }
     throw Exception();
