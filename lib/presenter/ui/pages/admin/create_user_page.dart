@@ -102,16 +102,22 @@ class CreateUserPage extends StatelessWidget {
                   itemCount: controller.groups.length,
                   itemBuilder: (context, index) {
                     var group = controller.groups[index];
-                    return CheckboxListTile(
-                      title: Text(group),
-                      value: controller.selectedGroups.contains(group),
-                      controlAffinity: ListTileControlAffinity.leading,
-                      onChanged: (value) {
-                        value!
-                            ? controller.addToSelectedGroup(group)
-                            : controller.removeSelectedGroup(group);
-                      },
-                    );
+                    return Observer(builder: (_) {
+                      return Row(
+                        children: [
+                          Observer(builder: (_) {
+                            return Checkbox(
+                                value:
+                                    controller.selectedGroups.contains(group),
+                                onChanged: (value) {
+                                  value!
+                                      ? controller.addToSelectedGroup(group)
+                                      : controller.removeSelectedGroup(group);
+                                });
+                          })
+                        ],
+                      );
+                    });
                   },
                 );
               }),
