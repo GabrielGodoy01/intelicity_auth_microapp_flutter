@@ -21,7 +21,7 @@ abstract class GlobalSnackBar {
 
   static void success(String message) {
     rootScaffoldMessengerKey.currentState!.showSnackBar(SnackBar(
-      backgroundColor: AppColors.red,
+      backgroundColor: AppColors.green,
       width: 600,
       behavior: SnackBarBehavior.floating,
       duration: const Duration(seconds: 5),
