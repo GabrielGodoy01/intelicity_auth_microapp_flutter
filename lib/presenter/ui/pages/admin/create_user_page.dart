@@ -25,25 +25,26 @@ class CreateUserPage extends StatefulWidget {
 class _CreateUserPageState extends State<CreateUserPage> {
   final AuthController authController = Modular.get();
   var groups = <GroupModel>[];
+  final emailController = TextEditingController();
+  final nameController = TextEditingController();
+  RoleEnum? role;
+
+  final formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
+    super.initState();
     for (String item in authController.user!.groups) {
       groups.add(GroupModel(groupName: item, isSelected: false));
     }
-    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     final CreateUserController controller = Modular.get();
-    final formKey = GlobalKey<FormState>();
     List<RoleEnum> items = authController.user!.role == RoleEnum.ADMIN
         ? [RoleEnum.ADMIN, RoleEnum.USER]
         : RoleEnum.values.toList();
-    final emailController = TextEditingController();
-    final nameController = TextEditingController();
-    RoleEnum? role;
 
     return LandingPage(
       child: Form(
@@ -151,16 +152,6 @@ class _CreateUserPageState extends State<CreateUserPage> {
                             .map((e) => e.groupName)
                             .toList());
                   }
-                  setState(() {
-                    emailController.text = '';
-                    nameController.text = '';
-                    role = null;
-                    groups = <GroupModel>[];
-                    for (String item in authController.user!.groups) {
-                      groups
-                          .add(GroupModel(groupName: item, isSelected: false));
-                    }
-                  });
                 },
               ),
             ],
