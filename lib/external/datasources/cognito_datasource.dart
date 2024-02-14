@@ -120,7 +120,7 @@ class CognitoDatasource implements IAuthDatasource {
       "role": role.name,
       "groups": groups
     };
-    var response = await _httpService.post('/admin-create-user', data: data);
+    var response = await _httpService.post('/create-user', data: data);
     if (response.statusCode == 200) {
       return;
     }
