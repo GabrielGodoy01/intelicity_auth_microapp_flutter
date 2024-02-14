@@ -120,6 +120,7 @@ class _CreateUserPageState extends State<CreateUserPage> {
                   return CheckboxListTile(
                     title: Text(groups[index].groupName),
                     value: groups[index].isSelected,
+                    activeColor: AppColors.primaryPurple,
                     controlAffinity: ListTileControlAffinity.leading,
                     onChanged: (value) {
                       setState(() {
@@ -131,20 +132,18 @@ class _CreateUserPageState extends State<CreateUserPage> {
               ),
               // prefixIcon: Icons.diversity_3,
               const SizedBox(height: 16),
-              Observer(builder: (_) {
-                return ButtonCustom(
-                  text: S.of(context).register,
-                  isLoading: controller.state is BasicLoadingState,
-                  onPressed: () async {
-                    if (formKey.currentState!.validate()) {
-                      await controller.createUser(groups
-                          .where((element) => element.isSelected)
-                          .map((e) => e.groupName)
-                          .toList());
-                    }
-                  },
-                );
-              }),
+              ButtonCustom(
+                text: S.of(context).register,
+                isLoading: controller.state is BasicLoadingState,
+                onPressed: () async {
+                  if (formKey.currentState!.validate()) {
+                    await controller.createUser(groups
+                        .where((element) => element.isSelected)
+                        .map((e) => e.groupName)
+                        .toList());
+                  }
+                },
+              ),
             ],
           )),
     );
