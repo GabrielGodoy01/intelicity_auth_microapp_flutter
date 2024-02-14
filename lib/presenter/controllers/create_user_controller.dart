@@ -4,7 +4,6 @@ import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/admin_create_user_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/generated/l10n.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/functions/global_snackbar.dart';
-import 'package:intelicity_auth_microapp_flutter/infra/models/group_model.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/states/basic_state.dart';
 import 'package:logger/logger.dart';
 import 'package:mobx/mobx.dart';
@@ -19,9 +18,7 @@ abstract class CreateUserControllerBase with Store {
   var authController = Modular.get<AuthController>();
   final IAdminCreateUserUsecase _adminCreateUser;
 
-  CreateUserControllerBase(this._adminCreateUser) {
-    initGroups();
-  }
+  CreateUserControllerBase(this._adminCreateUser);
 
   @observable
   String email = '';
@@ -41,33 +38,11 @@ abstract class CreateUserControllerBase with Store {
   @action
   void setRole(RoleEnum? value) => role = value;
 
-  @observable
-  List<GroupModel> groups = <GroupModel>[];
-
-  @action
-  void initGroups() {
-    for (String item in authController.user!.groups) {
-      groups.add(GroupModel(groupName: item, isSelected: false));
-    }
-  }
-
-  @action
-  void setGroup(int index) {
-    groups[index].isSelected = !groups[index].isSelected;
-    print(groups[0].isSelected);
-  }
-
-  @computed
-  List<String> get selectedGroups =>
-      groups.where((element) => element.isSelected).map((e) => e).toList()
-          as List<String>;
-
   @action
   void clearAll() {
     email = '';
     name = '';
     role = null;
-    initGroups();
   }
 
   @observable
@@ -76,7 +51,7 @@ abstract class CreateUserControllerBase with Store {
   @action
   void setState(BasicState value) => state = value;
 
-  Future<void> createUser() async {
+  Future<void> createUser(List<String> selectedGroups) async {
     setState(BasicLoadingState());
     final result = await _adminCreateUser(
         email: email, name: name, role: role!, groups: selectedGroups);

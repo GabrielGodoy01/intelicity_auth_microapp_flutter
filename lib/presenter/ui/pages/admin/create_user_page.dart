@@ -24,7 +24,7 @@ class CreateUserPage extends StatefulWidget {
 
 class _CreateUserPageState extends State<CreateUserPage> {
   final AuthController authController = Modular.get();
-  var groups = [];
+  var groups = <GroupModel>[];
 
   @override
   void initState() {
@@ -113,24 +113,22 @@ class _CreateUserPageState extends State<CreateUserPage> {
                 ),
               ),
               const SizedBox(height: 8),
-              Observer(builder: (_) {
-                return ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: controller.groups.length,
-                  itemBuilder: (context, index) {
-                    return CheckboxListTile(
-                      title: Text(groups[index].groupName),
-                      value: groups[index].isSelected,
-                      controlAffinity: ListTileControlAffinity.leading,
-                      onChanged: (value) {
-                        setState(() {
-                          groups[index].isSelected = value!;
-                        });
-                      },
-                    );
-                  },
-                );
-              }),
+              ListView.builder(
+                shrinkWrap: true,
+                itemCount: groups.length,
+                itemBuilder: (context, index) {
+                  return CheckboxListTile(
+                    title: Text(groups[index].groupName),
+                    value: groups[index].isSelected,
+                    controlAffinity: ListTileControlAffinity.leading,
+                    onChanged: (value) {
+                      setState(() {
+                        groups[index].isSelected = value!;
+                      });
+                    },
+                  );
+                },
+              ),
               // prefixIcon: Icons.diversity_3,
               const SizedBox(height: 16),
               Observer(builder: (_) {
@@ -139,7 +137,10 @@ class _CreateUserPageState extends State<CreateUserPage> {
                   isLoading: controller.state is BasicLoadingState,
                   onPressed: () async {
                     if (formKey.currentState!.validate()) {
-                      await controller.createUser();
+                      await controller.createUser(groups
+                          .where((element) => element.isSelected)
+                          .map((e) => e.groupName)
+                          .toList());
                     }
                   },
                 );

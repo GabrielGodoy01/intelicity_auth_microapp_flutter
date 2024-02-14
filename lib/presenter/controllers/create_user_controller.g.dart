@@ -9,14 +9,6 @@ part of 'create_user_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$CreateUserController on CreateUserControllerBase, Store {
-  Computed<List<String>>? _$selectedGroupsComputed;
-
-  @override
-  List<String> get selectedGroups => (_$selectedGroupsComputed ??=
-          Computed<List<String>>(() => super.selectedGroups,
-              name: 'CreateUserControllerBase.selectedGroups'))
-      .value;
-
   late final _$emailAtom =
       Atom(name: 'CreateUserControllerBase.email', context: context);
 
@@ -62,22 +54,6 @@ mixin _$CreateUserController on CreateUserControllerBase, Store {
   set role(RoleEnum? value) {
     _$roleAtom.reportWrite(value, super.role, () {
       super.role = value;
-    });
-  }
-
-  late final _$groupsAtom =
-      Atom(name: 'CreateUserControllerBase.groups', context: context);
-
-  @override
-  List<GroupModel> get groups {
-    _$groupsAtom.reportRead();
-    return super.groups;
-  }
-
-  @override
-  set groups(List<GroupModel> value) {
-    _$groupsAtom.reportWrite(value, super.groups, () {
-      super.groups = value;
     });
   }
 
@@ -134,28 +110,6 @@ mixin _$CreateUserController on CreateUserControllerBase, Store {
   }
 
   @override
-  void initGroups() {
-    final _$actionInfo = _$CreateUserControllerBaseActionController.startAction(
-        name: 'CreateUserControllerBase.initGroups');
-    try {
-      return super.initGroups();
-    } finally {
-      _$CreateUserControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setGroup(int index) {
-    final _$actionInfo = _$CreateUserControllerBaseActionController.startAction(
-        name: 'CreateUserControllerBase.setGroup');
-    try {
-      return super.setGroup(index);
-    } finally {
-      _$CreateUserControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void clearAll() {
     final _$actionInfo = _$CreateUserControllerBaseActionController.startAction(
         name: 'CreateUserControllerBase.clearAll');
@@ -183,9 +137,7 @@ mixin _$CreateUserController on CreateUserControllerBase, Store {
 email: ${email},
 name: ${name},
 role: ${role},
-groups: ${groups},
-state: ${state},
-selectedGroups: ${selectedGroups}
+state: ${state}
     ''';
   }
 }
