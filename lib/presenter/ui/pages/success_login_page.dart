@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:intelicity_auth_microapp_flutter/core/auth_controller.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
 import 'package:intelicity_auth_microapp_flutter/generated/l10n.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/ui/pages/landing_page.dart';
@@ -14,6 +15,7 @@ class SuccessLoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthController authController = Modular.get();
     return LandingPage(
         child: Column(
       children: [
@@ -35,6 +37,13 @@ class SuccessLoginPage extends StatelessWidget {
             text: S.of(context).managementPage,
           ),
         ],
+        ButtonCustom(
+          onPressed: () async {
+            await authController.signOut();
+            Modular.to.navigate('/login/');
+          },
+          text: S.of(context).logout,
+        ),
       ],
     ));
   }

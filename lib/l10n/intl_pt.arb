@@ -27,6 +27,8 @@
     "role": "Função",
     "moreFeaturesSoon": "Mais recursos em breve...",
     "roleSchema": "{schema, select, INTELICITY{Intelicity} ADMIN{Administrador} other{Colaborador}}",
+    "logout": "Sair",
+
 
     "fieldRequired": "Campo é obrigatório",
     "fieldEmailInvalid": "Email inválido",
