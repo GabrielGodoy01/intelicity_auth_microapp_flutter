@@ -24,6 +24,8 @@ dependencies:
   intl: ^0.18.1
   google_fonts: ^6.1.0
   dio: ^5.4.0
+  syncfusion_flutter_datagrid: ^24.2.7
+  syncfusion_flutter_core: ^24.2.7
 
 dev_dependencies:
   flutter_test:

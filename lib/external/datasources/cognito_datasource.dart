@@ -129,7 +129,10 @@ class CognitoDatasource implements IAuthDatasource {
 
   @override
   Future<List<UserDto>> getListUsersInGroup({required String group}) async {
-    var response = await _httpService.get('/get-users-in-group?group=$group');
+    var response =
+        await _httpService.get('/get-users-in-group', queryParameters: {
+      "group": group,
+    });
     if (response.statusCode == 200) {
       return UserDto.fromMaps(response.data["users"]);
     }

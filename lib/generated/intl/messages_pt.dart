@@ -93,6 +93,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginSuccess":
             MessageLookupByLibrary.simpleMessage("Login bem-sucedido"),
         "logout": MessageLookupByLibrary.simpleMessage("Sair"),
+        "manageUsers":
+            MessageLookupByLibrary.simpleMessage("Gerenciar Usuários"),
         "managementPage":
             MessageLookupByLibrary.simpleMessage("Gestão de usuários"),
         "moreFeaturesSoon":

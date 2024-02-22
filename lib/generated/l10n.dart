@@ -260,6 +260,16 @@ class S {
     );
   }
 
+  /// `Manage Users`
+  String get manageUsers {
+    return Intl.message(
+      'Manage Users',
+      name: 'manageUsers',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `User created successfully`
   String get createUserSuccess {
     return Intl.message(

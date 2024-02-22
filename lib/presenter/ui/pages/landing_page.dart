@@ -3,7 +3,8 @@ import 'package:intelicity_auth_microapp_flutter/shared/themes/app_colors.dart';
 
 class LandingPage extends StatelessWidget {
   final Widget child;
-  const LandingPage({super.key, required this.child});
+  final double maxWidth;
+  const LandingPage({super.key, required this.child, this.maxWidth = 600});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class LandingPage extends StatelessWidget {
         ),
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 600),
+            constraints: BoxConstraints(maxWidth: maxWidth),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Card(

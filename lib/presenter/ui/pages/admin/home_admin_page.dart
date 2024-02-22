@@ -26,6 +26,14 @@ class HomeAdminPage extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           ButtonCustom(
+            text: S.of(context).manageUsers,
+            isLoading: false,
+            onPressed: () async {
+              Modular.to.pushNamed('./users-management/');
+            },
+          ),
+          const SizedBox(height: 16),
+          ButtonCustom(
             text: S.of(context).registerUser,
             isLoading: false,
             onPressed: () async {

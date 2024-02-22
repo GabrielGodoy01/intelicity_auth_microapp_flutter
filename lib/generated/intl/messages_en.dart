@@ -88,6 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please, enter your new password"),
         "loginSuccess": MessageLookupByLibrary.simpleMessage("Login success"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "manageUsers": MessageLookupByLibrary.simpleMessage("Manage Users"),
         "managementPage":
             MessageLookupByLibrary.simpleMessage("User Management Page"),
         "moreFeaturesSoon": MessageLookupByLibrary.simpleMessage(

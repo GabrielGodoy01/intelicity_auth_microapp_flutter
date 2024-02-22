@@ -20,6 +20,7 @@
     "goToHome": "Ir para a página inicial",
     "managementPage": "Gestão de usuários",
     "registerUser": "Registrar Usuário",
+    "manageUsers": "Gerenciar Usuários",
     "createUserSuccess": "Usuário criado com sucesso",
     "name": "Nome",
     "createUser": "Criar Usuário",
