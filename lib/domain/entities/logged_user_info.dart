@@ -1,3 +1,4 @@
+import 'package:intelicity_auth_microapp_flutter/domain/enum/group_enum.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
 
 class LoggedUserInfo {
@@ -5,7 +6,7 @@ class LoggedUserInfo {
   final String name;
   final String sub;
   final RoleEnum role;
-  final List<String> groups;
+  final List<GroupEnum> groups;
   final String accessToken;
   final String refreshToken;
   final String idToken;

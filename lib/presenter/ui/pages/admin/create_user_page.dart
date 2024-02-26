@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/core/auth_controller.dart';
+import 'package:intelicity_auth_microapp_flutter/domain/enum/group_enum.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
 import 'package:intelicity_auth_microapp_flutter/generated/l10n.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/utils/validation_field.dart';
@@ -33,7 +34,7 @@ class _CreateUserPageState extends State<CreateUserPage> {
   @override
   void initState() {
     super.initState();
-    for (String item in authController.user!.groups) {
+    for (GroupEnum item in authController.user!.groups) {
       groups.add(GroupModel(groupName: item, isSelected: false));
     }
   }
@@ -121,7 +122,7 @@ class _CreateUserPageState extends State<CreateUserPage> {
                 itemCount: groups.length,
                 itemBuilder: (context, index) {
                   return CheckboxListTile(
-                    title: Text(groups[index].groupName),
+                    title: Text(groups[index].groupName.name),
                     value: groups[index].isSelected,
                     activeColor: AppColors.primaryPurple,
                     controlAffinity: ListTileControlAffinity.leading,
@@ -146,7 +147,7 @@ class _CreateUserPageState extends State<CreateUserPage> {
                         role!,
                         groups
                             .where((element) => element.isSelected)
-                            .map((e) => e.groupName)
+                            .map((e) => e.groupName.name)
                             .toList());
                   }
                   if (controller.state is BasicInitialState) {
@@ -156,7 +157,7 @@ class _CreateUserPageState extends State<CreateUserPage> {
                       nameController.clear();
                       role = null;
                       groups = [];
-                      for (String item in authController.user!.groups) {
+                      for (GroupEnum item in authController.user!.groups) {
                         groups.add(
                             GroupModel(groupName: item, isSelected: false));
                       }

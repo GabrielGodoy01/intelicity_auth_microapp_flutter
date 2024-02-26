@@ -25,4 +25,10 @@ abstract class IAuthRepository {
   Future<Either<Failure, List<UserInfo>>> listUsersInGroup({
     required String group,
   });
+  Future<Either<Failure, UserInfo>> adminUpdateUser({
+    required String email,
+    required String name,
+    required RoleEnum role,
+    required List<String> groups,
+  });
 }

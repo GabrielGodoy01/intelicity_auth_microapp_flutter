@@ -1,6 +1,7 @@
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:intelicity_auth_microapp_flutter/domain/enum/group_enum.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/errors/auth_errors.dart';
 import 'package:intelicity_auth_microapp_flutter/infra/datasource/auth_datasource_interface.dart';
@@ -42,7 +43,9 @@ class CognitoDatasource implements IAuthDatasource {
       name: session.userPoolTokensResult.value.idToken.name!,
       idToken: session.userPoolTokensResult.value.idToken.raw,
       refreshToken: session.userPoolTokensResult.value.refreshToken,
-      groups: session.userPoolTokensResult.value.idToken.groups,
+      groups: session.userPoolTokensResult.value.idToken.groups
+          .map((e) => GroupEnum.stringToEnum(e))
+          .toList(),
     );
   }
 
@@ -79,7 +82,9 @@ class CognitoDatasource implements IAuthDatasource {
         name: session.userPoolTokensResult.value.idToken.name!,
         idToken: session.userPoolTokensResult.value.idToken.raw,
         refreshToken: session.userPoolTokensResult.value.refreshToken,
-        groups: session.userPoolTokensResult.value.idToken.groups,
+        groups: session.userPoolTokensResult.value.idToken.groups
+            .map((e) => GroupEnum.stringToEnum(e))
+            .toList(),
       );
     } on AuthException catch (e) {
       logger.d('Error retrieving auth session: ${e.message}');
@@ -134,6 +139,25 @@ class CognitoDatasource implements IAuthDatasource {
     });
     if (response.statusCode == 200) {
       return UserDto.fromMaps(response.data["users"]);
+    }
+    throw Exception();
+  }
+
+  @override
+  Future<UserDto> adminUpdateUser(
+      {required String email,
+      required String name,
+      required RoleEnum role,
+      required List<String> groups}) async {
+    var response = await _httpService.post('/update-user', data: {
+      "email": email,
+      "name": name,
+      "role": role.name,
+      "groups": groups
+    });
+
+    if (response.statusCode == 200) {
+      return UserDto.fromMap(response.data["user"]);
     }
     throw Exception();
   }

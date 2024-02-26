@@ -1,4 +1,5 @@
 import 'package:intelicity_auth_microapp_flutter/domain/entities/user_info.dart';
+import 'package:intelicity_auth_microapp_flutter/domain/enum/group_enum.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
 
 class UserDto extends UserInfo {
@@ -17,11 +18,23 @@ class UserDto extends UserInfo {
       name: json['name'],
       role:
           RoleEnum.values.firstWhere((element) => element.name == json['role']),
-      groups: List<String>.from(json['groups']),
+      groups: (json['groups'] as List<String>)
+          .map((e) => GroupEnum.stringToEnum(e))
+          .toList(),
     );
   }
 
   static List<UserDto> fromMaps(List array) {
     return array.map((e) => UserDto.fromMap(e)).toList();
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'email': email,
+      'sub': sub,
+      'name': name,
+      'role': role.name,
+      'groups': groups,
+    };
   }
 }

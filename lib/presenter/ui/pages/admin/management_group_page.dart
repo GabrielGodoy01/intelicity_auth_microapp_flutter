@@ -23,7 +23,7 @@ class ManagementGroupPage extends StatefulWidget {
 class _ManagementGroupPageState extends State<ManagementGroupPage> {
   ManagementGroupController controller = Modular.get();
   final DataGridController _dataGridController = DataGridController();
-  final int _rowsPerPage = 30;
+  final int _rowsPerPage = 10;
   final double _dataPagerHeight = 60.0;
 
   @override

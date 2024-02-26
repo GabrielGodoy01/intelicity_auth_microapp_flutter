@@ -165,4 +165,24 @@ class AuthRepositoryCognito implements IAuthRepository {
       return Left(ErrorRequest(message: errorType.errorMessage));
     }
   }
+
+  @override
+  Future<Either<Failure, UserInfo>> adminUpdateUser(
+      {required String email,
+      required String name,
+      required RoleEnum role,
+      required List<String> groups}) async {
+    try {
+      return Right(await datasource.adminUpdateUser(
+        email: email,
+        name: name,
+        role: role,
+        groups: groups,
+      ));
+    } on DioException catch (e) {
+      HttpStatusCodeEnum errorType = getHttpStatusFunction(
+          e.response?.statusCode ?? HttpStatus.badRequest);
+      return Left(ErrorRequest(message: errorType.errorMessage));
+    }
+  }
 }

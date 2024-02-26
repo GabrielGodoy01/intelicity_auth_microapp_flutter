@@ -1,3 +1,4 @@
+import 'package:intelicity_auth_microapp_flutter/domain/enum/group_enum.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
 
 class UserInfo {
@@ -5,7 +6,7 @@ class UserInfo {
   final String name;
   final String sub;
   final RoleEnum role;
-  final List<String> groups;
+  final List<GroupEnum> groups;
 
   UserInfo({
     required this.email,

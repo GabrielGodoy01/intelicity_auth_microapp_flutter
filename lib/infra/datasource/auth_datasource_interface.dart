@@ -21,4 +21,10 @@ abstract class IAuthDatasource {
   });
 
   Future<List<UserDto>> getListUsersInGroup({required String group});
+  Future<UserDto> adminUpdateUser({
+    required String email,
+    required String name,
+    required RoleEnum role,
+    required List<String> groups,
+  });
 }
