@@ -6,7 +6,7 @@ import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
 import 'package:intelicity_auth_microapp_flutter/generated/l10n.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/utils/validation_field.dart';
 import 'package:intelicity_auth_microapp_flutter/infra/models/group_model.dart';
-import 'package:intelicity_auth_microapp_flutter/presenter/controllers/create_user_controller.dart';
+import 'package:intelicity_auth_microapp_flutter/presenter/controllers/admin/create_user_controller.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/states/basic_state.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/ui/pages/landing_page.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/ui/widgets/button_custom.dart';
