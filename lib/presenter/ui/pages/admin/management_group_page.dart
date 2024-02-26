@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:intelicity_auth_microapp_flutter/core/auth_controller.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/entities/user_info.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
 import 'package:intelicity_auth_microapp_flutter/generated/l10n.dart';
@@ -137,6 +138,7 @@ class ObraDataSourceTable extends DataGridSource {
 
   @override
   DataGridRowAdapter? buildRow(DataGridRow row) {
+    AuthController authController = Modular.get();
     return DataGridRowAdapter(
         cells: row.getCells().map<Widget>((dataGridCell) {
       return Container(
@@ -146,15 +148,27 @@ class ObraDataSourceTable extends DataGridSource {
                 return IconButton(
                     padding: EdgeInsets.zero,
                     onPressed: () {
-                      (dataGridCell.value as UserInfo).role == RoleEnum.USER
-                          ? showDialog(
-                              context: context,
-                              builder: (context) => UpdateUserDialog(
-                                user: dataGridCell.value,
-                              ),
-                            )
-                          : GlobalSnackBar.error(
-                              S.current.adminDontUpdateAdmin);
+                      final selectedUserRole =
+                          (dataGridCell.value as UserInfo).role;
+                      final authenticatedUserRole = authController.user!.role;
+
+                      final isUserAdmin =
+                          authenticatedUserRole == RoleEnum.ADMIN;
+
+                      final isUserRoleAdminOrIntellicity =
+                          selectedUserRole == RoleEnum.ADMIN ||
+                              selectedUserRole == RoleEnum.INTELICITY;
+
+                      if (isUserRoleAdminOrIntellicity && isUserAdmin) {
+                        GlobalSnackBar.error(S.current.adminDontUpdateAdmin);
+                      } else {
+                        showDialog(
+                          context: context,
+                          builder: (context) => UpdateUserDialog(
+                            user: dataGridCell.value,
+                          ),
+                        );
+                      }
                     },
                     icon: Icon(
                       Icons.edit,
