@@ -8,7 +8,7 @@ class AuthInterceptor extends Interceptor {
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     if (authController.user != null) {
       options.headers['Authorization'] =
-          'Bearer ${authController.user!.idToken}';
+          'Bearer ${authController.user!.accessToken}';
     }
     return handler.next(options);
   }
