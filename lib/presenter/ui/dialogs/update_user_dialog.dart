@@ -35,10 +35,13 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
   void initState() {
     super.initState();
     nameController.text = widget.user.name;
-    role = widget.user.role;
-    for (GroupEnum item in authController.user!.groups) {
-      groups.add(GroupModel(groupName: item, isSelected: false));
-    }
+    setState(() {
+      for (GroupEnum item in GroupEnum.values) {
+        groups.add(GroupModel(
+            groupName: item, isSelected: widget.user.groups.contains(item)));
+      }
+      role = widget.user.role;
+    });
   }
 
   @override
