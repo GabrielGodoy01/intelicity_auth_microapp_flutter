@@ -29,6 +29,7 @@
     "moreFeaturesSoon": "More features coming soon...",
     "roleSchema": "{schema, select, INTELICITY{Intelicity} ADMIN{Administrator} other{Collaborator}}",
     "logout": "Logout",
+    "updateUser": "Update User",
 
     "fieldRequired": "Required field",
     "fieldEmailInvalid": "Invalid email",

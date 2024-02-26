@@ -355,6 +355,16 @@ class S {
     );
   }
 
+  /// `Update User`
+  String get updateUser {
+    return Intl.message(
+      'Update User',
+      name: 'updateUser',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Required field`
   String get fieldRequired {
     return Intl.message(

@@ -29,6 +29,7 @@
     "moreFeaturesSoon": "Mais recursos em breve...",
     "roleSchema": "{schema, select, INTELICITY{Intelicity} ADMIN{Administrador} other{Colaborador}}",
     "logout": "Sair",
+    "updateUser": "Atualizar Usuário",
 
 
     "fieldRequired": "Campo é obrigatório",
