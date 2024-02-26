@@ -43,46 +43,49 @@ class _ManagementGroupPageState extends State<ManagementGroupPage> {
                 ? LayoutBuilder(builder: (context, constraints) {
                     var obraTableDataSource = ObraDataSourceTable(
                         users: state.users, context: context);
-                    return Column(
-                      children: [
-                        SizedBox(
-                          height: ScreenHelper.height(context) * 0.8,
-                          child: SfDataGrid(
-                            controller: _dataGridController,
-                            allowSorting: true,
-                            allowMultiColumnSorting: true,
-                            columnWidthMode: ColumnWidthMode.lastColumnFill,
-                            rowHeight: 80,
-                            selectionMode: SelectionMode.multiple,
-                            source: obraTableDataSource,
-                            columns: [
-                              _getColumn('id', 'ID'),
-                              _getColumn('fonte', 'Fonte'),
-                              _getColumn('status', 'Status'),
-                              _getColumn('via', 'Via'),
-                              _getColumn('de', 'De'),
-                              _getColumn('ate', 'Até'),
-                              _getColumn('subprefeitura', 'Subprefeitura'),
-                              _getColumn('dataTermino', 'Data Término'),
-                              _getColumn('statusGeometria', 'Status Geometria'),
-                              _getColumn('edit', null),
-                            ],
+                    return SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: ScreenHelper.height(context) * 0.8,
+                            child: SfDataGrid(
+                              controller: _dataGridController,
+                              allowSorting: true,
+                              allowMultiColumnSorting: true,
+                              columnWidthMode: ColumnWidthMode.lastColumnFill,
+                              rowHeight: 80,
+                              selectionMode: SelectionMode.multiple,
+                              source: obraTableDataSource,
+                              columns: [
+                                _getColumn('id', 'ID'),
+                                _getColumn('fonte', 'Fonte'),
+                                _getColumn('status', 'Status'),
+                                _getColumn('via', 'Via'),
+                                _getColumn('de', 'De'),
+                                _getColumn('ate', 'Até'),
+                                _getColumn('subprefeitura', 'Subprefeitura'),
+                                _getColumn('dataTermino', 'Data Término'),
+                                _getColumn(
+                                    'statusGeometria', 'Status Geometria'),
+                                _getColumn('edit', null),
+                              ],
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                            height: _dataPagerHeight,
-                            child: SfDataPagerTheme(
-                              data: SfDataPagerThemeData(
-                                selectedItemColor: AppColors.primaryPurple,
-                                backgroundColor: Colors.white,
-                              ),
-                              child: SfDataPager(
-                                delegate: obraTableDataSource,
-                                pageCount: state.users.length / _rowsPerPage,
-                                direction: Axis.horizontal,
-                              ),
-                            ))
-                      ],
+                          SizedBox(
+                              height: _dataPagerHeight,
+                              child: SfDataPagerTheme(
+                                data: SfDataPagerThemeData(
+                                  selectedItemColor: AppColors.primaryPurple,
+                                  backgroundColor: Colors.white,
+                                ),
+                                child: SfDataPager(
+                                  delegate: obraTableDataSource,
+                                  pageCount: state.users.length / _rowsPerPage,
+                                  direction: Axis.horizontal,
+                                ),
+                              ))
+                        ],
+                      ),
                     );
                   })
                 : const Center(child: CircularProgressIndicator());
