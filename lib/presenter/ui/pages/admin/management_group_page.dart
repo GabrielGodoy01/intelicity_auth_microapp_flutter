@@ -51,7 +51,7 @@ class _ManagementGroupPageState extends State<ManagementGroupPage> {
                               controller: _dataGridController,
                               allowSorting: true,
                               allowMultiColumnSorting: true,
-                              columnWidthMode: ColumnWidthMode.lastColumnFill,
+                              columnWidthMode: ColumnWidthMode.auto,
                               rowHeight: 80,
                               selectionMode: SelectionMode.multiple,
                               source: obraTableDataSource,
@@ -69,7 +69,7 @@ class _ManagementGroupPageState extends State<ManagementGroupPage> {
                               child: SfDataPagerTheme(
                                 data: SfDataPagerThemeData(
                                   selectedItemColor: AppColors.primaryPurple,
-                                  backgroundColor: Colors.white,
+                                  backgroundColor: AppColors.white,
                                 ),
                                 child: SfDataPager(
                                   delegate: obraTableDataSource,
