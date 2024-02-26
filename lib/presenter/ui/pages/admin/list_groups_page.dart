@@ -14,8 +14,9 @@ class ListGroupPage extends StatelessWidget {
           children: authController.user!.groups
               .map((e) => InkWell(
                     onTap: () {
-                      Modular.to
-                          .pushNamed('./users-management/group/', arguments: e);
+                      Modular.to.pushNamed(
+                          '/logged/admin/users-management/group/',
+                          arguments: e);
                     },
                     child: Container(
                       margin: const EdgeInsets.all(8),
