@@ -10,16 +10,19 @@ class DioHttpRequest implements IHttpRequest {
   @override
   Future<Response> get(String url,
       {Map<String, dynamic>? queryParameters}) async {
+    _dio.interceptors.add(AuthInterceptor());
     return _dio.get(url, queryParameters: queryParameters);
   }
 
   @override
   Future<Response> post(String url, {dynamic data}) async {
+    _dio.interceptors.add(AuthInterceptor());
     return _dio.post(url, data: data);
   }
 
   @override
   Future<Response> put(String url, {dynamic data}) async {
+    _dio.interceptors.add(AuthInterceptor());
     return _dio.put(url, data: data);
   }
 }
