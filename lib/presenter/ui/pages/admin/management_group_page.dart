@@ -146,7 +146,6 @@ class ObraDataSourceTable extends DataGridSource {
                     onPressed: () {
                       showDialog(
                         context: context,
-                        barrierDismissible: false,
                         builder: (context) => UpdateUserDialog(
                           user: dataGridCell.value,
                         ),
