@@ -5,7 +5,7 @@ import 'package:intelicity_auth_microapp_flutter/shared/helpers/services/dio/opt
 import '../http/http_request_interface.dart';
 
 class DioHttpRequest implements IHttpRequest {
-  final Dio _dio = Dio(baseOptions)..interceptors.add(AuthInterceptor());
+  final Dio _dio = Dio(baseOptions);
 
   @override
   Future<Response> get(String url,
