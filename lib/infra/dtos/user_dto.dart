@@ -13,7 +13,7 @@ class UserDto extends UserInfo {
   factory UserDto.fromMap(Map<String, dynamic> json) {
     return UserDto(
       email: json['email'],
-      sub: json['sub'],
+      sub: '123',
       name: json['name'],
       role:
           RoleEnum.values.firstWhere((element) => element.name == json['role']),
