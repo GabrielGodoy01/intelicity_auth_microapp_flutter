@@ -1,3 +1,4 @@
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/list_users_in_group_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/states/management_group_state.dart';
 import 'package:mobx/mobx.dart';
@@ -9,9 +10,9 @@ class ManagementGroupController = ManagementGroupControllerBase
 
 abstract class ManagementGroupControllerBase with Store {
   final IListUsersInGroupUsecase _listUsersInGroup;
-  final String group;
+  final String group = Modular.args.data as String;
 
-  ManagementGroupControllerBase(this._listUsersInGroup, this.group) {
+  ManagementGroupControllerBase(this._listUsersInGroup) {
     getUsersInGroup();
   }
 
