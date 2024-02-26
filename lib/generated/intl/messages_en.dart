@@ -110,6 +110,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "roleSchema": m4,
         "send": MessageLookupByLibrary.simpleMessage("Send"),
         "updateUser": MessageLookupByLibrary.simpleMessage("Update User"),
+        "updateUserSuccess":
+            MessageLookupByLibrary.simpleMessage("User updated successfully"),
         "verifyEmail": MessageLookupByLibrary.simpleMessage("Verify email")
       };
 }

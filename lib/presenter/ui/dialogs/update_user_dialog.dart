@@ -72,6 +72,7 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
               const SizedBox(height: 8),
               DropDownFieldWidget<RoleEnum>(
                 hintText: S.of(context).role,
+                value: role,
                 prefixIcon: Icons.work,
                 onChanged: (value) {
                   role = value;
@@ -128,16 +129,7 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
                     );
                   }
                   if (controller.state is BasicInitialState) {
-                    setState(() {
-                      formKey.currentState!.reset();
-                      nameController.clear();
-                      role = null;
-                      groups = [];
-                      for (GroupEnum item in authController.user!.groups) {
-                        groups.add(
-                            GroupModel(groupName: item, isSelected: false));
-                      }
-                    });
+                    Modular.to.pop();
                   }
                 },
               ),

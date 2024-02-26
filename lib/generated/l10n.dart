@@ -280,6 +280,16 @@ class S {
     );
   }
 
+  /// `User updated successfully`
+  String get updateUserSuccess {
+    return Intl.message(
+      'User updated successfully',
+      name: 'updateUserSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Name`
   String get name {
     return Intl.message(

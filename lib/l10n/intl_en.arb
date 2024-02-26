@@ -22,6 +22,7 @@
     "registerUser": "Register User",
     "manageUsers": "Manage Users",
     "createUserSuccess": "User created successfully",
+    "updateUserSuccess": "User updated successfully",
     "name": "Name",
     "createUser": "Create User",
     "createUserText": "Fill in the information of the user to be created:",
