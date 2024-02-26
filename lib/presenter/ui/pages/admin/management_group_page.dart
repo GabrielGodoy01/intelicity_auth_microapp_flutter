@@ -29,6 +29,7 @@ class _ManagementGroupPageState extends State<ManagementGroupPage> {
   @override
   Widget build(BuildContext context) {
     return LandingPage(
+      maxWidth: ScreenHelper.width(context) * 0.9,
       child: Observer(builder: (_) {
         var state = controller.state;
         return state is ManagementGroupErrorState
@@ -87,7 +88,7 @@ class _ManagementGroupPageState extends State<ManagementGroupPage> {
 
   GridColumn _getColumn(String columnName, String? label) {
     return GridColumn(
-      maximumWidth: ScreenHelper.width(context) * 0.15,
+      maximumWidth: ScreenHelper.width(context) * 0.2,
       columnName: columnName,
       label: Container(
         padding: const EdgeInsets.all(16.0),
