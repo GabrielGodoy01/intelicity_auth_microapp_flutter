@@ -31,6 +31,7 @@
     "roleSchema": "{schema, select, INTELICITY{Intelicity} ADMIN{Administrator} other{Collaborator}}",
     "logout": "Logout",
     "updateUser": "Update User",
+    "adminDontUpdateAdmin": "Admins can't update other admins",
 
     "fieldRequired": "Required field",
     "fieldEmailInvalid": "Invalid email",

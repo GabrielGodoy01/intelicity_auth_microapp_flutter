@@ -55,6 +55,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "access": MessageLookupByLibrary.simpleMessage("Access"),
+        "adminDontUpdateAdmin": MessageLookupByLibrary.simpleMessage(
+            "Admins can\'t update other admins"),
         "authErrorsSchema": m0,
         "backToLogin": MessageLookupByLibrary.simpleMessage("Back to login"),
         "code": MessageLookupByLibrary.simpleMessage("Code"),

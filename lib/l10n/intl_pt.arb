@@ -31,6 +31,7 @@
     "roleSchema": "{schema, select, INTELICITY{Intelicity} ADMIN{Administrador} other{Colaborador}}",
     "logout": "Sair",
     "updateUser": "Atualizar Usuário",
+    "adminDontUpdateAdmin": "Não é possível editar outro administrador",
 
 
     "fieldRequired": "Campo é obrigatório",

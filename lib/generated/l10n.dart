@@ -375,6 +375,16 @@ class S {
     );
   }
 
+  /// `Admins can't update other admins`
+  String get adminDontUpdateAdmin {
+    return Intl.message(
+      'Admins can\'t update other admins',
+      name: 'adminDontUpdateAdmin',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Required field`
   String get fieldRequired {
     return Intl.message(

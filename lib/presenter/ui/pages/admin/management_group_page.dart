@@ -3,6 +3,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/entities/user_info.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
+import 'package:intelicity_auth_microapp_flutter/generated/l10n.dart';
+import 'package:intelicity_auth_microapp_flutter/helpers/functions/global_snackbar.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/utils/screen_helper.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/controllers/admin/management_group_controller.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/states/management_group_state.dart';
@@ -144,12 +146,15 @@ class ObraDataSourceTable extends DataGridSource {
                 return IconButton(
                     padding: EdgeInsets.zero,
                     onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) => UpdateUserDialog(
-                          user: dataGridCell.value,
-                        ),
-                      );
+                      (dataGridCell.value as UserInfo).role == RoleEnum.USER
+                          ? showDialog(
+                              context: context,
+                              builder: (context) => UpdateUserDialog(
+                                user: dataGridCell.value,
+                              ),
+                            )
+                          : GlobalSnackBar.error(
+                              S.current.adminDontUpdateAdmin);
                     },
                     icon: Icon(
                       Icons.edit,
