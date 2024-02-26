@@ -18,7 +18,7 @@ class UserDto extends UserInfo {
       name: json['name'],
       role:
           RoleEnum.values.firstWhere((element) => element.name == json['role']),
-      groups: (json['groups'] as List<String>)
+      groups: (json['groups'] as List)
           .map((e) => GroupEnum.stringToEnum(e))
           .toList(),
     );
