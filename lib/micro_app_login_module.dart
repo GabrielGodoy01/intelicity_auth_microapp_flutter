@@ -1,5 +1,4 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:intelicity_auth_microapp_flutter/amplify/amplifyconfiguration.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/confirm_new_password_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/confirm_reset_password.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/login_with_email_usecase.dart';
@@ -16,8 +15,12 @@ import 'package:intelicity_auth_microapp_flutter/presenter/ui/pages/login_page.d
 import 'package:intelicity_auth_microapp_flutter/presenter/ui/pages/new_password_page.dart';
 
 class MicroAppLoginModule extends Module {
+  final String _amplifyconfig;
+
+  MicroAppLoginModule(this._amplifyconfig);
+
   @override
-  List<Module> get imports => [MicroAppAuthModule(amplifyconfig)];
+  List<Module> get imports => [MicroAppAuthModule(_amplifyconfig)];
 
   @override
   void binds(i) {

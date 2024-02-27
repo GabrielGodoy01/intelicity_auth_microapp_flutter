@@ -1,5 +1,4 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:intelicity_auth_microapp_flutter/amplify/amplifyconfiguration.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/admin_create_user_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/list_users_in_group_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/update_user_usecase.dart';
@@ -12,8 +11,12 @@ import 'package:intelicity_auth_microapp_flutter/presenter/ui/pages/admin/create
 import 'package:intelicity_auth_microapp_flutter/presenter/ui/pages/admin/home_admin_page.dart';
 
 class MicroAppAdminModule extends Module {
+  final String _amplifyconfig;
+
+  MicroAppAdminModule(this._amplifyconfig);
+
   @override
-  List<Module> get imports => [MicroAppAuthModule(amplifyconfig)];
+  List<Module> get imports => [MicroAppAuthModule(_amplifyconfig)];
 
   @override
   void binds(i) {
@@ -33,6 +36,7 @@ class MicroAppAdminModule extends Module {
     r.child('/create-new-user/',
         child: (context) => const CreateUserPage(), guards: [AdminGuard()]);
     r.module('/users-management/',
-        module: MicroAppUsersManagementModule(), guards: [AdminGuard()]);
+        module: MicroAppUsersManagementModule(_amplifyconfig),
+        guards: [AdminGuard()]);
   }
 }
