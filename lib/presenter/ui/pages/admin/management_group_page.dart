@@ -43,7 +43,7 @@ class _ManagementGroupPageState extends State<ManagementGroupPage> {
                 ],
               )
             : state is ManagementGroupSuccessState
-                ? LayoutBuilder(builder: (context, constraints) {
+                ? Builder(builder: (context) {
                     var obraTableDataSource = ObraDataSourceTable(
                         users: state.users, context: context);
                     return Column(
