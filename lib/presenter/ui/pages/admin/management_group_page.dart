@@ -46,45 +46,42 @@ class _ManagementGroupPageState extends State<ManagementGroupPage> {
                 ? LayoutBuilder(builder: (context, constraints) {
                     var obraTableDataSource = ObraDataSourceTable(
                         users: state.users, context: context);
-                    return SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          SfDataGrid(
-                            controller: _dataGridController,
-                            allowSorting: true,
-                            allowMultiColumnSorting: true,
-                            columnWidthMode: ColumnWidthMode.fill,
-                            rowHeight: 80,
-                            // selectionMode: SelectionMode.multiple,
-                            source: obraTableDataSource,
-                            columns: [
-                              _getColumn('sub', 'ID'),
-                              _getColumn('role', 'Função'),
-                              _getColumn('email', 'E-mail'),
-                              _getColumn('name', 'Nome'),
-                              _getColumn('edit', null),
-                            ],
-                          ),
-                          state.users.length <= _rowsPerPage
-                              ? const SizedBox.shrink()
-                              : SizedBox(
-                                  height: _dataPagerHeight,
-                                  child: SfDataPagerTheme(
-                                    data: SfDataPagerThemeData(
-                                      selectedItemColor:
-                                          AppColors.primaryPurple,
-                                      backgroundColor: Colors.white,
-                                    ),
-                                    child: SfDataPager(
-                                      delegate: obraTableDataSource,
-                                      pageCount:
-                                          state.users.length / _rowsPerPage,
-                                      direction: Axis.horizontal,
-                                    ),
+                    return Column(
+                      children: [
+                        SfDataGrid(
+                          controller: _dataGridController,
+                          allowSorting: true,
+                          allowMultiColumnSorting: true,
+                          columnWidthMode: ColumnWidthMode.fill,
+                          rowHeight: 80,
+                          // selectionMode: SelectionMode.multiple,
+                          source: obraTableDataSource,
+                          columns: [
+                            _getColumn('sub', 'ID'),
+                            _getColumn('role', 'Função'),
+                            _getColumn('email', 'E-mail'),
+                            _getColumn('name', 'Nome'),
+                            _getColumn('edit', null),
+                          ],
+                        ),
+                        state.users.length <= _rowsPerPage
+                            ? const SizedBox.shrink()
+                            : SizedBox(
+                                height: _dataPagerHeight,
+                                child: SfDataPagerTheme(
+                                  data: SfDataPagerThemeData(
+                                    selectedItemColor: AppColors.primaryPurple,
+                                    backgroundColor: Colors.white,
+                                  ),
+                                  child: SfDataPager(
+                                    delegate: obraTableDataSource,
+                                    pageCount:
+                                        state.users.length / _rowsPerPage,
+                                    direction: Axis.horizontal,
                                   ),
                                 ),
-                        ],
-                      ),
+                              ),
+                      ],
                     );
                   })
                 : const Center(child: CircularProgressIndicator());
