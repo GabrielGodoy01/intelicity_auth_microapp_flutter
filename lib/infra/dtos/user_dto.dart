@@ -5,7 +5,7 @@ import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
 class UserDto extends UserInfo {
   UserDto({
     required super.email,
-    required super.sub,
+    required super.userId,
     required super.name,
     required super.role,
     required super.groups,
@@ -14,7 +14,7 @@ class UserDto extends UserInfo {
   factory UserDto.fromMap(Map<String, dynamic> json) {
     return UserDto(
       email: json['email'],
-      sub: json['user_id'],
+      userId: json['user_id'],
       name: json['name'],
       role:
           RoleEnum.values.firstWhere((element) => element.name == json['role']),
@@ -31,7 +31,7 @@ class UserDto extends UserInfo {
   Map<String, dynamic> toMap() {
     return {
       'email': email,
-      'sub': sub,
+      'user_id': userId,
       'name': name,
       'role': role.name,
       'groups': groups,

@@ -3,7 +3,7 @@ import 'package:intelicity_auth_microapp_flutter/domain/entities/logged_user_inf
 class LoggedUserDto extends LoggedUserInfo {
   LoggedUserDto({
     required super.email,
-    required super.sub,
+    required super.userId,
     required super.accessToken,
     required super.name,
     required super.refreshToken,

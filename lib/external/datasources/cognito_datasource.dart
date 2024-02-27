@@ -34,7 +34,7 @@ class CognitoDatasource implements IAuthDatasource {
 
     return LoggedUserDto(
       email: email,
-      sub: session.userSubResult.value,
+      userId: session.userSubResult.value,
       role: RoleEnum.stringToEnum(atribbutes
           .firstWhere((element) =>
               element.userAttributeKey.toString() == 'custom:general_role')
@@ -73,7 +73,7 @@ class CognitoDatasource implements IAuthDatasource {
       final atribbutes = await Amplify.Auth.fetchUserAttributes();
       return LoggedUserDto(
         email: session.userPoolTokensResult.value.idToken.email!,
-        sub: session.userSubResult.value,
+        userId: session.userSubResult.value,
         role: RoleEnum.stringToEnum(atribbutes
             .firstWhere((element) =>
                 element.userAttributeKey.toString() == 'custom:general_role')
