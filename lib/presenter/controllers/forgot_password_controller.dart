@@ -34,12 +34,12 @@ abstract class ForgotPasswordControllerBase with Store {
   Future<void> resetPassword() async {
     setState(BasicLoadingState());
     var result = await _resetPassword(email: email);
+    await _resendConfirmationCode(email);
     setState(result.fold((e) {
       logger.e(e.message);
       GlobalSnackBar.error(e.message);
       return BasicErrorState(error: e);
     }, (user) {
-      _resendConfirmationCode(email);
       Modular.to.pushNamed('/login/new-password', arguments: email);
       return BasicInitialState();
     }));

@@ -23,6 +23,7 @@ class CognitoDatasource implements IAuthDatasource {
       username: email,
       password: password,
     );
+    logger.d(' ${result.nextStep.signInStep}');
     logger.d('[CognitoDatasource] loginEmail: ${result.toJson()}}');
     final cognitoPlugin = Amplify.Auth.getPlugin(AmplifyAuthCognito.pluginKey);
     final session = await cognitoPlugin.fetchAuthSession();
