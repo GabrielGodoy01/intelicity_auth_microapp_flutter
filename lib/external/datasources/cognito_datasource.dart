@@ -162,9 +162,4 @@ class CognitoDatasource implements IAuthDatasource {
     }
     throw Exception();
   }
-
-  @override
-  Future<void> resendConfirmationCode({required String email}) async {
-    await Amplify.Auth.resendSignUpCode(username: email);
-  }
 }

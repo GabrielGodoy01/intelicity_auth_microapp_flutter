@@ -1,6 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/confirm_new_password_usecase.dart';
-import 'package:intelicity_auth_microapp_flutter/domain/usecases/resend_confirmation_code_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/functions/global_snackbar.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/utils/validation_field.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/states/basic_state.dart';
@@ -62,7 +61,7 @@ abstract class LoginNewPasswordControllerBase with Store {
       logger.e(e.message);
       GlobalSnackBar.error(e.message);
       return BasicErrorState(error: e);
-    }, (_) {
+    }, (user) {
       Modular.to.navigate('/');
       return BasicInitialState();
     }));

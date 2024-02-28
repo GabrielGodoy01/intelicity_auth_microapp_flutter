@@ -183,15 +183,4 @@ class AuthRepositoryCognito implements IAuthRepository {
       return Left(ErrorRequest(message: errorType.errorMessage));
     }
   }
-
-  @override
-  Future<Either<Failure, Unit>> resendConfirmationCode(
-      {required String email}) async {
-    try {
-      await datasource.resendConfirmationCode(email: email);
-      return const Right(unit);
-    } catch (e) {
-      return left(_handleAmplifyError(e));
-    }
-  }
 }

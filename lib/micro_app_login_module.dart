@@ -2,7 +2,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/confirm_new_password_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/confirm_reset_password.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/login_with_email_usecase.dart';
-import 'package:intelicity_auth_microapp_flutter/domain/usecases/resend_confirmation_code_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/reset_password_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/guards/login_guard.dart';
 import 'package:intelicity_auth_microapp_flutter/micro_app_auth_module.dart';
@@ -37,8 +36,6 @@ class MicroAppLoginModule extends Module {
         ConfirmResetPasswordUsecaseImpl.new);
     i.addLazySingleton<IConfirmNewPasswordUsecase>(
         ConfirmNewPasswordUsecaseImpl.new);
-    i.addLazySingleton<IResendConfirmationCodeUsecase>(
-        ResendConfirmationCodeUsecaseImpl.new);
   }
 
   @override
