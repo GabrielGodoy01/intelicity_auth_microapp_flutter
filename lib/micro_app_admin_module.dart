@@ -32,7 +32,10 @@ class MicroAppAdminModule extends Module {
   @override
   void routes(r) {
     r.child(Modular.initialRoute,
-        child: (context) => const HomeAdminPage(), guards: [AdminGuard()]);
+        child: (context) => HomeAdminPage(
+              onPressed: r.args.data as Function(),
+            ),
+        guards: [AdminGuard()]);
     r.child('/create-new-user/',
         child: (context) => const CreateUserPage(), guards: [AdminGuard()]);
     r.module('/users-management/',

@@ -220,16 +220,6 @@ class S {
     );
   }
 
-  /// `Login success`
-  String get loginSuccess {
-    return Intl.message(
-      'Login success',
-      name: 'loginSuccess',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Go to home`
   String get goToHome {
     return Intl.message(
