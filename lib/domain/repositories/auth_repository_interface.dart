@@ -31,4 +31,5 @@ abstract class IAuthRepository {
     required RoleEnum role,
     required List<String> groups,
   });
+  Future<Either<Failure, Unit>> resendConfirmationCode({required String email});
 }

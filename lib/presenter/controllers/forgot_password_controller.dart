@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:intelicity_auth_microapp_flutter/domain/usecases/resend_confirmation_code_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/usecases/reset_password_usecase.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/functions/global_snackbar.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/states/basic_state.dart';
@@ -13,8 +14,10 @@ class ForgotPasswordController = ForgotPasswordControllerBase
 abstract class ForgotPasswordControllerBase with Store {
   final Logger logger = Modular.get();
   final IResetPasswordUsecase _resetPassword;
+  final IResendConfirmationCodeUsecase _resendConfirmationCode;
 
-  ForgotPasswordControllerBase(this._resetPassword);
+  ForgotPasswordControllerBase(
+      this._resetPassword, this._resendConfirmationCode);
 
   @observable
   BasicState state = BasicInitialState();
@@ -36,6 +39,7 @@ abstract class ForgotPasswordControllerBase with Store {
       GlobalSnackBar.error(e.message);
       return BasicErrorState(error: e);
     }, (user) {
+      _resendConfirmationCode(email);
       Modular.to.pushNamed('/login/new-password', arguments: email);
       return BasicInitialState();
     }));

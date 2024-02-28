@@ -27,4 +27,5 @@ abstract class IAuthDatasource {
     required RoleEnum role,
     required List<String> groups,
   });
+  Future<void> resendConfirmationCode({required String email});
 }
