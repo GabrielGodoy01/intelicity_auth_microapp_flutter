@@ -7,6 +7,7 @@ import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
 import 'package:intelicity_auth_microapp_flutter/generated/l10n.dart';
 import 'package:intelicity_auth_microapp_flutter/helpers/utils/validation_field.dart';
 import 'package:intelicity_auth_microapp_flutter/infra/models/group_model.dart';
+import 'package:intelicity_auth_microapp_flutter/presenter/controllers/admin/management_group_controller.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/controllers/admin/update_user_controller.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/states/basic_state.dart';
 import 'package:intelicity_auth_microapp_flutter/presenter/ui/widgets/button_custom.dart';
@@ -26,6 +27,7 @@ class UpdateUserDialog extends StatefulWidget {
 class _UpdateUserDialogState extends State<UpdateUserDialog> {
   final AuthController authController = Modular.get();
   final UpdateUserController controller = Modular.get();
+  final ManagementGroupController managementGroupController = Modular.get();
   final nameController = TextEditingController();
   var groups = <GroupModel>[];
   RoleEnum? role;
@@ -130,6 +132,7 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
                   }
                   if (controller.state is BasicInitialState) {
                     Modular.to.pop();
+                    managementGroupController.getUsersInGroup();
                   }
                 },
               ),
