@@ -44,11 +44,10 @@ class HomeAdminPage extends StatelessWidget {
             },
           ),
           const SizedBox(height: 8),
-          const SizedBox(height: 8),
           ButtonCustom(
             onPressed: () async {
               await authController.signOut();
-              Modular.to.navigate('/login/');
+              Modular.to.navigate('/');
             },
             text: S.of(context).logout,
           ),
