@@ -6,10 +6,11 @@ abstract class IResendConfirmationCodeUsecase {
   Future<Either<Failure, Unit>> call(String email);
 }
 
-class ResendConfirmationCodeImpl implements IResendConfirmationCodeUsecase {
+class ResendConfirmationCodeUsecaseImpl
+    implements IResendConfirmationCodeUsecase {
   final IAuthRepository authRepository;
 
-  ResendConfirmationCodeImpl(this.authRepository);
+  ResendConfirmationCodeUsecaseImpl(this.authRepository);
   @override
   Future<Either<Failure, Unit>> call(String email) async {
     return await authRepository.resendConfirmationCode(email: email);
