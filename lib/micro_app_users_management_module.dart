@@ -18,7 +18,8 @@ class MicroAppUsersManagementModule extends Module {
   void binds(i) {
     i.addLazySingleton<IListUsersInGroupUsecase>(
         ListUsersInGroupUsecaseImpl.new);
-    i.add<ManagementGroupController>(ManagementGroupController.new);
+    i.addLazySingleton<ManagementGroupController>(
+        ManagementGroupController.new);
   }
 
   @override

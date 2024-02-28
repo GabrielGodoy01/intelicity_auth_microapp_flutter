@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/core/auth_controller.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/entities/user_info.dart';
@@ -25,9 +26,9 @@ class UpdateUserDialog extends StatefulWidget {
 }
 
 class _UpdateUserDialogState extends State<UpdateUserDialog> {
-  final AuthController authController = Modular.get();
-  final UpdateUserController controller = Modular.get();
-  final ManagementGroupController managementGroupController = Modular.get();
+  AuthController authController = Modular.get();
+  UpdateUserController controller = Modular.get();
+  ManagementGroupController managementGroupController = Modular.get();
   final nameController = TextEditingController();
   var groups = <GroupModel>[];
   RoleEnum? role;
@@ -115,27 +116,31 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
                 },
               ),
               const SizedBox(height: 16),
-              ButtonCustom(
-                text: S.of(context).updateUser,
-                isLoading: controller.state is BasicLoadingState,
-                onPressed: () async {
-                  if (formKey.currentState!.validate()) {
-                    await controller.updateUser(
-                      widget.user.email,
-                      nameController.text,
-                      role!,
-                      groups
-                          .where((element) => element.isSelected)
-                          .map((e) => e.groupName.name)
-                          .toList(),
-                    );
-                  }
-                  if (controller.state is BasicInitialState) {
-                    Modular.to.pop();
-                    managementGroupController.getUsersInGroup();
-                  }
-                },
-              ),
+              Observer(builder: (_) {
+                return ButtonCustom(
+                  text: S.of(context).updateUser,
+                  isLoading: controller.state is BasicLoadingState,
+                  onPressed: controller.state is BasicLoadingState
+                      ? () {}
+                      : () async {
+                          if (formKey.currentState!.validate()) {
+                            await controller.updateUser(
+                              widget.user.email,
+                              nameController.text,
+                              role!,
+                              groups
+                                  .where((element) => element.isSelected)
+                                  .map((e) => e.groupName.name)
+                                  .toList(),
+                            );
+                          }
+                          if (controller.state is BasicInitialState) {
+                            Modular.to.pop();
+                            managementGroupController.getUsersInGroup();
+                          }
+                        },
+                );
+              }),
             ],
           ),
         ),
