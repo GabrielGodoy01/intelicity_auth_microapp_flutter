@@ -70,7 +70,7 @@ abstract class ConfirmResetPasswordControllerBase with Store {
       GlobalSnackBar.error(e.message);
       return BasicErrorState(error: e);
     }, (user) {
-      Modular.to.navigate('/login/');
+      Modular.to.navigate('/');
       return BasicInitialState();
     }));
   }
