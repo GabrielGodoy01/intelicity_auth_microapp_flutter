@@ -25,7 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
             'codeDeliveryFailure':
                 'Failed to send code to email, please try again',
             'codeMismatch': 'Code provided is wrong, please try again',
-            'invalidParameter': 'Email probably already confirmed',
+            'invalidParameter': 'Some field filled in incorrectly',
             'usernameExists': 'There is already an account with this email',
             'notAuthorized': 'Incorrect username or password',
             'userNotConfirmed': 'Unconfirmed email, confirm it',

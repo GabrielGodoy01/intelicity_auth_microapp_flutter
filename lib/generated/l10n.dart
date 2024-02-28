@@ -415,7 +415,7 @@ class S {
     );
   }
 
-  /// `{schema, select, invalidStateException{User is already signed in} codeDeliveryFailure{Failed to send code to email, please try again} codeMismatch{Code provided is wrong, please try again} invalidParameter{Some field filled in incorrectly} usernameExists{There is already an account with this email} notAuthorized{Incorrect username or password} userNotConfirmed{Unconfirmed email, confirm it} signedOut{Incorrect email or password} limitExceeded{Too many attempts in a row, try again later} invalidParameter{Email probably already confirmed} tooManyFailedAttempts{Looks like you tried the code wrong too many times, get in touch} userNotFound{We couldn't find this registered email} internalError{We are experiencing internal issues, please try again later} codeMismatch{Code provided is wrong, please try again} other{An error occurred while confirming email}}`
+  /// `{schema, select, invalidStateException{User is already signed in} codeDeliveryFailure{Failed to send code to email, please try again} codeMismatch{Code provided is wrong, please try again} invalidParameter{Some field filled in incorrectly} usernameExists{There is already an account with this email} notAuthorized{Incorrect username or password} userNotConfirmed{Unconfirmed email, confirm it} signedOut{Incorrect email or password} limitExceeded{Too many attempts in a row, try again later} tooManyFailedAttempts{Looks like you tried the code wrong too many times, get in touch} userNotFound{We couldn't find this registered email} internalError{We are experiencing internal issues, please try again later} other{An error occurred while confirming email}}`
   String authErrorsSchema(Object schema) {
     return Intl.select(
       schema,

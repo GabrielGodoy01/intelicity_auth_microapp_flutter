@@ -120,8 +120,6 @@ class AuthRepositoryCognito implements IAuthRepository {
       return AuthError(message: S.current.authErrorsSchema('usernameExists'));
     } else if (e is InvalidParameterException) {
       return AuthError(message: S.current.authErrorsSchema('invalidParameter'));
-    } else if (e is CodeMismatchException) {
-      return AuthError(message: S.current.authErrorsSchema('codeMismatch'));
     } else if (e is CodeDeliveryFailureException) {
       return AuthError(
           message: S.current.authErrorsSchema('codeDeliveryFailure'));
