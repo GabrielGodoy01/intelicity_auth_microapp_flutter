@@ -102,8 +102,18 @@ class MessageLookup extends MessageLookupByLibrary {
             "Fill in the code received by email and your new password to reset it"),
         "noItemsFoundErrorMessage": m2,
         "password": MessageLookupByLibrary.simpleMessage("Senha"),
+        "passwordLowercase": MessageLookupByLibrary.simpleMessage(
+            "Password must contain at least one lowercase letter"),
+        "passwordMinimumLength": MessageLookupByLibrary.simpleMessage(
+            "Password must contain at least 8 characters"),
+        "passwordNumber": MessageLookupByLibrary.simpleMessage(
+            "Password must contain at least one number"),
         "passwordRequirements": MessageLookupByLibrary.simpleMessage(
             "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character"),
+        "passwordSpecialCharacter": MessageLookupByLibrary.simpleMessage(
+            "Password must contain at least one special character (e.g. !@#\$%^&*)"),
+        "passwordUppercase": MessageLookupByLibrary.simpleMessage(
+            "Password must contain at least one uppercase letter"),
         "register": MessageLookupByLibrary.simpleMessage("Cadastrar"),
         "registerUser": MessageLookupByLibrary.simpleMessage("Register User"),
         "requestErrorMessage": m3,

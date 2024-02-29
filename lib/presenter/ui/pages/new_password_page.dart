@@ -46,7 +46,8 @@ class NewPasswordPage extends StatelessWidget {
               const SizedBox(height: 16),
               Text(
                 S.of(context).passwordRequirements,
-                style: AppTextStyles.headline1,
+                style: AppTextStyles.bodyText1,
+                textAlign: TextAlign.center,
               ),
               const SizedBox(height: 8),
               Observer(builder: (_) {

@@ -23,7 +23,15 @@ class ValidationFieldHelper {
     if (password == null || password.isEmpty) {
       return S.current.fieldRequired;
     } else if (password.length < 8) {
-      return 'A senha deve conter pelo menos 8 caracteres';
+      return S.current.passwordMinimumLength;
+    } else if (!password.contains(RegExp(r'[A-Z]'))) {
+      return S.current.passwordUppercase;
+    } else if (!password.contains(RegExp(r'[a-z]'))) {
+      return S.current.passwordLowercase;
+    } else if (!password.contains(RegExp(r'[0-9]'))) {
+      return S.current.passwordNumber;
+    } else if (!password.contains(RegExp(r'[!@#\$%\^&\*(),.?":{}|<>]'))) {
+      return S.current.passwordSpecialCharacter;
     }
     return null;
   }

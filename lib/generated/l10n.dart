@@ -425,6 +425,56 @@ class S {
     );
   }
 
+  /// `Password must contain at least 8 characters`
+  String get passwordMinimumLength {
+    return Intl.message(
+      'Password must contain at least 8 characters',
+      name: 'passwordMinimumLength',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must contain at least one uppercase letter`
+  String get passwordUppercase {
+    return Intl.message(
+      'Password must contain at least one uppercase letter',
+      name: 'passwordUppercase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must contain at least one lowercase letter`
+  String get passwordLowercase {
+    return Intl.message(
+      'Password must contain at least one lowercase letter',
+      name: 'passwordLowercase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must contain at least one number`
+  String get passwordNumber {
+    return Intl.message(
+      'Password must contain at least one number',
+      name: 'passwordNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must contain at least one special character (e.g. !@#$%^&*)`
+  String get passwordSpecialCharacter {
+    return Intl.message(
+      'Password must contain at least one special character (e.g. !@#\$%^&*)',
+      name: 'passwordSpecialCharacter',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `{schema, select, invalidStateException{User is already signed in} codeDeliveryFailure{Failed to send code to email, please try again} codeMismatch{Code provided is wrong, please try again} invalidParameter{Some field filled in incorrectly} usernameExists{There is already an account with this email} notAuthorized{Incorrect username or password} userNotConfirmed{Unconfirmed email, confirm it} signedOut{Incorrect email or password} limitExceeded{Too many attempts in a row, try again later} tooManyFailedAttempts{Looks like you tried the code wrong too many times, get in touch} userNotFound{We couldn't find this registered email} internalError{We are experiencing internal issues, please try again later} other{An error occurred while confirming email}}`
   String authErrorsSchema(Object schema) {
     return Intl.select(
