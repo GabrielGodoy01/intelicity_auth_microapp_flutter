@@ -22,11 +22,8 @@ class ValidationFieldHelper {
   static String? validatePassword(String? password) {
     if (password == null || password.isEmpty) {
       return S.current.fieldRequired;
-    } else if (password.isNotEmpty &&
-        password.length > 7 &&
-        password.contains(RegExp(r'[A-Z]')) &&
-        password.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
-      return S.current.fieldPasswordInvalid;
+    } else if (password.length < 8) {
+      return 'A senha deve conter pelo menos 8 caracteres';
     }
     return null;
   }

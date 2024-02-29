@@ -31,6 +31,7 @@
     "logout": "Sair",
     "updateUser": "Atualizar Usuário",
     "adminDontUpdateAdmin": "Não é possível editar outro administrador",
+    "passwordRequirements": "A senha deve conter no mínimo 8 caracteres, com pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial",
 
 
     "fieldRequired": "Campo é obrigatório",

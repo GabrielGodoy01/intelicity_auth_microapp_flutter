@@ -107,6 +107,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Preencha o código recebido por e-mail e sua nova senha para redefini-la"),
         "noItemsFoundErrorMessage": m2,
         "password": MessageLookupByLibrary.simpleMessage("Senha"),
+        "passwordRequirements": MessageLookupByLibrary.simpleMessage(
+            "A senha deve conter no mínimo 8 caracteres, com pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial"),
         "register": MessageLookupByLibrary.simpleMessage("Cadastrar"),
         "registerUser":
             MessageLookupByLibrary.simpleMessage("Registrar Usuário"),

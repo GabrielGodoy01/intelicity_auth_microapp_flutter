@@ -44,6 +44,11 @@ class NewPasswordPage extends StatelessWidget {
                 );
               }),
               const SizedBox(height: 16),
+              Text(
+                S.of(context).passwordRequirements,
+                style: AppTextStyles.headline1,
+              ),
+              const SizedBox(height: 8),
               Observer(builder: (_) {
                 return TextFielCustom(
                   hintText: S.of(context).newPassword,

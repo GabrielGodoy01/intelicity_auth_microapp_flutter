@@ -375,6 +375,16 @@ class S {
     );
   }
 
+  /// `Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character`
+  String get passwordRequirements {
+    return Intl.message(
+      'Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character',
+      name: 'passwordRequirements',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Required field`
   String get fieldRequired {
     return Intl.message(
