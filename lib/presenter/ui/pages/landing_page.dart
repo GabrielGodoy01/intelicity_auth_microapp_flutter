@@ -10,12 +10,12 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
+            colors: [Color(0xffc04848), Color(0xff480048)],
+            stops: [0.3, 1],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            stops: const [0.1, 0.9],
-            colors: [AppColors.lightBackground, AppColors.darkBackground],
           ),
         ),
         child: Center(
