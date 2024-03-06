@@ -34,17 +34,17 @@ class TextFielCustom extends StatelessWidget {
       validator: validation,
       onChanged: onChanged,
       controller: controller,
-      cursorColor: AppColors.primaryPurple,
+      cursorColor: AppColors.primaryBlue,
       obscureText: showPassword != null ? !showPassword! : false,
       decoration: InputDecoration(
           fillColor: AppColors.white,
           contentPadding: const EdgeInsets.symmetric(horizontal: 12),
           hintText: hintText,
-          suffixIconColor: AppColors.primaryPurple,
+          suffixIconColor: AppColors.primaryBlue,
           filled: true,
           semanticCounterText: '123',
           prefixIcon: prefixIcon == null ? null : Icon(prefixIcon),
-          prefixIconColor: AppColors.primaryPurple,
+          prefixIconColor: AppColors.primaryBlue,
           suffixIcon: isPasswordField
               ? InkWell(
                   onTap: () => changePwdVisibility!(),
@@ -72,8 +72,7 @@ class TextFielCustom extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
           ),
           focusedBorder: OutlineInputBorder(
-              borderSide:
-                  BorderSide(color: AppColors.primaryPurple, width: 2))),
+              borderSide: BorderSide(color: AppColors.primaryBlue, width: 2))),
     );
   }
 }

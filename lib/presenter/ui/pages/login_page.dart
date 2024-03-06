@@ -62,7 +62,7 @@ class LoginPage extends StatelessWidget {
               child: Text(
                 S.of(context).forgotPassword,
                 style: AppTextStyles.headline3
-                    .copyWith(color: AppColors.primaryPurple),
+                    .copyWith(color: AppColors.primaryBlue),
               ),
             ),
           ],

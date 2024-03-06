@@ -102,7 +102,7 @@ class _CreateUserPageState extends State<CreateUserPage> {
                         'Administrador: possui acesso total a gestão de usuários do sistema.\nColaborador: possui acesso apenas de autenticação de usuário.',
                     child: Icon(
                       Icons.help,
-                      color: AppColors.primaryPurple,
+                      color: AppColors.primaryBlue,
                     ),
                   )
                 ],
@@ -124,7 +124,7 @@ class _CreateUserPageState extends State<CreateUserPage> {
                   return CheckboxListTile(
                     title: Text(groups[index].groupName.name),
                     value: groups[index].isSelected,
-                    activeColor: AppColors.primaryPurple,
+                    activeColor: AppColors.primaryBlue,
                     controlAffinity: ListTileControlAffinity.leading,
                     onChanged: (value) {
                       setState(() {

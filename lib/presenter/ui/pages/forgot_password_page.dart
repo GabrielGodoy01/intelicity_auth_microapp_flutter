@@ -62,7 +62,7 @@ class ForgotPasswordPage extends StatelessWidget {
                   child: Text(
                     S.of(context).backToLogin,
                     style: AppTextStyles.headline3
-                        .copyWith(color: AppColors.primaryPurple),
+                        .copyWith(color: AppColors.primaryBlue),
                   ),
                 ),
               ])),

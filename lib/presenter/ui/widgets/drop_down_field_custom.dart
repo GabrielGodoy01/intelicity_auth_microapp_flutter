@@ -33,11 +33,11 @@ class DropDownFieldWidget<T> extends StatelessWidget {
         validator: validation,
         decoration: InputDecoration(
             prefixIcon: prefixIcon == null ? null : Icon(prefixIcon),
-            prefixIconColor: AppColors.primaryPurple,
+            prefixIconColor: AppColors.primaryBlue,
             fillColor: AppColors.white,
             contentPadding: const EdgeInsets.symmetric(horizontal: 12),
             hintText: hintText,
-            suffixIconColor: AppColors.primaryPurple,
+            suffixIconColor: AppColors.primaryBlue,
             filled: true,
             errorBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: AppColors.red, width: 2)),
@@ -58,7 +58,7 @@ class DropDownFieldWidget<T> extends StatelessWidget {
             ),
             focusedBorder: OutlineInputBorder(
                 borderSide:
-                    BorderSide(color: AppColors.primaryPurple, width: 2))),
+                    BorderSide(color: AppColors.primaryBlue, width: 2))),
       ),
     );
   }

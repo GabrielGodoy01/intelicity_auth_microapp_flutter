@@ -70,7 +70,7 @@ class _ManagementGroupPageState extends State<ManagementGroupPage> {
                                 height: _dataPagerHeight,
                                 child: SfDataPagerTheme(
                                   data: SfDataPagerThemeData(
-                                    selectedItemColor: AppColors.primaryPurple,
+                                    selectedItemColor: AppColors.primaryBlue,
                                     backgroundColor: Colors.white,
                                   ),
                                   child: SfDataPager(
@@ -169,7 +169,7 @@ class ObraDataSourceTable extends DataGridSource {
                     },
                     icon: Icon(
                       Icons.edit,
-                      color: AppColors.primaryPurple,
+                      color: AppColors.primaryBlue,
                       size: 24,
                     ));
               })

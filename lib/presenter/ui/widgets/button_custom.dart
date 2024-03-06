@@ -21,8 +21,7 @@ class ButtonCustom extends StatelessWidget {
       width: double.infinity,
       height: 50,
       child: ElevatedButton(
-        style:
-            ElevatedButton.styleFrom(backgroundColor: AppColors.primaryPurple),
+        style: ElevatedButton.styleFrom(backgroundColor: AppColors.primaryBlue),
         onPressed: onPressed,
         child: isLoading
             ? CircularProgressIndicator(color: AppColors.white)

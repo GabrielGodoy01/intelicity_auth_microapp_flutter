@@ -15,7 +15,7 @@ class LandingPage extends StatelessWidget {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             stops: const [0.1, 0.9],
-            colors: [AppColors.primaryPurple, AppColors.secundaryPurple],
+            colors: [AppColors.lightBackground, AppColors.darkBackground],
           ),
         ),
         child: Center(

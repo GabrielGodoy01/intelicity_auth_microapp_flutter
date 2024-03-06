@@ -105,7 +105,7 @@ class _UpdateUserDialogState extends State<UpdateUserDialog> {
                   return CheckboxListTile(
                     title: Text(groups[index].groupName.name),
                     value: groups[index].isSelected,
-                    activeColor: AppColors.primaryPurple,
+                    activeColor: AppColors.primaryBlue,
                     controlAffinity: ListTileControlAffinity.leading,
                     onChanged: (value) {
                       setState(() {
