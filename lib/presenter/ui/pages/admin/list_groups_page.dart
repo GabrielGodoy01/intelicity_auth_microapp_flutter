@@ -14,13 +14,17 @@ class ListGroupPage extends StatelessWidget {
     return LandingPage(
       isBackButtonVisible: true,
       child: Wrap(
+          spacing: 8,
+          runSpacing: 8,
           children: authController.user!.groups
-              .map((e) => ButtonCustom(
-                  text: GroupEnum.typeName(e),
-                  icon: Icons.login,
-                  onPressed: () async {
-                    Modular.to.pushNamed('./group', arguments: e.name);
-                  }))
+              .map((e) => SizedBox(
+                    width: 150,
+                    child: ButtonCustom(
+                        text: GroupEnum.typeName(e),
+                        onPressed: () async {
+                          Modular.to.pushNamed('./group', arguments: e.name);
+                        }),
+                  ))
               .toList()),
     );
   }
