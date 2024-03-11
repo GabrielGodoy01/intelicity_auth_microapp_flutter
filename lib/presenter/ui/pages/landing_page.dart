@@ -39,17 +39,14 @@ class LandingPage extends StatelessWidget {
                 child: Stack(
                   children: [
                     isBackButtonVisible
-                        ? Align(
-                            alignment: Alignment.topLeft,
-                            child: IconButton(
-                              onPressed: () {
-                                Modular.to.pop();
-                              },
-                              icon: Icon(
-                                Icons.arrow_back,
-                                color: AppColors.black,
-                                size: 32,
-                              ),
+                        ? IconButton(
+                            onPressed: () {
+                              Modular.to.pop();
+                            },
+                            icon: Icon(
+                              Icons.arrow_back,
+                              color: AppColors.black,
+                              size: 32,
                             ),
                           )
                         : const SizedBox(),
