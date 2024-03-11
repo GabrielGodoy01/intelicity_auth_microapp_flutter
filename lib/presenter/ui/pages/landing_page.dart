@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/shared/themes/app_colors.dart';
 
 class LandingPage extends StatelessWidget {
@@ -12,7 +13,7 @@ class LandingPage extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xffc04848), Color(0xff480048)],
+            colors: [Color(0xffc04848), Color(0xff232F49)],
             stops: [0.3, 1],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -30,19 +31,29 @@ class LandingPage extends StatelessWidget {
                 ),
                 elevation: 20,
                 color: Colors.white,
-                child: Padding(
-                  padding: const EdgeInsets.all(32),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.network(
-                        'https://intelicity-assets.s3.sa-east-1.amazonaws.com/intelicity_logo.png',
-                        height: 200,
+                child: Stack(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Modular.to.pop();
+                      },
+                      icon: const Icon(Icons.arrow_back),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(32),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image.network(
+                            'https://intelicity-assets.s3.sa-east-1.amazonaws.com/intelicity_logo.png',
+                            height: 200,
+                          ),
+                          child
+                        ],
                       ),
-                      child
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),

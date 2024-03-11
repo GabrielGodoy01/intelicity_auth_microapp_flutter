@@ -43,7 +43,7 @@ class NewPasswordPage extends StatelessWidget {
                   validation: ValidationFieldHelper.validateRequiredField,
                 );
               }),
-              const SizedBox(height: 16),
+              const SizedBox(height: 8),
               Text(
                 S.of(context).passwordRequirements,
                 style: AppTextStyles.bodyText1,
