@@ -47,6 +47,7 @@ class _CreateUserPageState extends State<CreateUserPage> {
         : RoleEnum.values.toList();
 
     return LandingPage(
+      isBackButtonVisible: true,
       child: Form(
           key: formKey,
           child: Column(

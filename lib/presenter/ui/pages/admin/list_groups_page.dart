@@ -11,6 +11,7 @@ class ListGroupPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final AuthController authController = Modular.get();
     return LandingPage(
+      isBackButtonVisible: true,
       child: Wrap(
           children: authController.user!.groups
               .map((e) => InkWell(

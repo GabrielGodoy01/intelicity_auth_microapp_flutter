@@ -5,7 +5,12 @@ import 'package:intelicity_auth_microapp_flutter/shared/themes/app_colors.dart';
 class LandingPage extends StatelessWidget {
   final Widget child;
   final double maxWidth;
-  const LandingPage({super.key, required this.child, this.maxWidth = 600});
+  final bool isBackButtonVisible;
+  const LandingPage(
+      {super.key,
+      required this.child,
+      this.maxWidth = 600,
+      this.isBackButtonVisible = false});
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +38,21 @@ class LandingPage extends StatelessWidget {
                 color: Colors.white,
                 child: Stack(
                   children: [
-                    IconButton(
-                      onPressed: () {
-                        Modular.to.pop();
-                      },
-                      icon: const Icon(Icons.arrow_back),
-                    ),
+                    isBackButtonVisible
+                        ? Align(
+                            alignment: Alignment.topLeft,
+                            child: IconButton(
+                              onPressed: () {
+                                Modular.to.pop();
+                              },
+                              icon: Icon(
+                                Icons.arrow_back,
+                                color: AppColors.black,
+                                size: 32,
+                              ),
+                            ),
+                          )
+                        : const SizedBox(),
                     Padding(
                       padding: const EdgeInsets.all(32),
                       child: Column(

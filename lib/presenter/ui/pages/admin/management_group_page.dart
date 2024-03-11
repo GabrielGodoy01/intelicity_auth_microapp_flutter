@@ -32,6 +32,7 @@ class _ManagementGroupPageState extends State<ManagementGroupPage> {
   @override
   Widget build(BuildContext context) {
     return LandingPage(
+      isBackButtonVisible: true,
       maxWidth: ScreenHelper.width(context) * 0.9,
       child: Observer(builder: (_) {
         var state = controller.state;
