@@ -36,8 +36,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  assets:
-    - assets/images/gates_logo.png
+  # assets:
+    # - assets/images/gates_logo.png
 
 
 flutter_intl:
